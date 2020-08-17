@@ -1,12 +1,31 @@
 - defaults:
     link:
       relink: true
+    shell:
+      quiet: true
 
 - clean: ['~']
+
+- link:
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+    ~/.gvimrc: gvimrc
 
 - create:
   - ~/Projects
   - ~/Playground
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --init --recursive, 💿 Installing git submodules]
+  -
+    command: ./install-packages.sh
+    description: 🧰 Install useful applications
+    stdout: true
+    stderr: true
+    stdin: true
+  -
+    command: vim +PlugInstall +qall
+    description: 🔥 Setup Vim
+    stdout: true
+    stderr: true
+    stdin: true
