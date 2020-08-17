@@ -18,18 +18,6 @@ LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
 function print_message() {
-  echo -e "${DARKGRAY}>${NOCOLOR} ⚡ ${ORANGE}$1 ${NOCOLOR}"
+  echo -e "${DARKGRAY}>${NOCOLOR} $1"
 }
 
-function install_ubuntu_package() {
-  sudo apt-get install $1 -yqq
-}
-
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-
-  if [[ $(lsb_release -si) == "Ubuntu" ]]; then
-    print_message "Install Vim"
-    install_ubuntu_package vim
-  fi
-
-fi

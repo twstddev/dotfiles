@@ -17,15 +17,19 @@
 
 - shell:
   - [git submodule update --init --recursive, 💿 Installing git submodules]
+
+- shell:
   -
-    command: ./install-packages.sh
+    command: ./scripts/install-packages.sh
     description: 🧰 Install useful applications
     stdout: true
     stderr: true
     stdin: true
+
+- shell:
   -
-    command: vim +PlugInstall +qall
-    description: 🔥 Setup Vim
+    command: ./scripts/post-install-setup.sh
+    description: 🔨 Configure applications
     stdout: true
     stderr: true
     stdin: true
