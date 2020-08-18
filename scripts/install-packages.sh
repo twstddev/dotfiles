@@ -7,7 +7,7 @@ function print_installation_message() {
 }
 
 function install_ubuntu_package() {
-  sudo apt-get install $1 -yqq
+  sudo apt-get -qq install $1
 }
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -15,6 +15,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if [[ $(lsb_release -si) == "Ubuntu" ]]; then
     print_installation_message "Install Vim"
     install_ubuntu_package vim
+    
+    print_installation_message "Install ZSH"
+    install_ubuntu_package zsh
   fi
 
 fi

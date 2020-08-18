@@ -15,3 +15,7 @@ if [[ $(uname -r) =~ microsoft || $IS_WSL || $WSL_DISTRO_NAME ]]; then
   print_setup_message "Setup Windows Terminal"
   cp "${BASH_SOURCE%/*}/../wt-settings.json" "${WINDOWS_LOCAL_APP_DATA}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 fi
+
+print_setup_message "Change to ZSH 🔥"
+chsh -s $(which zsh)
+# exec zsh
