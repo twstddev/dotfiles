@@ -1,3 +1,5 @@
+export EDITOR=vim
+
 ####################
 # PROMPT CONFIGURATION
 ####################
@@ -38,6 +40,18 @@ setopt nobeep
 setopt autocd
 # try to correct spelling mistakes
 setopt correct
+
+####################
+# COMPLETIONS
+####################
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+####################
+# KEY BINDINGS
+####################
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+bindkey '^R' history-incremental-search-backward
 
 ####################
 # LOCAL
