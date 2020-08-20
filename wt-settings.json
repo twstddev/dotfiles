@@ -15,9 +15,9 @@
       "fontWeight": "normal",
       "padding": "4",
       "cursorShape": "vintage",
-      "colorScheme": "ayu",
+      "colorScheme": "Moonlight II",
       "useAcrylic": true,
-      "acrylicOpacity": 0.85,
+      "acrylicOpacity": 0.9,
       "scrollbarState": "hidden",
       "snapOnInput": true
     },

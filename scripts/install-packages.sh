@@ -18,6 +18,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     
     print_installation_message "Install ZSH"
     install_ubuntu_package zsh
+
+    print_installation_message "Install Unzip"
+    install_ubuntu_package unzip
   fi
 
 fi
