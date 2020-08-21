@@ -12,6 +12,58 @@ export EDITOR=vim
 ####################
 source ~/.zinit/bin/zinit.zsh
 
+# add commands to copy and paste to/from clipboard
+zinit wait lucid for OMZL::clipboard.zsh
+
+# add completion configuration from OMZ
+zinit wait lucid for OMZL::completion.zsh
+
+# Grep configuration from OMZ
+zinit wait lucid for OMZL::grep.zsh
+
+# Various settings from OMZ
+zinit wait lucid for OMZL::functions.zsh
+zinit wait lucid for OMZL::misc.zsh
+
+# history settings from OMZ
+zinit wait lucid for OMZL::history.zsh
+
+# Completions for AWS CLI
+zinit wait lucid for OMZP::aws
+
+# Suggest pagckages for not found commands
+zinit wait lucid for OMZP::command-not-found
+
+# Enable colors in man pages
+zinit wait lucid for OMZP::colored-man-pages
+
+# Common aliases from OMZ
+zinit wait lucid for OMZP::common-aliases
+
+# some aliases from OMZ
+zinit wait lucid for OMZL::directories.zsh
+
+# docker completions from OMZ
+zinit wait lucid for OMZP::docker/_docker
+zinit wait lucid for OMZP::docker-compose
+
+# git aliases
+zinit wait lucid for OMZP::git
+
+# terraform completions from OMZ
+zinit wait lucid for OMZP::terraform
+
+# better vi mode
+zinit wait lucid for \
+   atload"bindkey -M vicmd 'v' visual-mode" \
+   OMZP::vi-mode
+
+# npm completions from OMZ
+zinit wait lucid for OMZP::npm
+
+# remind about registered aliases when available
+zinit wait lucid for djui/alias-tips
+
 # file and direcgory colors for ls
 zinit ice wait"0c" lucid reset \
     atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
@@ -78,21 +130,15 @@ setopt autocd
 setopt correct
 
 ####################
-# COMPLETIONS
-####################
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
-####################
 # KEY BINDINGS
 ####################
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
 bindkey '^R' history-incremental-search-backward
 
 ####################
 # ALIASES
 ####################
 alias ls="ls --color"
+alias lah="ls -laFh"
 
 ####################
 # LOCAL
