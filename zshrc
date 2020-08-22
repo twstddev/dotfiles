@@ -65,6 +65,9 @@ zinit wait lucid for Aloxaf/fzf-tab
 # git utils using fzf
 zinit wait lucid for wfxr/forgit
 
+# add more efficient navigation between folders
+zinit wait lucid for rupa/z
+
 # file and direcgory colors for ls
 zinit ice wait"0c" lucid reset \
     atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
@@ -149,6 +152,7 @@ bindkey '^w' backward-kill-word
 ####################
 alias ls="ls --color"
 alias lah="ls -laFh"
+alias j="z"
 
 ####################
 # FZF
@@ -157,6 +161,13 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --info inline"
 
 if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
+fi
+
+####################
+# Z
+####################
+if [[ ! -f ~/.z ]]; then
+   touch ~/.z
 fi
 
 ####################
