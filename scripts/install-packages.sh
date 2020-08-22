@@ -48,6 +48,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     print_installation_message "Install httpie"
     install_ubuntu_package httpie
+
+    print_installation_message "Install git extras"
+    install_ubuntu_package git-extras
   fi
 
 fi

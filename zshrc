@@ -65,11 +65,21 @@ zinit wait lucid as"completion" for OMZP::ripgrep/_ripgrep
 # httpie completions from OMZ
 zinit wait lucid as"completion" for OMZP::httpie
 
+# git extras completions from OMZ
+zinit wait lucid for OMZP::git-extras
+
+# nvm completions from OMZ
+zinit wait lucid for OMZP::nvm
+
 # remind about registered aliases when available
 zinit wait lucid for djui/alias-tips
 
 # add more efficient navigation between folders
 zinit wait lucid for rupa/z
+
+# add nvm
+# export NVM_LAZY_LOAD=true
+zinit light lukechilds/zsh-nvm
 
 # file and direcgory colors for ls
 zinit ice wait"0c" lucid reset \
