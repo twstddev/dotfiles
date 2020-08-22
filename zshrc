@@ -38,10 +38,10 @@ zinit wait lucid for OMZP::command-not-found
 zinit wait lucid for OMZP::colored-man-pages
 
 # Common aliases from OMZ
-zinit wait lucid for OMZP::common-aliases
+zinit snippet OMZP::common-aliases
 
 # some aliases from OMZ
-zinit wait lucid for OMZL::directories.zsh
+zinit snippet OMZL::directories.zsh
 
 # docker completions from OMZ
 zinit wait lucid for OMZP::docker/_docker
@@ -78,7 +78,7 @@ zinit wait lucid for djui/alias-tips
 zinit wait lucid for rupa/z
 
 # add nvm
-# export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD=true
 zinit light lukechilds/zsh-nvm
 
 # file and direcgory colors for ls
@@ -92,7 +92,7 @@ zinit ice wait"0c" lucid reset \
 zinit light trapd00r/LS_COLORS
 
 # modern ls repalacement
-zinit ice wait"2" lucid atload="alias ls=exa" from"gh-r" as"program" mv"exa* -> exa"
+zinit ice lucid from"gh-r" as"program" mv"exa* -> exa"
 zinit light ogham/exa
 
 # style the prompt
@@ -172,8 +172,9 @@ bindkey '^w' backward-kill-word
 ####################
 # ALIASES
 ####################
-alias ls="ls --color"
-alias lah="ls -laFh"
+alias l="exa"
+alias ls="exa -lhb --git"
+alias la="ls -a"
 alias j="z"
 alias f="fdfind"
 alias bat="batcat"
