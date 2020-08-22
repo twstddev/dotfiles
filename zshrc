@@ -56,14 +56,17 @@ zinit wait lucid for OMZP::terraform
 # npm completions from OMZ
 zinit wait lucid for OMZP::npm
 
+# fd completions from OMZ
+zinit wait lucid as"completion" for OMZP::fd/_fd
+
+# ripgrep completions from OMZ
+zinit wait lucid as"completion" for OMZP::ripgrep/_ripgrep
+
+# httpie completions from OMZ
+zinit wait lucid as"completion" for OMZP::httpie
+
 # remind about registered aliases when available
 zinit wait lucid for djui/alias-tips
-
-# enable tab completions with fzf
-zinit wait lucid for Aloxaf/fzf-tab
-
-# git utils using fzf
-zinit wait lucid for wfxr/forgit
 
 # add more efficient navigation between folders
 zinit wait lucid for rupa/z
@@ -84,6 +87,15 @@ zinit light ogham/exa
 
 # style the prompt
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# enable tab completions with fzf
+zinit wait lucid for Aloxaf/fzf-tab
+
+# git utils using fzf
+zinit wait lucid for wfxr/forgit
+
+# add command that allows to open github page for specific repo and branch
+zinit wait lucid for paulirish/git-open
 
 # fish-like syntax highlighting, completion and auto suggetsion
 zinit wait lucid for \
@@ -153,6 +165,24 @@ bindkey '^w' backward-kill-word
 alias ls="ls --color"
 alias lah="ls -laFh"
 alias j="z"
+alias f="fdfind"
+alias bat="batcat"
+
+####################
+# FUNCTIONS
+####################
+function doc() {
+   tldr $1 | bat
+}
+
+function fif() {
+  if [ ! "$#" -gt 0 ]; then echo
+    "Need a string to search for!"
+    return 1
+  fi
+
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
 
 ####################
 # FZF

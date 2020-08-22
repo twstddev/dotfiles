@@ -27,6 +27,27 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     print_installation_message "Install fzf"
     install_ubuntu_package fzf
+
+    print_installation_message "Install tldr"
+    install_ubuntu_package tldr
+
+    print_installation_message "Install htop"
+    install_ubuntu_package htop
+
+    print_installation_message "Install fd"
+    install_ubuntu_package fd-find
+
+    print_installation_message "Install ripgrep"
+    install_ubuntu_package ripgrep
+
+    print_installation_message "Install progress"
+    install_ubuntu_package progress
+
+    print_installation_message "Install bat"
+    sudo apt-get -qq -o Dpkg::Options::="--force-overwrite" install bat
+
+    print_installation_message "Install httpie"
+    install_ubuntu_package httpie
   fi
 
 fi
