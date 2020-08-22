@@ -24,6 +24,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     print_installation_message "Install Python"
     install_ubuntu_package python
+
+    print_installation_message "Install fzf"
+    install_ubuntu_package fzf
   fi
 
 fi

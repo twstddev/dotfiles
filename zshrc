@@ -53,16 +53,17 @@ zinit wait lucid for OMZP::git
 # terraform completions from OMZ
 zinit wait lucid for OMZP::terraform
 
-# better vi mode
-zinit wait lucid for \
-   atload"bindkey -M vicmd 'v' visual-mode" \
-   OMZP::vi-mode
-
 # npm completions from OMZ
 zinit wait lucid for OMZP::npm
 
 # remind about registered aliases when available
 zinit wait lucid for djui/alias-tips
+
+# enable tab completions with fzf
+zinit wait lucid for Aloxaf/fzf-tab
+
+# git utils using fzf
+zinit wait lucid for wfxr/forgit
 
 # file and direcgory colors for ls
 zinit ice wait"0c" lucid reset \
@@ -71,7 +72,7 @@ zinit ice wait"0c" lucid reset \
             '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
             \${P}dircolors -b LS_COLORS > c.zsh" \
     atpull'%atclone' pick"c.zsh" nocompile'!' \
-    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+    atload'zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}'
 zinit light trapd00r/LS_COLORS
 
 # modern ls repalacement
@@ -128,17 +129,35 @@ setopt nobeep
 setopt autocd
 # try to correct spelling mistakes
 setopt correct
+# match files names with . without need for specifying the dot
+setopt globdots
 
 ####################
 # KEY BINDINGS
 ####################
-bindkey '^R' history-incremental-search-backward
+# allow ctrl-p, ctrl-n for navigate history (standard behaviour)
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# allow ctrl-h, ctrl-w, ctrl-? for char and word deletion (standard behaviour)
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
 
 ####################
 # ALIASES
 ####################
 alias ls="ls --color"
 alias lah="ls -laFh"
+
+####################
+# FZF
+####################
+export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --info inline"
+
+if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+fi
 
 ####################
 # LOCAL
