@@ -15,6 +15,10 @@
       create: true
       path: zinit
     ~/.zshrc: zshrc
+    ~/.tmux/plugins/tpm:
+      create: true
+      path: tpm
+    ~/.tmux.conf: tmux.conf
 
 - create:
   - ~/Projects

@@ -9,6 +9,9 @@ function print_setup_message() {
 print_setup_message "Setup Vim"
 vim +PlugInstall +qall
 
+print_setup_message "Install tmux plugins"
+~/.tmux/plugins/tpm/bin/install_plugins
+
 if [[ $(uname -r) =~ microsoft || $IS_WSL || $WSL_DISTRO_NAME ]]; then
   WINDOWS_LOCAL_APP_DATA="$(wslpath $(wslvar LOCALAPPDATA))"
 
