@@ -169,6 +169,8 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 
+bindkey '^I' fzf-file-widget
+
 ####################
 # ALIASES
 ####################
