@@ -178,6 +178,7 @@ alias la="ls -a"
 alias j="z"
 alias f="fdfind"
 alias bat="batcat"
+alias ci="code-insiders"
 
 ####################
 # FUNCTIONS
