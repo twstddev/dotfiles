@@ -25,11 +25,11 @@ set binary
 set noeol
 
 " Insert 4 spaces when Tab is pressed
-set softtabstop=4
+set softtabstop=2
 " Set tab width to 4 spaces
-set tabstop=4
+set tabstop=2
 " Use 4 spaces when you press >>, << or ==
-set shiftwidth=4
+set shiftwidth=2
 " Copy the indentation from the previous line when starting a new line
 set autoindent
 " Expand tabs to spaces
