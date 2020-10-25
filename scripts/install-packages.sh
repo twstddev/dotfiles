@@ -52,6 +52,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     print_installation_message "Install git extras"
     install_ubuntu_package git-extras
 
+    print_installation_message "Install ruby"
+    install_ubuntu_package ruby
+
     print_installation_message "Install tmux"
     install_ubuntu_package tmux
   fi
