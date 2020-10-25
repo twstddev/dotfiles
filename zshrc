@@ -107,6 +107,9 @@ zinit wait lucid for wfxr/forgit
 # add command that allows to open github page for specific repo and branch
 zinit wait lucid for paulirish/git-open
 
+# add easymotion like movement to vi mode
+zinit wait lucid for hchbaw/zce.zsh
+
 # fish-like syntax highlighting, completion and auto suggetsion
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -170,6 +173,8 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 
 bindkey '^a' fzf-file-widget
+
+bindkey -M vicmd 'j' zce
 
 ####################
 # ALIASES
