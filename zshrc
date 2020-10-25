@@ -174,7 +174,7 @@ bindkey '^w' backward-kill-word
 
 bindkey '^a' fzf-file-widget
 
-bindkey -M vicmd 'j' zce
+bindkey -M vicmd 's' zce
 
 ####################
 # ALIASES
