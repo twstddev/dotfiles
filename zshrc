@@ -63,7 +63,7 @@ zinit wait lucid as"completion" for OMZP::fd/_fd
 zinit wait lucid as"completion" for OMZP::ripgrep/_ripgrep
 
 # httpie completions from OMZ
-zinit wait lucid as"completion" for OMZP::httpie
+zinit wait lucid for OMZP::httpie
 
 # git extras completions from OMZ
 zinit wait lucid for OMZP::git-extras
@@ -111,13 +111,13 @@ zinit wait lucid for paulirish/git-open
 zinit wait lucid for hchbaw/zce.zsh
 
 # fish-like syntax highlighting, completion and auto suggetsion
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start; bindkey '^e' autosuggest-accept" \
-    zsh-users/zsh-autosuggestions
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+  zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start; bindkey '^e' autosuggest-accept" \
+  zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+  zsh-users/zsh-completions
 
 # autoload -Uz _zinit
 # (( ${+_comps} )) && _comps[zinit]=_zinit
