@@ -57,6 +57,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     print_installation_message "Install tmux"
     install_ubuntu_package tmux
+
+    print_installation_message "Install jq"
+    install_ubuntu_package jq
   fi
 
 fi
