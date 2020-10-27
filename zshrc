@@ -108,7 +108,7 @@ zinit wait lucid for wfxr/forgit
 zinit wait lucid for paulirish/git-open
 
 # add easymotion like movement to vi mode
-zinit wait lucid for hchbaw/zce.zsh
+zinit wait lucid for twstddev/zce.zsh
 
 # fish-like syntax highlighting, completion and auto suggetsion
 zinit wait lucid light-mode for \
@@ -174,7 +174,8 @@ bindkey '^w' backward-kill-word
 
 bindkey '^a' fzf-file-widget
 
-bindkey -M vicmd 'j' zce
+bindkey -M vicmd 's' zce
+bindkey -M vicmd 'S' zce
 
 ####################
 # ALIASES
