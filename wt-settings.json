@@ -10,14 +10,12 @@
   "profiles": {
     "defaults": {
       "suppressApplicationTitle": true,
-      "fontFace": "Cascadia Code",
+      "fontFace": "Dank Mono",
       "fontSize": 12,
       "fontWeight": "normal",
       "padding": "4",
       "cursorShape": "vintage",
-      "colorScheme": "Moonlight II",
-      "useAcrylic": true,
-      "acrylicOpacity": 0.95,
+      "colorScheme": "ayu",
       "scrollbarState": "hidden",
       "snapOnInput": true
     },
