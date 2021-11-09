@@ -79,6 +79,7 @@ zinit wait lucid for rupa/z
 
 # add nvm
 export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
 zinit light lukechilds/zsh-nvm
 
 # file and direcgory colors for ls
@@ -132,9 +133,9 @@ bindkey -v
 # HISTORY
 ####################
 # history size of commands in memory
-HISTSIZE=1000
+HISTSIZE=10000
 # number of commands to save in history
-SAVEHIST=1000
+SAVEHIST=10000
 # command history file
 HISTFILE=~/.history
 # append new commands to the ned of history file and make them available between all opened shells
