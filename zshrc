@@ -208,7 +208,13 @@ function fif() {
 ####################
 # FZF
 ####################
-export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --info inline"
+export FZF_DEFAULT_OPTS="
+  --height 50% --layout=reverse --border --info inline --cycle
+  --color=fg:#cbccc6,hl:#707a8c
+  --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66
+  --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6
+  --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff
+"
 
 if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
