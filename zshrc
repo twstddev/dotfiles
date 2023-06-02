@@ -209,12 +209,14 @@ function fif() {
 # FZF
 ####################
 export FZF_DEFAULT_OPTS="
-  --height 50% --layout=reverse --border --info inline --cycle
+  --height 50% --layout=reverse --border --info inline --cycle --bind='ctrl-s:jump,alt-j:preview-down,alt-k:preview-up,ctrl-/:toggle-preview'
+  --preview-window=hidden
   --color=fg:#cbccc6,hl:#707a8c
   --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66
   --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6
   --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff
 "
+export FZF_CTRL_T_OPTS="--preview='batcat --color=always --style=numbers {}'"
 
 if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
@@ -236,3 +238,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
