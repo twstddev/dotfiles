@@ -1,1 +1,2 @@
-vim.cmd.colorscheme("desert")
+require("core")
+require("plugins")
