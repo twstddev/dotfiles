@@ -21,7 +21,7 @@ local plugins = {
 		lazy = false,
 		priority  = 1000,
 		config = function()
-			vim.cmd.colorscheme "material-oceanic"
+			require("plugins.material").setup()
 		end,
 		cond = not utils.is_vscode()
 	}
