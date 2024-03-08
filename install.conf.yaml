@@ -17,3 +17,9 @@
 
 - shell:
   - [git submodule update --init --recursive, 💿 Installing git submodules]
+  - 
+    command: ./scripts/install-packages.sh
+    description: 🧰 Install useful applications
+    stdout: true
+    stderr: true
+    stdin: true
