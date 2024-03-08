@@ -1,0 +1,19 @@
+- defaults:
+    link:
+      relink: true
+    shell:
+      quiet: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/nvim: nvim
+
+- create:
+    - ~/downloads
+    - ~/http
+    - ~/projects
+    - ~/playground
+
+- shell:
+  - [git submodule update --init --recursive, 💿 Installing git submodules]
