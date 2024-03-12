@@ -8,6 +8,10 @@
 
 - link:
     ~/.config/nvim: nvim
+    ~/.zshrc: zshrc
+    ~/.zimrc: zimrc
+    ~/.p10k.zsh: p10k.zsh
+    ~/.tmux.conf: tmux.conf
 
 - create:
     - ~/downloads
@@ -20,6 +24,12 @@
   - 
     command: ./scripts/install-packages.sh
     description: 🧰 Install useful applications
+    stdout: true
+    stderr: true
+    stdin: true
+  - 
+    command: ./scripts/post-install-setup.sh
+    description: 🔨 Configure applications
     stdout: true
     stderr: true
     stdin: true

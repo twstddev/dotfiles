@@ -23,6 +23,12 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
       install_ubuntu_package neovim
     fi
 
+
+    print_installation_message "Install ZSH"
+    install_ubuntu_package zsh
+
+    print_installation_message "Install tmux"
+    install_ubuntu_package tmux
   fi
 
 fi
