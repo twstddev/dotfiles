@@ -1,1 +1,9 @@
 zmodule romkatv/powerlevel10k
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-completions -f src
+zmodule completion
+zmodule ohmyzsh/ohmyzsh -f 'lib' -s 'lib/theme-and-appearance.zsh'
+zmodule ohmyzsh/ohmyzsh -f 'plugins/colored-man-pages' -s 'plugins/colored-man-pages/colored-man-pages.plugin.zsh'
+zmodule lukechilds/zsh-nvm
+zmodule paulirish/git-open
