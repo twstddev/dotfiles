@@ -75,6 +75,14 @@ bindkey '^w' backward-kill-word
 bindkey '^e' autosuggest-accept
 
 ####################
+# ALIASES
+####################
+alias l="eza"
+alias ls="l -lhb --git"
+alias la="ls -a"
+alias bat="batcat"
+
+####################
 # LOCAL
 ####################
 if [[ -a ~/.zshrc.local ]]; then

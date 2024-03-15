@@ -29,6 +29,26 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     print_installation_message "Install tmux"
     install_ubuntu_package tmux
+
+    print_installation_message "Install fzf"
+    install_ubuntu_package fzf
+
+    print_installation_message "Install htop"
+    install_ubuntu_package htop
+
+    print_installation_message "Install ripgrep"
+    install_ubuntu_package ripgrep
+
+    print_installation_message "Install bat"
+    install_ubuntu_package bat
+
+    if !(command -v http > /dev/null 2>&1;) then
+      print_installation_message "Install httpie"
+      curl -SsL https://packages.httpie.io/deb/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/httpie.gpg
+      echo "deb [arch=amd64 signed-by=/usr/share/keyrings/httpie.gpg] https://packages.httpie.io/deb ./" | sudo tee /etc/apt/sources.list.d/httpie.list > /dev/null
+      sudo apt update
+      install_ubuntu_package httpie
+    fi
   fi
 
 fi

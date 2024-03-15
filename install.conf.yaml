@@ -3,6 +3,8 @@
       relink: true
     shell:
       quiet: true
+    create:
+      mode: 0755
 
 - clean: ['~']
 
