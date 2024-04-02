@@ -23,7 +23,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
       install_ubuntu_package neovim
     fi
 
-
     print_installation_message "Install ZSH"
     install_ubuntu_package zsh
 
@@ -41,6 +40,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     print_installation_message "Install bat"
     install_ubuntu_package bat
+
+    print_installation_message "Install ruby"
+    install_ubuntu_package ruby
 
     if !(command -v http > /dev/null 2>&1;) then
       print_installation_message "Install httpie"

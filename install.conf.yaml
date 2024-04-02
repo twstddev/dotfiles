@@ -13,6 +13,9 @@
     ~/.zshrc: zshrc
     ~/.zimrc: zimrc
     ~/.p10k.zsh: p10k.zsh
+    ~/.tmux/plugins/tpm:
+      create: true
+      path: tpm
     ~/.tmux.conf: tmux.conf
 
 - create:
