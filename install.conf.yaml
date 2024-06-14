@@ -1,6 +1,7 @@
 - defaults:
     link:
       relink: true
+      create: true
     shell:
       quiet: true
     create:

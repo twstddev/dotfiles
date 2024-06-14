@@ -14,14 +14,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   if [[ $(lsb_release -si) == "Ubuntu" ]]; then
 
-    if !(command -v nvim > /dev/null 2>&1;) then
-      print_installation_message "Install Neovim"
-
-      sudo add-apt-repository -y ppa:neovim-ppa/unstable
-      sudo apt-get update
-
-      install_ubuntu_package neovim
-    fi
+    print_installation_message "Install neovim"
+    install_ubuntu_package neovim
 
     print_installation_message "Install ZSH"
     install_ubuntu_package zsh
@@ -44,13 +38,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     print_installation_message "Install ruby"
     install_ubuntu_package ruby
 
-    if !(command -v http > /dev/null 2>&1;) then
-      print_installation_message "Install httpie"
-      curl -SsL https://packages.httpie.io/deb/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/httpie.gpg
-      echo "deb [arch=amd64 signed-by=/usr/share/keyrings/httpie.gpg] https://packages.httpie.io/deb ./" | sudo tee /etc/apt/sources.list.d/httpie.list > /dev/null
-      sudo apt update
-      install_ubuntu_package httpie
-    fi
+    print_installation_message "Install httpie"
+    install_ubuntu_package httpie
+
+    print_installation_message "Install eza"
+    install_ubuntu_package eza
   fi
 
 fi
