@@ -74,6 +74,9 @@ bindkey '^w' backward-kill-word
 
 bindkey '^e' autosuggest-accept
 
+bindkey -M vicmd 's' zce
+bindkey -M vicmd 'S' zce
+
 ####################
 # ALIASES
 ####################
