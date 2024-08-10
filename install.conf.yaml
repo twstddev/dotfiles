@@ -12,6 +12,7 @@
 - link:
     ~/.config/nvim: nvim
     ~/.zshrc: zshrc
+    ~/.zshenv: zshenv
     ~/.zimrc: zimrc
     ~/.p10k.zsh: p10k.zsh
     ~/.tmux/plugins/tpm:
