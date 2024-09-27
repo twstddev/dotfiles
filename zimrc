@@ -10,3 +10,4 @@ zmodule ohmyzsh/ohmyzsh -f 'plugins/colored-man-pages' -s 'plugins/colored-man-p
 zmodule lukechilds/zsh-nvm
 zmodule paulirish/git-open
 zmodule twstddev/zce.zsh -s zce.zsh
+zmodule ohmyzsh/ohmyzsh --root plugins/aws
