@@ -15,16 +15,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	-- nvim speicfic plugins
-	{
-		"marko-cerovac/material.nvim",
-		lazy = false,
-		priority  = 1000,
-		config = function()
-			require("plugins.material").setup()
-		end,
-		cond = not utils.is_vscode()
-	}
+  -- nvim speicfic plugins
+  {
+    "marko-cerovac/material.nvim",
+    lazy = false,
+    priority  = 1000,
+    config = function()
+      require("plugins.material").setup()
+    end,
+    cond = not utils.is_vscode()
+  }
 }
 
 require("lazy").setup(plugins, require("plugins.lazy"))
