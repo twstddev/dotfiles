@@ -49,3 +49,11 @@ vim.api.nvim_create_autocmd({"VimEnter", "WinEnter", "BufWinEnter"}, {
 vim.api.nvim_create_autocmd("WinLeave", {
   command = "setlocal nocursorline"
 })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})

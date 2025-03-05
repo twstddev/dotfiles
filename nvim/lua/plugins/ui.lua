@@ -6,7 +6,15 @@ return {
       require("catppuccin").setup({
         flavour = "mocha",
         integrations = {
-          leap = true
+          leap = true,
+          gitsigns = true,
+          telescope = {
+            enalbed = true,
+          },
+          mini = {
+            enabled = true,
+          },
+          treesitter = true,
         },
       })
 
@@ -17,12 +25,18 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
   {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = {
       options = {
         theme = "catppuccin"
       }
-    }
-  }
+    },
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
