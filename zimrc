@@ -1,4 +1,5 @@
 zmodule romkatv/powerlevel10k
+zmodule jeffreytse/zsh-vi-mode
 zmodule zsh-users/zsh-completions -f src
 zmodule completion
 zmodule Aloxaf/fzf-tab
