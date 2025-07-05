@@ -110,7 +110,6 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 ####################
 # ZSH-VI-MODE
 ####################
-ZVM_LINE_INIT_MODE=$ZVM_MODE_NORMAL
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLOCK
 ZVM_VI_HIGHLIGHT_BACKGROUND=216
 ZVM_VI_HIGHLIGHT_FOREGROUND=0
