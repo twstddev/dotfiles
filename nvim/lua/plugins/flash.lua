@@ -8,6 +8,10 @@ return {
       highlight = {
         matches = false,
       },
+      label = {
+        before = { 0, 0 },
+        after = false,
+      },
     },
   },
 }
