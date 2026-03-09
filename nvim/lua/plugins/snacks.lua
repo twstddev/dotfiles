@@ -11,6 +11,24 @@ return {
         top_down = false,
       },
       scroll = { enabled = false },
+      explorer = {
+        trash = false,
+      },
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<Esc>"] = { "close", mode = { "n", "i" } },
+            },
+          },
+        },
+        sources = {
+          explorer = {
+            ignored = true,
+            hidden = true,
+          },
+        },
+      },
     },
   },
 }
