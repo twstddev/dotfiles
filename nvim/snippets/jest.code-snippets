@@ -1,0 +1,247 @@
+{
+  "afterAll": {
+    "body": "afterAll(() => {\n\t$0\n});",
+    "prefix": "aa",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "afterAll:async": {
+    "body": "afterAll(async () => {\n\t$0\n});",
+    "prefix": "aaa",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "afterEach": {
+    "body": "afterEach(() => {\n\t$0\n});",
+    "prefix": "ae",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "afterEach:async": {
+    "body": "afterEach(async () => {\n\t$0\n});",
+    "prefix": "aea",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "beforeAll": {
+    "body": "beforeAll(() => {\n\t$0\n});",
+    "prefix": "ba",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "beforeAll:async": {
+    "body": "beforeAll(async () => {\n\t$0\n});",
+    "prefix": "baa",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "beforeEach": {
+    "body": "beforeEach(() => {\n\t$0\n});",
+    "prefix": "be",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "beforeEach:async": {
+    "body": "beforeEach(async () => {\n\t$0\n});",
+    "prefix": "bea",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "describe": {
+    "body": "describe('${1:Name of the group}', () => {\n\t$0\n});",
+    "prefix": "desc",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "expect": {
+    "body": "expect($0)",
+    "prefix": "exp",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "expect.rejects": {
+    "body": "expect($1).rejects$0",
+    "prefix": "exprj",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "expect.resolves": {
+    "body": "expect($1).resolves$0",
+    "prefix": "expr",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "it": {
+    "body": "it('${1:should }', () => {\n\t$0\n});",
+    "prefix": "it",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "it:async": {
+    "body": "it('${1:should }', async () => {\n\t$0\n});",
+    "prefix": "ita",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "jest.fn": {
+    "body": "jest.fn($0)",
+    "prefix": "jfn",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "test": {
+    "body": "test('${1:should }', () => {\n\t$0\n});",
+    "prefix": "test",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "test:async": {
+    "body": "test('${1:should }', async () => {\n\t$0\n});",
+    "prefix": "testa",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBe": {
+    "body": "expect($1).toBe($2);$0",
+    "prefix": "tb",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeCloseTo": {
+    "body": "expect($1).toBeCloseTo(${2:number}, ${3:delta});$0",
+    "prefix": "tbct",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeDefined": {
+    "body": "expect($1).toBeDefined();$0",
+    "prefix": "tbd",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeFalsy": {
+    "body": "expect($1).toBeFalsy();$0",
+    "prefix": "tbf",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeGreaterThan": {
+    "body": "expect($1).toBeGreaterThan($2);$0",
+    "prefix": "tbgt",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeGreaterThanOrEqual": {
+    "body": "expect($1).toBeGreaterThanOrEqual($2);$0",
+    "prefix": "tbgte",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeInstanceOf": {
+    "body": "expect($1).toBeInstanceOf($2);$0",
+    "prefix": "tbi",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeLessThan": {
+    "body": "expect($1).toBeLessThan($2);$0",
+    "prefix": "tblt",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeLessThanOrEqual": {
+    "body": "expect($1).toBeLessThanOrEqual($2);$0",
+    "prefix": "tblte",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeNull": {
+    "body": "expect($1).toBeNull();$0",
+    "prefix": "tbn",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeTruthy": {
+    "body": "expect($1).toBeTruthy();$0",
+    "prefix": "tbt",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeUndefined": {
+    "body": "expect($1).toBeUndefined();$0",
+    "prefix": "tbu",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toContain": {
+    "body": "expect(${1:list}).toContain($2);$0",
+    "prefix": "tco",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toContainEqual": {
+    "body": "expect(${1:list}).toContainEqual($2);$0",
+    "prefix": "tce",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toEqual": {
+    "body": "expect($1).toEqual($2);$0",
+    "prefix": "te",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toHaveBeenCalled": {
+    "body": "expect($1).toHaveBeenCalled();$0",
+    "prefix": "thbc",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toHaveBeenCalledTimes": {
+    "body": "expect($1).toHaveBeenCalledTimes($2);$0",
+    "prefix": "thbct",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toHaveBeenCalledWith": {
+    "body": "expect($1).toHaveBeenCalledWith($2);$0",
+    "prefix": "thbcw",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toHaveBeenLastCalledWith": {
+    "body": "expect($1).toHaveBeenLastCalledWith($2);$0",
+    "prefix": "thblcw",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toHaveLength": {
+    "body": "expect($1).toHaveLength($2);$0",
+    "prefix": "thl",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toHaveProperty": {
+    "body": "expect($1).toHaveProperty(${2:keyPath}, ${3:value});$0",
+    "prefix": "thp",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toMatch": {
+    "body": "expect($1).toMatch($2);$0",
+    "prefix": "tm",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toMatchInlineSnapshot": {
+    "body": "expect($1).toMatchInlineSnapshot($2);$0",
+    "prefix": "tmis",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toMatchObject": {
+    "body": "expect($1).toMatchObject($2);$0",
+    "prefix": "tmo",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toMatchSnapshot": {
+    "body": "expect($1).toMatchSnapshot($2);$0",
+    "prefix": "tms",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toStrictEqual": {
+    "body": "expect($1).toStrictEqual($2);$0",
+    "prefix": "tse",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toThrow": {
+    "body": "expect(() => {\n\t$0\n}).toThrow($1);",
+    "prefix": "tt",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toThrowError": {
+    "body": "expect(() => {\n\t$0\n}).toThrowError($1);",
+    "prefix": "tte",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toThrowErrorMatchingInlineSnapshot": {
+    "body": "expect(() => {\n\t$0\n}).toThrowErrorMatchingInlineSnapshot();",
+    "prefix": "ttemis",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toThrowErrorMatchingSnapshot": {
+    "body": "expect(() => {\n\t$0\n}).toThrowErrorMatchingSnapshot();",
+    "prefix": "ttems",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeVisible": {
+    "body": "expect($1).toBeVisible();$0",
+    "prefix": "tbv",
+    "scope": "javascript,typescript,typescriptreact"
+  },
+  "toBeInTheDocument": {
+    "body": "expect($1).toBeInTheDocument();$0",
+    "prefix": "tbid",
+    "scope": "javascript,typescript,typescriptreact"
+  }
+}

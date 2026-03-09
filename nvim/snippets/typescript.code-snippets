@@ -1,0 +1,46 @@
+{
+  "export interface": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "ei",
+    "body": ["export interface ${1:${TM_FILENAME_BASE}} {\n\t$0\n}"]
+  },
+  "export extended interface": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "eix",
+    "body": [
+      "export interface ${1:${TM_FILENAME_BASE}} extends ${2:Interface} {\n\t$0\n}"
+    ]
+  },
+  "export type": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "et",
+    "body": ["export type ${1:${TM_FILENAME_BASE}} = $0;"]
+  },
+  "export type object": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "eto",
+    "body": ["export type ${1:${TM_FILENAME_BASE}} = {\n\t$0\n};"]
+  },
+  "interface": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "int",
+    "body": ["interface ${1:${TM_FILENAME_BASE}} {\n\t$0\n}"]
+  },
+  "extended interface": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "intx",
+    "body": [
+      "interface ${1:${TM_FILENAME_BASE}} extends ${2:Interface} {\n\t$0\n}"
+    ]
+  },
+  "type": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "ty",
+    "body": ["type ${1:${TM_FILENAME_BASE}} = $0;"]
+  },
+  "type object": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "tyo",
+    "body": ["type ${1:${TM_FILENAME_BASE}} = {\n\t$0\n};"]
+  }
+}

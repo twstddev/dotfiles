@@ -1,0 +1,47 @@
+{
+  "playwright test": {
+    "scope": "javascript,typescript",
+    "prefix": "pwt",
+    "body": ["test('${1:description}', async ({ page }) => {", "\t${0}", "});"]
+  },
+  "playwright test describe": {
+    "scope": "javascript,typescript",
+    "prefix": "pwde",
+    "body": ["test.describe('${1:description}', () => {", "\t${0}", "});"]
+  },
+  "playwright test beforeEach": {
+    "scope": "javascript,typescript",
+    "prefix": "pwbe",
+    "body": ["test.beforeEach(async ({ page }) => {", "\t${0}", "});"]
+  },
+  "playwright test afterEach": {
+    "scope": "javascript,typescript",
+    "prefix": "pwae",
+    "body": ["test.afterEach(async ({ page }) => {", "\t${0}", "});"]
+  },
+  "playwright test beforeAll": {
+    "scope": "javascript,typescript",
+    "prefix": "pwba",
+    "body": ["test.beforeAll(async ({ page }) => {", "\t${0}", "});"]
+  },
+  "playwright test afterAll": {
+    "scope": "javascript,typescript",
+    "prefix": "pwaa",
+    "body": ["test.afterAll(async ({ page }) => {", "\t${0}", "});"]
+  },
+  "playwright toBeVisible": {
+    "scope": "javascript,typescript",
+    "prefix": "tbv",
+    "body": "await expect($1).toBeVisible();$0"
+  },
+  "playwright toHaveText": {
+    "scope": "javascript,typescript",
+    "prefix": "tht",
+    "body": "await expect($1).toHaveText();$0"
+  },
+  "playwright import": {
+    "scope": "javascript,typescript",
+    "prefix": "pwie",
+    "body": "import { expect } from '@playwright/test';$0"
+  }
+}

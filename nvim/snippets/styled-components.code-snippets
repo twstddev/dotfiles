@@ -1,0 +1,50 @@
+{
+  "styled component from HTML element": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ssh",
+    "body": ["const ${1} = styled.${2:div}`", "\t${0}", "`;"]
+  },
+  "styled component from HTML element with props": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "sshp",
+    "body": [
+      "type ${1}Props = {",
+      "\t$3",
+      "};",
+      "",
+      "const ${1} = styled.${2:div}`",
+      "\t${0}",
+      "`;"
+    ]
+  },
+  "styled component from another component": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ssc",
+    "body": ["const ${1} = styled(${2})`", "\t${0}", "`;"]
+  },
+  "export styled component from HTML element": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "esh",
+    "body": ["export const ${1} = styled.${2:div}`", "\t${0}", "`;"]
+  },
+  "export styled component from another component": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "esc",
+    "body": ["export const ${1} = styled(${2})`", "\t${0}", "`;"]
+  },
+  "styled component conditional style": {
+    "scope": "css",
+    "prefix": "si",
+    "body": ["${(props) =>", "\tprops.${1} &&", "\tcss `", "\t\t${0}", "\t`}"]
+  },
+  "styled component getTheme": {
+    "scope": "css",
+    "prefix": "sgt",
+    "body": ["${getTheme('$1')}"]
+  },
+  "styled component theme": {
+    "scope": "css",
+    "prefix": "st",
+    "body": ["${({ theme }) => theme.${0}}"]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "require Module": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "req",
+    "body": ["const $0 = require('$1');"]
+  },
+  "exports.member": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cmn",
+    "body": "module.exports.${1:member} = ${0};"
+  },
+  "module.exports": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cme",
+    "body": "module.exports = ${1:name};"
+  }
+}

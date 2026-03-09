@@ -1,0 +1,375 @@
+{
+  // ***************
+  // DECLARATIONS
+  // ***************
+  "const assignment": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cc",
+    "body": "const ${1} = ${0};"
+  },
+  "const assignment awaited": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ca",
+    "body": "const ${1} = await ${0};"
+  },
+  "const array": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "car",
+    "body": "const ${1} = [${0}];"
+  },
+  "const array destructuring": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cad",
+    "body": "const [${0}] = ${1};"
+  },
+  "const statement from destructuring": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cod",
+    "body": "const { ${0} } = ${1};"
+  },
+  "const object": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "co",
+    "body": "const ${1} = {\n\t${0}\n};"
+  },
+  "let assignment awaited": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "la",
+    "body": "let ${1} = await ${2};"
+  },
+  "let statement": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "lu",
+    "body": "let ${1};"
+  },
+  "let assignment": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ll",
+    "body": "let ${1} = ${2};"
+  },
+
+  // ***************
+  // FLOW CONTROL
+  // ***************
+  "if/else statement": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ife",
+    "body": "if (${1}) {\n\t${0}\n} else {\n\t\n}"
+  },
+  "for loop": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "fl",
+    "body": "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {\n\tconst ${3:element} = ${2:array}[index];\n\t${0}\n}"
+  },
+  "for in loop": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "fi",
+    "body": "for (let ${1:key} in ${2:source}) {\n\tif (${2:source}.hasOwnProperty(${1:key})) {\n\t\t${0}\n\t}\n}"
+  },
+  "for of loop": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "fo",
+    "body": "for (const ${1:key} of ${2:source}) {\n\t${0}\n}"
+  },
+  "throw new Error": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "tne",
+    "body": "throw new Error(\"${0}\");"
+  },
+  "throw custom value": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "tnv",
+    "body": "throw new ${0:error};"
+  },
+  "try/catch": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "tc",
+    "body": "try {\n\t${0}\n} catch (${1:error}) {\n\t\n}"
+  },
+
+  // ***************
+  // FUNCTIONS
+  // ***************
+  "const arrow function assignment": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cf",
+    "body": "const ${1:name} = (${2}) => {\n\t${0}\n};"
+  },
+  "const async arrow function": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "caf",
+    "body": "const ${1:name} = async (${2}) => {\n\t${0}\n}"
+  },
+  "arrow function with body": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "fu",
+    "body": "(${1}) => {\n\t${0}\n}"
+  },
+  "async arrow function with body": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "fa",
+    "body": "async (${1}) => {\n\t${0}\n}"
+  },
+  "short arrow function": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "sf",
+    "body": "(${1}) => ${0}"
+  },
+  "short async arrow function": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "saf",
+    "body": "async (${1}) => ${0}"
+  },
+
+  // ***************
+  // OBJECTS AND CLASSES
+  // ***************
+  "class": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cs",
+    "body": "class ${1:${TM_FILENAME_BASE}} {\n\t${0}\n}"
+  },
+  "class extends": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cse",
+    "body": "class ${1:${TM_FILENAME_BASE}} extends ${2:Base} {\n\t${0}\n}"
+  },
+  "method": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "me",
+    "body": "${1:name}(${2}) {\n\t${0}\n}"
+  },
+  "async method": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ma",
+    "body": "async ${1:name}(${2}) {\n\t${0}\n}"
+  },
+  "arrow method": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "mf",
+    "body": "${1:name} = (${2}) => {\n\t${0}\n};"
+  },
+  "async arrow method": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "amf",
+    "body": "${1:name} = async (${2}) => {\n\t${0}\n};"
+  },
+
+  // ***************
+  // RETURNING VALUES
+  // ***************
+  "return": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "re",
+    "body": "return ${0};"
+  },
+  "return new object one line": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ro",
+    "body": "return { ${0} };"
+  },
+  "return new object": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "rom",
+    "body": "return {\n\t${0}\n};"
+  },
+  "return new array one line": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ra",
+    "body": "return [${0}];"
+  },
+  "return new array": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ram",
+    "body": "return [\n\t${0}\n];"
+  },
+
+  // ***************
+  // PROMISES
+  // ***************
+  "await": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "aw",
+    "body": "await ${0}"
+  },
+  "Promise.all": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "pa",
+    "body": "Promise.all(${0});"
+  },
+  "new Promise": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "np",
+    "body": "new Promise((resolve, reject) => {\n\t${0}\n});"
+  },
+
+  // ***************
+  // MODULES
+  // ***************
+  "module export": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ex",
+    "body": "export ${0};"
+  },
+  "module export const": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ec",
+    "body": "export const ${1:name} = ${0};"
+  },
+  "module default export": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ed",
+    "body": "export default ${1:name};"
+  },
+  "export const arrow function": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ef",
+    "body": "export const ${1:${TM_FILENAME_BASE}} = (${2}) => {\n\t$0\n};"
+  },
+  "export const async arrow function": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "eaf",
+    "body": "export const ${1:${TM_FILENAME_BASE}} = async (${2}) => {\n\t$0\n};"
+  },
+  "export default arrow function": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "edf",
+    "body": [
+      "const ${1:${TM_FILENAME_BASE}} = (${2}) => {",
+      "\t${0}",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ]
+  },
+  "export default async arrow function": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "edaf",
+    "body": [
+      "const ${1:${TM_FILENAME_BASE}} = async (${2}) => {",
+      "\t${0}",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ]
+  },
+  "export class": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ecs",
+    "body": "export class ${1:${TM_FILENAME_BASE}} {\n\t$0\n}"
+  },
+  "export class extends": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ecse",
+    "body": "export class ${1:${TM_FILENAME_BASE}} extends ${2:Base} {\n\t$0\n}"
+  },
+  "export default class": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "edc",
+    "body": [
+      "class ${1:${TM_FILENAME_BASE}} {",
+      "\t${0}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ]
+  },
+  "export default class extends": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "edce",
+    "body": [
+      "class ${1:${TM_FILENAME_BASE}} extends ${2:Base} {",
+      "\t${0}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
+    ]
+  },
+  "re-export default from module": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "erm",
+    "body": ["export { default } from '${0:module}';"]
+  },
+  "re-export all from module": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ere",
+    "body": ["export * from '${0:module}';"]
+  },
+  "re-export only a portion from module": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "erd",
+    "body": ["export { ${0:name} } from '${1:module}';"]
+  },
+  "import module": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "im",
+    "body": "import ${0:*} from '${1:module}';"
+  },
+  "import module without assignment": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "in",
+    "body": "import '${0:module}';"
+  },
+  "import destructured properties": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "id",
+    "body": "import { $0 } from '${1:module}';"
+  },
+  "import everything": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ie",
+    "body": "import * as ${0:name} from '${1:module}';"
+  },
+  "import as": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ia",
+    "body": "import { ${2:originalName} as ${0:alias} } from '${1:module}';"
+  },
+
+  // ***************
+  // CONSOLE
+  // ***************
+  "console error": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ce",
+    "body": "console.error(${0});"
+  },
+  "consoleLog": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cl",
+    "body": "console.log(${0});"
+  },
+
+  // ***************
+  // TIMERS
+  // ***************
+  "setTimeout": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "to",
+    "body": "setTimeout(() => {\n\t${0}\n}, ${1:delay});"
+  },
+  "setInterval": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ti",
+    "body": "setInterval(() => {\n\t${0}\n}, ${1:delay});"
+  },
+  "setImmediate": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "tm",
+    "body": "setImmediate(() => {\n\t${0}\n});"
+  },
+
+  // ***************
+  // UTILS
+  // ***************
+  "JSON.stringify()": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "js",
+    "body": "JSON.stringify($0)"
+  },
+  "JSON.parse()": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "jp",
+    "body": "JSON.parse($0)"
+  }
+}
