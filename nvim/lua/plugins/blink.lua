@@ -8,6 +8,18 @@ return {
     },
     keymap = {
       preset = "super-tab",
+      ["<Tab>"] = {
+        function(cmp)
+          if cmp.snippet_active() then
+            return cmp.accept()
+          else
+            return cmp.select_and_accept()
+          end
+        end,
+        "snippet_forward",
+        LazyVim.cmp.map({ "ai_nes", "ai_accept" }),
+        "fallback",
+      },
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<C-j>"] = { "select_next", "fallback" },
       ["<CR>"] = { "accept", "fallback" },
