@@ -27,6 +27,15 @@ return {
             ignored = true,
             hidden = true,
           },
+          gh_diff = {
+            win = {
+              input = {
+                keys = {
+                  ["<Esc>"] = "cancel",
+                },
+              },
+            },
+          },
         },
       },
     },
