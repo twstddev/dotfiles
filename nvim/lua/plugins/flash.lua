@@ -12,6 +12,11 @@ return {
         before = { 0, 0 },
         after = false,
       },
+      modes = {
+        char = {
+          enabled = false,
+        },
+      },
     },
   },
 }

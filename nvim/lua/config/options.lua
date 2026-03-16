@@ -4,3 +4,7 @@
 vim.g.mapleader = ","
 -- vim.o.equalalways = false
 -- vim.g.ai_cmp = false
+--
+if vim.g.vscode then
+  vim.g.mapleader = ""
+end
