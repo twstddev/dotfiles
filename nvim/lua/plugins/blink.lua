@@ -28,6 +28,10 @@ return {
       providers = {
         snippets = {
           score_offset = 200,
+
+          should_show_items = function(ctx)
+            return ctx.trigger.initial_kind ~= "trigger_character"
+          end,
         },
       },
     },
