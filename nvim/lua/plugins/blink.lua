@@ -1,6 +1,20 @@
 return {
   "saghen/blink.cmp",
   opts = {
+    fuzzy = {
+      max_typos = 0,
+      sorts = {
+        function(a, b)
+          if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
+            return
+          end
+          return a.client_name ~= "emmet_language_server"
+        end,
+        "exact",
+        "score",
+        "sort_text",
+      },
+    },
     completion = {
       trigger = {
         show_in_snippet = false,
