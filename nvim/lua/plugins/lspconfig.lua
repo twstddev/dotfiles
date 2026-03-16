@@ -3,6 +3,8 @@ return {
   opts = {
     servers = {
       typos_lsp = {},
+      cssls = {},
+      emmet_language_server = {},
     },
     diagnostics = {
       virtual_text = {
