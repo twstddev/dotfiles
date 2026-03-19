@@ -84,6 +84,13 @@ if vim.g.vscode then
     vscode.call("editor.showOutgoingCalls")
   end, { noremap = true, silent = true })
 
+  vim.keymap.set({ "n", "x" }, "<C-w>q", function()
+    vscode.call("workbench.action.closeEditorsAndGroup")
+  end, { noremap = true, silent = true })
+  vim.keymap.set({ "n", "x" }, "<C-w>c", function()
+    vscode.call("workbench.action.closeEditorsAndGroup")
+  end, { noremap = true, silent = true })
+
   -- map("n", "j", function()
   --   if vim.v.count == 0 then
   --     vscode.call("cursorDown")
