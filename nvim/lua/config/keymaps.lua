@@ -57,11 +57,11 @@ if vim.g.vscode then
   end, { noremap = true, silent = true })
 
   vim.keymap.set("n", "]h", function()
-    vscode.call("workbench.action.editor.nextChange")
+    vscode.call("workbench.action.compareEditor.nextChange")
   end, { noremap = true, silent = true })
 
   vim.keymap.set("n", "[h", function()
-    vscode.call("workbench.action.editor.previousChange")
+    vscode.call("workbench.action.compareEditor.previousChange")
   end, { noremap = true, silent = true })
 
   vim.keymap.set("n", "]x", function()
