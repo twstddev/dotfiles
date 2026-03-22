@@ -56,6 +56,22 @@ if vim.g.vscode then
     vscode.call("editor.action.marker.prev")
   end, { noremap = true, silent = true })
 
+  vim.keymap.set("n", "]h", function()
+    vscode.call("workbench.action.editor.nextChange")
+  end, { noremap = true, silent = true })
+
+  vim.keymap.set("n", "[h", function()
+    vscode.call("workbench.action.editor.previousChange")
+  end, { noremap = true, silent = true })
+
+  vim.keymap.set("n", "]x", function()
+    vscode.call("merge-conflict.next")
+  end, { noremap = true, silent = true })
+
+  vim.keymap.set("n", "[x", function()
+    vscode.call("merge-conflict.previous")
+  end, { noremap = true, silent = true })
+
   del("n", "grn")
   del("n", "gra")
   del("n", "grr")
