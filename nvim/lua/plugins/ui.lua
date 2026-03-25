@@ -33,20 +33,21 @@ return {
               ["<Esc>"] = { "close", mode = { "n", "i" } },
             },
           },
+          list = {
+            keys = {
+              ["<a-w>"] = "focus_preview",
+            },
+          },
+          preview = {
+            keys = {
+              ["<a-w>"] = "focus_list",
+            },
+          },
         },
         sources = {
           explorer = {
             ignored = true,
             hidden = true,
-          },
-          gh_diff = {
-            win = {
-              input = {
-                keys = {
-                  ["<Esc>"] = "cancel",
-                },
-              },
-            },
           },
         },
       },
