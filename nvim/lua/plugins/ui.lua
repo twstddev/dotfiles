@@ -1,4 +1,16 @@
 return {
+  { "folke/noice.nvim", enabled = false },
+
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        mode = "tabs",
+        separator_style = "thick",
+      },
+    },
+  },
+
   {
     "snacks.nvim",
     opts = {
