@@ -32,7 +32,6 @@ return {
             end
           end,
           "snippet_forward",
-          LazyVim.cmp.map({ "ai_nes", "ai_accept" }),
           "fallback",
         },
         ["<C-k>"] = { "select_prev", "fallback" },
@@ -47,6 +46,10 @@ return {
             should_show_items = function(ctx)
               return ctx.trigger.initial_kind ~= "trigger_character"
             end,
+          },
+
+          copilot = {
+            enabled = false,
           },
         },
       },

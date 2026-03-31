@@ -126,4 +126,21 @@ if vim.g.vscode then
   vim.keymap.set({ "n", "x" }, ",", function()
     vscode.call("whichkey.show")
   end, { noremap = true, silent = true })
+else
+  map({ "n", "i", "x" }, "<A-;>", function()
+    local nes = require("sidekick.nes")
+    local suggestion = require("copilot.suggestion")
+
+    if suggestion.is_visible() then
+      LazyVim.create_undo()
+      suggestion.accept()
+      -- This is a temporary hack to make sure that in typescript files copilot suggestions appear more than one line at a time.
+      suggestion.accept()
+    end
+
+    if nes.have() then
+      nes.jump()
+      nes.apply()
+    end
+  end)
 end
