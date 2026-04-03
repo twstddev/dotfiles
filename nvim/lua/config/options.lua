@@ -4,6 +4,7 @@
 vim.g.mapleader = ","
 vim.opt.wrap = true
 vim.opt.breakindent = true
+vim.g.lazyvim_ts_lsp = "vtsls"
 -- vim.o.equalalways = false
 -- vim.g.ai_cmp = false
 --
