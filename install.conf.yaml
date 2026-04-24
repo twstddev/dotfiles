@@ -19,6 +19,7 @@
       create: true
       path: tpm
     ~/.tmux.conf: tmux.conf
+    ~/.claude/skills: claude/skills
 
 - create:
     - ~/downloads
