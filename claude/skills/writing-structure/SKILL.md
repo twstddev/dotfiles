@@ -114,16 +114,45 @@ Check how sections connect to each other and how prose flows within them.
 - Does the rhythm prevent ideas from building on each other?
 - Flag when choppiness breaks the logical thread of an argument — not just when it sounds abrupt
 
-When flagging choppy passages: quote the problematic text, name why it disrupts the argument (e.g., "these three sentences each make a separate claim but never connect them — the reader can't tell how they relate"), and suggest the type of correction needed (e.g., "combine into one sentence with a causal link", "add a sentence showing how this follows from the previous point"). Do not write the corrected prose.
+**How to present each issue:**
 
-**Output format:**
+For every transition or flow problem, provide three things:
+
+1. **What's wrong** — quote the relevant text (the abrupt ending, the missing bridge, the choppy passage) and name the problem precisely
+2. **Why it matters** — one sentence on how it affects the reader (e.g., "the reader arrives at the Proposal section without understanding why the current approach fails, so the proposal has no anchor")
+3. **How to fix it** — suggest the type of correction and give a short illustrative example. The example should show the *form* of the fix, not rewrite the author's actual content. Use `[their content]` as a placeholder for material the author fills in.
+
+Examples of how to present fixes:
+
+> *Missing section bridge:* The "Problem" section ends abruptly and the "Proposal" section starts without connecting the two. A closing sentence on the Problem side could signal the consequence: "This leaves us with [problem outcome], which the following proposal addresses directly." Or an opening sentence on the Proposal side: "Given [the problem just described], we propose..."
+
+> *Paragraph loses the thread:* This paragraph introduces latency as a new concern without connecting it to the scalability argument above. A linking sentence could bridge them: "Scalability is not the only constraint — latency compounds it, because [reason]."
+
+> *Choppy sentences:* "The system fails. It does so under load. This is a known issue." These three sentences each make a separate claim but don't show how they relate. Combine with a causal chain: "The system fails under load — a known issue that [consequence or context]."
+
+**Output format — two passes, always in this order:**
+
 ```
 ## Step 3: Transitions and Prose Flow
 
-[Section-to-section transitions: what works, what is missing or abrupt — reference actual section titles.]
-[Within-section flow: paragraphs or passages that lose the thread.]
-[Choppy sentences: quoted passages, explanation of why they fragment the argument, suggested approach to fix.]
+### Part A: Section-to-Section Transitions
+
+[Review every boundary between sections, in document order. For each boundary:]
+[— Section A → Section B: what works or what is missing/abrupt, with fix and example if needed.]
+[— Section B → Section C: ...]
+[...]
+
+### Part B: Within-Section Paragraph Flow
+
+[Work through every section in document order. For each section:]
+
+#### [Section name]
+[Review paragraph-to-paragraph transitions within this section.]
+[For each issue: quoted text → problem → why it matters → how to fix it with example.]
+[If the section has no paragraph flow issues, say so in one line.]
 ```
+
+Do not skip any section in Part B, even if it appears clean.
 
 After delivering feedback, ask:
 > "Continue to Step 4 (Argument Quality)?"
