@@ -25,6 +25,33 @@ Identify domain vocabulary in the first pass (e.g., "idempotent", "microservices
 
 ---
 
+## Voice Identification (do this before the first chunk)
+
+Read the opening two paragraphs without flagging anything. Map the author's voice:
+
+- **Register:** Formal and precise? Conversational and direct? Somewhere in between?
+- **Sentence rhythm:** Does the author favour longer, flowing sentences or short, punchy ones?
+- **Vocabulary level:** Do they use elevated vocabulary intentionally, or does it feel like filler?
+- **Personality markers:** Dry wit? Hedged and careful? Assertive?
+
+State the voice profile briefly before starting the first chunk:
+> *"Voice: [one sentence description]. Calibrating corrections to preserve this."*
+
+Apply this profile throughout. Plain English corrections should improve clarity without flattening the author's register. If a correction would make the writing sound like it came from a different person, offer it as a suggestion with a note — do not present it as a required fix.
+
+**Hard rules (always correct regardless of voice):**
+- British English spelling and grammar
+- AI writing tells
+- Throat-clearing openers with no informational value
+- Nominalisations that add no nuance
+
+**Voice-sensitive (adapt to author's register):**
+- Sentence length — flag only genuine run-ons, not stylistic long sentences
+- Word choice — suggest shorter alternatives only when the longer word adds no precision
+- Active vs. passive — flag passive when it obscures accountability; leave it when the author uses it for deliberate rhythm or emphasis
+
+---
+
 ## Review Standards
 
 Apply all three in every chunk, in parallel. Present corrections ordered by their position in the text, not by category.
@@ -90,10 +117,15 @@ Flag and correct any of the following:
 
 ## Chunk Processing
 
-1. Take the first 2–3 paragraphs. If a chunk has more than 6 corrections, process only 2 paragraphs and note this before the next chunk.
-2. Review all three standards in parallel.
-3. Present corrections ordered by position in the text.
-4. After each chunk, pause and ask: **"Ready for the next section?"**
+1. Number every paragraph in the document before starting (mentally or explicitly). Track which have been reviewed.
+2. Take the next 2–3 unreviewed paragraphs. If a chunk has more than 6 corrections, use only 2 paragraphs for that chunk.
+3. Review all three standards in parallel, calibrated against the author's voice profile.
+4. Present corrections ordered by position in the text.
+5. After each chunk, state which paragraphs were just covered and which remain:
+   > *"Covered paragraphs 4–6. [N] paragraphs remaining."*
+6. Then pause and ask: **"Ready for the next section?"**
+7. On the next confirmation, start from the first unreviewed paragraph — never re-review or skip. Short paragraphs, transitional sentences, and final paragraphs of a section all count and must be included.
+8. When all paragraphs have been covered, say so explicitly before presenting the pattern summary.
 
 ---
 

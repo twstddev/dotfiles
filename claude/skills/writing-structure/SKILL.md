@@ -11,8 +11,9 @@ description: Use when the user invokes /writing-structure to review RFCs, PRDs, 
 /writing-structure              # Start from Step 1
 /writing-structure structure    # Jump to Step 1: Overall Structure
 /writing-structure flow         # Jump to Step 2: Section Flow
-/writing-structure arguments    # Jump to Step 3: Argument Quality
-/writing-structure format       # Jump to Step 4: Format
+/writing-structure transitions  # Jump to Step 3: Transitions and Prose Flow
+/writing-structure arguments    # Jump to Step 4: Argument Quality
+/writing-structure format       # Jump to Step 5: Format
 ```
 
 If no document is provided, ask the user to share it before proceeding.
@@ -90,11 +91,46 @@ Check:
 ```
 
 After delivering feedback, ask:
-> "Continue to Step 3 (Argument Quality)?"
+> "Continue to Step 3 (Transitions and Prose Flow)?"
 
 ---
 
-## Step 3: Argument Quality
+## Step 3: Transitions and Prose Flow
+
+Check how sections connect to each other and how prose flows within them.
+
+**Between sections:**
+- Does each section end in a way that sets up what follows, or does it stop abruptly?
+- Is the logical relationship between sections explicit — contrast, consequence, elaboration — or does the reader have to infer it?
+- Are there topic jumps where the reader loses the thread between sections?
+
+**Within sections — paragraph transitions:**
+- Does each paragraph connect back to the section's main point?
+- Is there a clear thread linking paragraphs, or do they feel like separate items in a list?
+- Are there abrupt changes in topic within a section that need a bridge?
+
+**Choppy sentences:**
+- Are there clusters of short, disconnected sentences that fragment a single continuous idea?
+- Does the rhythm prevent ideas from building on each other?
+- Flag when choppiness breaks the logical thread of an argument — not just when it sounds abrupt
+
+When flagging choppy passages: quote the problematic text, name why it disrupts the argument (e.g., "these three sentences each make a separate claim but never connect them — the reader can't tell how they relate"), and suggest the type of correction needed (e.g., "combine into one sentence with a causal link", "add a sentence showing how this follows from the previous point"). Do not write the corrected prose.
+
+**Output format:**
+```
+## Step 3: Transitions and Prose Flow
+
+[Section-to-section transitions: what works, what is missing or abrupt — reference actual section titles.]
+[Within-section flow: paragraphs or passages that lose the thread.]
+[Choppy sentences: quoted passages, explanation of why they fragment the argument, suggested approach to fix.]
+```
+
+After delivering feedback, ask:
+> "Continue to Step 4 (Argument Quality)?"
+
+---
+
+## Step 4: Argument Quality
 
 Check each section for:
 - Is the section's main point stated first (Pyramid Principle at section level)?
@@ -108,7 +144,7 @@ Check each section for:
 
 **Output format:**
 ```
-## Step 3: Argument Quality
+## Step 4: Argument Quality
 
 [Per-section notes.]
 [Flag: missing topic sentences, ungrouped or overlapping arguments.]
@@ -118,11 +154,11 @@ Check each section for:
 ```
 
 After delivering feedback, ask:
-> "Continue to Step 4 (Format)?"
+> "Continue to Step 5 (Format)?"
 
 ---
 
-## Step 4: Format
+## Step 5: Format
 
 Check:
 - Lists used where prose would be more persuasive — or prose used where a list or table would be clearer
@@ -133,7 +169,7 @@ Check:
 
 **Output format:**
 ```
-## Step 4: Format
+## Step 5: Format
 
 [Specific format suggestions with rationale for each.]
 ```
@@ -169,3 +205,6 @@ Do not rewrite or restructure the document unless the user explicitly asks. If t
 | Key claims in passive voice | "Several claims are passive, which obscures ownership and accountability." |
 | No success criteria | "There's no way for the reader to know when this proposal has succeeded." |
 | Abstract goals without measurable outcomes | "Goals are stated aspirationally but lack metrics or observable outcomes." |
+| Abrupt section ending with no setup for what follows | "This section ends without signalling where the reader is going next — add a bridge or closing sentence that sets up the following section." |
+| Choppy sentences fragmenting a continuous idea | "These sentences each make a separate claim but don't connect — the reader can't tell how they relate. Combine with a causal or consequential link." |
+| Paragraph loses thread of section's main point | "This paragraph introduces a new idea without connecting it back to the section's central claim." |
