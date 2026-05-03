@@ -65,8 +65,7 @@ Check:
 [What's missing or misplaced, with specific section names.]
 ```
 
-After delivering feedback, ask:
-> "Continue to Step 2 (Section Flow)?"
+After delivering feedback, present suggested edits for this step one by one (see Edit Mode below). When the author is done or says "next step", move to Step 2 (Section Flow).
 
 ---
 
@@ -90,8 +89,7 @@ Check:
 [Other gaps, jumps, or content out of place — reference actual section titles.]
 ```
 
-After delivering feedback, ask:
-> "Continue to Step 3 (Transitions and Prose Flow)?"
+After delivering feedback, present suggested edits for this step one by one (see Edit Mode below). When the author is done or says "next step", move to Step 3 (Transitions and Prose Flow).
 
 ---
 
@@ -154,8 +152,7 @@ Examples of how to present fixes:
 
 Do not skip any section in Part B, even if it appears clean.
 
-After delivering feedback, ask:
-> "Continue to Step 4 (Argument Quality)?"
+After delivering feedback, present suggested edits for this step one by one (see Edit Mode below). When the author is done or says "next step", move to Step 4 (Argument Quality).
 
 ---
 
@@ -182,8 +179,7 @@ Check each section for:
 [Quote specific phrases where helpful.]
 ```
 
-After delivering feedback, ask:
-> "Continue to Step 5 (Format)?"
+After delivering feedback, present suggested edits for this step one by one (see Edit Mode below). When the author is done or says "next step", move to Step 5 (Format).
 
 ---
 
@@ -203,7 +199,8 @@ Check:
 [Specific format suggestions with rationale for each.]
 ```
 
-After Step 4, deliver a summary:
+After delivering feedback, present suggested edits for this step one by one (see Edit Mode below). When the author is done or says "next step", deliver the final summary:
+
 ```
 ## Priority Improvements
 
@@ -213,13 +210,81 @@ Top changes ranked by impact:
 3. [Third]
 ```
 
-No further prompt — review is complete.
+Review complete.
 
 ---
 
-## Default Mode: Feedback Only
+## Edit Mode
 
-Do not rewrite or restructure the document unless the user explicitly asks. If they do ask for edits, limit changes to the areas flagged in the feedback — do not touch sections that were not flagged.
+Edit Mode runs automatically after each step's feedback. Do not wait to be asked — present the first suggestion immediately.
+
+### Per-step edit queue
+
+Compile only the issues flagged in the current step into a queue, ordered by position in the document. Do not mix issues from other steps.
+
+### Presenting each suggestion
+
+Show one suggestion at a time:
+
+```
+Suggestion [N of total for this step] · [Section name]
+
+CONTEXT
+[One sentence of surrounding text before the affected passage, if available.]
+
+ORIGINAL
+"[Exact quoted text]"
+
+SUGGESTED
+"[Replacement text]"
+
+[One sentence of surrounding text after the affected passage, if available.]
+
+WHY
+[One sentence: what this fixes and how it improves the document.]
+```
+
+Wait for the author's response before showing the next suggestion.
+
+### Author responses
+
+- **Accept** — log as accepted, show next suggestion
+- **Skip** — log as skipped, show next suggestion
+- **Modify: [their version]** — log their version as accepted, show next suggestion
+- **Next step** — stop edits for this step, move to the next review step
+- **Stop** — end the session, show the session summary
+
+### Status line
+
+After every decision, show a one-line status:
+> *[N] accepted · [N] skipped · [N] remaining this step*
+
+### End of each step's edits
+
+When all suggestions for a step are exhausted or the author says "next step", show:
+
+```
+Step [N] edits done — [N accepted, N skipped].
+Moving to Step [N+1].
+```
+
+Then begin the next review step.
+
+### End of full session
+
+After Step 5 edits are complete, show the full session summary:
+
+```
+## Session Summary
+
+Step 1 — Overall Structure: [N accepted, N skipped]
+Step 2 — Section Flow: [N accepted, N skipped]
+Step 3 — Transitions: [N accepted, N skipped]
+Step 4 — Argument Quality: [N accepted, N skipped]
+Step 5 — Format: [N accepted, N skipped]
+
+Total: [N] changes accepted across the document.
+```
 
 ## Common Issues to Flag
 

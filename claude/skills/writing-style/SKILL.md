@@ -120,12 +120,13 @@ Flag and correct any of the following:
 1. Number every paragraph in the document before starting (mentally or explicitly). Track which have been reviewed.
 2. Take the next 2–3 unreviewed paragraphs. If a chunk has more than 6 corrections, use only 2 paragraphs for that chunk.
 3. Review all three standards in parallel, calibrated against the author's voice profile.
-4. Present corrections ordered by position in the text.
-5. After each chunk, state which paragraphs were just covered and which remain:
+4. Present all corrections for the chunk as an overview (see Correction Format), ordered by position in the text.
+5. State which paragraphs were covered and how many remain:
    > *"Covered paragraphs 4–6. [N] paragraphs remaining."*
-6. Then pause and ask: **"Ready for the next section?"**
-7. On the next confirmation, start from the first unreviewed paragraph — never re-review or skip. Short paragraphs, transitional sentences, and final paragraphs of a section all count and must be included.
-8. When all paragraphs have been covered, say so explicitly before presenting the pattern summary.
+6. Immediately present each correction from the chunk as an edit suggestion, one by one (see Edit Mode below). Do not wait to be asked.
+7. When all edits for the chunk are resolved or the author says "next chunk", move to the next unreviewed paragraphs.
+8. Never re-review or skip paragraphs. Short paragraphs, transitional sentences, and final paragraphs of a section all count and must be included.
+9. When all paragraphs have been covered, say so explicitly before presenting the pattern summary.
 
 ---
 
@@ -171,6 +172,71 @@ Only include patterns that appear 3 or more times.
 
 ---
 
-## Default Mode: Feedback Only
+## Edit Mode
 
-Do not rewrite or restructure the document unless explicitly asked. If asked for edits, apply only the corrections already flagged — do not make unrequested changes elsewhere.
+Edit Mode runs automatically after each chunk's feedback overview. Do not wait to be asked — present the first suggestion immediately after the overview.
+
+### Per-chunk edit queue
+
+Use the corrections already presented in the chunk overview, in the same order (by position in text). Do not introduce new corrections in edit mode.
+
+### Presenting each suggestion
+
+Show one suggestion at a time:
+
+```
+Suggestion [N of total for this chunk] · [Paragraph N] · (Plain English / British English / AI tell)
+
+CONTEXT
+[One sentence of surrounding text before the affected passage, if available.]
+
+ORIGINAL
+"[Exact quoted text]"
+
+SUGGESTED
+"[Replacement text]"
+
+[One sentence of surrounding text after the affected passage, if available.]
+
+WHY
+[One sentence: the rule this applies and what it improves.]
+```
+
+Wait for the author's response before showing the next suggestion.
+
+### Author responses
+
+- **Accept** — log as accepted, show next suggestion
+- **Skip** — log as skipped, show next suggestion
+- **Modify: [their version]** — log their version as accepted, show next suggestion
+- **Next chunk** — stop edits for this chunk, move to the next paragraphs
+- **Stop** — end the session, show the session summary
+
+### Status line
+
+After every decision, show a one-line status:
+> *[N] accepted · [N] skipped · [N] remaining this chunk*
+
+### End of each chunk's edits
+
+When all suggestions for a chunk are exhausted or the author says "next chunk":
+
+```
+Chunk [N] edits done — [N accepted, N skipped]. Moving to paragraphs [X–Y].
+```
+
+Then begin the next chunk's review.
+
+### End of full session
+
+After the final chunk's edits and the Recurring Patterns summary, show the full session summary:
+
+```
+## Session Summary
+
+[N] chunks reviewed · [N] total suggestions · [N] accepted · [N] skipped
+```
+
+### Scope
+
+Do not make changes outside the corrections flagged in the chunk feedback. Do not apply changes to paragraphs not yet reviewed.
