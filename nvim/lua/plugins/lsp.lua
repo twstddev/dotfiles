@@ -6,6 +6,12 @@ return {
         typos_lsp = {},
         cssls = {},
         emmet_language_server = {},
+
+        ["*"] = {
+          keys = {
+            { "<c-k>", mode = "i", false },
+          },
+        },
       },
       diagnostics = {
         virtual_text = {
