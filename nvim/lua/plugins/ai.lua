@@ -1,6 +1,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    enabled = false,
     dependencies = {
       "copilotlsp-nvim/copilot-lsp",
     },
@@ -27,11 +28,11 @@ return {
 
   {
     "folke/sidekick.nvim",
-    commit = "c2bdf8cfcd87a6be5f8b84322c1b5052e78e302e",
+    -- commit = "c2bdf8cfcd87a6be5f8b84322c1b5052e78e302e",
     opts = {
       nes = {
         debounce = 0,
-        enabled = false,
+        enabled = true,
       },
       copilot = {
         status = {

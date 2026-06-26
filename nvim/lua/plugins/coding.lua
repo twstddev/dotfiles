@@ -47,10 +47,6 @@ return {
               return ctx.trigger.initial_kind ~= "trigger_character"
             end,
           },
-
-          copilot = {
-            enabled = false,
-          },
         },
       },
     },

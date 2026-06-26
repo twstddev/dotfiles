@@ -129,13 +129,17 @@ if vim.g.vscode then
 else
   map({ "n", "i", "x" }, "<A-;>", function()
     local nes = require("sidekick.nes")
-    local suggestion = require("copilot.suggestion")
+    -- local suggestion = require("copilot.suggestion")
 
-    if suggestion.is_visible() then
-      LazyVim.create_undo()
-      suggestion.accept()
-      -- This is a temporary hack to make sure that in typescript files copilot suggestions appear more than one line at a time.
-      suggestion.accept()
+    -- if suggestion.is_visible() then
+    --   LazyVim.create_undo()
+    --   suggestion.accept()
+    --   -- This is a temporary hack to make sure that in typescript files copilot suggestions appear more than one line at a time.
+    --   suggestion.accept()
+    -- end
+
+    if vim.lsp.inline_completion.get() then
+      return
     end
 
     if nes.have() then
