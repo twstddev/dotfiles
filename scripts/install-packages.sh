@@ -33,6 +33,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     print_installation_message "Install htop"
     install_ubuntu_package htop
 
+    print_installation_message "Install btop"
+    install_ubuntu_package btop
+
     print_installation_message "Install ripgrep"
     install_ubuntu_package ripgrep
 
@@ -62,6 +65,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     print_installation_message "Install htop"
     install_brew_package htop
+
+    print_installation_message "Install btop"
+    install_brew_package btop
 
     print_installation_message "Install ripgrep"
     install_brew_package ripgrep
