@@ -128,6 +128,11 @@ function zvm_after_lazy_keybindings() {
 }
 
 ####################
+# MODULES
+####################
+source ~/.config/zsh/theme.zsh
+
+####################
 # LOCAL
 ####################
 if [[ -a ~/.zshrc.local ]]; then

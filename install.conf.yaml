@@ -19,6 +19,8 @@
       create: true
       path: tpm
     ~/.tmux.conf: tmux.conf
+    ~/.config/zsh: zsh
+    ~/.config/ghostty/config: ghostty/config
     ~/.claude/skills: claude/skills
 
 - create:

@@ -1,0 +1,4 @@
+# Ghostty config, linked to ~/.config/ghostty/config.
+# The `theme` line is managed by the `theme` command (zsh/theme.zsh) and is
+# rewritten on every switch. Reload ghostty to apply: Cmd+Shift+, (macOS).
+theme = Catppuccin Mocha
