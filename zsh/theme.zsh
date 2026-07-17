@@ -222,6 +222,7 @@ _theme_write() {
   } > $THEME_STATE_DIR/current
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
+  _theme_apply_nvim
 }
 
 # Rewrite the `theme = ...` line in ghostty's config, preserving everything
@@ -237,6 +238,20 @@ _theme_apply_ghostty() {
   else
     { cat $cfg; print "theme = $name" } > $tmp && command mv $tmp $cfg
   fi
+}
+
+# Live-reload every running nvim by asking it to re-read the state file.
+# nvim exposes a control socket per instance at $TMPDIR/nvim.$USER/*/nvim.*.0.
+# The null-glob (N) makes this a no-op when no nvim is running, and errors are
+# swallowed so a stale socket (or an instance too old to have util.theme) can't
+# break the command — those instances just pick up the theme on next start.
+_theme_apply_nvim() {
+  command -v nvim >/dev/null || return 0
+  local sock
+  for sock in ${TMPDIR:-/tmp}/nvim.$USER/*/nvim.*.0(N); do
+    nvim --server $sock --remote-expr \
+      'luaeval("(function() require(\"util.theme\").apply() end)()")' &>/dev/null &!
+  done
 }
 
 _theme_status() {
