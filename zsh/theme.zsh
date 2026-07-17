@@ -19,6 +19,7 @@
 
 typeset -g THEME_STATE_DIR="${THEME_STATE_DIR:-$HOME/.config/theme}"
 typeset -g THEME_GHOSTTY_CONFIG="${THEME_GHOSTTY_CONFIG:-$HOME/.config/ghostty/config}"
+typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
 
 # Ordered list of selectable schemes.
 typeset -ga _THEME_SCHEMES=(
@@ -54,133 +55,133 @@ _THEME=(
   "catppuccin:light:latte:nvim"        catppuccin-latte
   "catppuccin:light:latte:bg"          light
   "catppuccin:light:latte:ghostty"     "Catppuccin Latte"
-  "catppuccin:light:latte:tmux"        latte
+  "catppuccin:light:latte:tmux"        catppuccin-latte
   "catppuccin:dark:mocha:nvim"         catppuccin-mocha
   "catppuccin:dark:mocha:bg"           dark
   "catppuccin:dark:mocha:ghostty"      "Catppuccin Mocha"
-  "catppuccin:dark:mocha:tmux"         mocha
+  "catppuccin:dark:mocha:tmux"         catppuccin-mocha
   "catppuccin:dark:frappe:nvim"        catppuccin-frappe
   "catppuccin:dark:frappe:bg"          dark
   "catppuccin:dark:frappe:ghostty"     "Catppuccin Frappe"
-  "catppuccin:dark:frappe:tmux"        frappe
+  "catppuccin:dark:frappe:tmux"        catppuccin-frappe
   "catppuccin:dark:macchiato:nvim"     catppuccin-macchiato
   "catppuccin:dark:macchiato:bg"       dark
   "catppuccin:dark:macchiato:ghostty"  "Catppuccin Macchiato"
-  "catppuccin:dark:macchiato:tmux"     macchiato
+  "catppuccin:dark:macchiato:tmux"     catppuccin-macchiato
 
   # tokyonight -----------------------------------------------------------
   "tokyonight:light:day:nvim"          tokyonight-day
   "tokyonight:light:day:bg"            light
   "tokyonight:light:day:ghostty"       "TokyoNight Day"
-  "tokyonight:light:day:tmux"          tokyonight_day
+  "tokyonight:light:day:tmux"          tokyonight-day
   "tokyonight:dark:night:nvim"         tokyonight-night
   "tokyonight:dark:night:bg"           dark
   "tokyonight:dark:night:ghostty"      "TokyoNight Night"
-  "tokyonight:dark:night:tmux"         tokyonight_night
+  "tokyonight:dark:night:tmux"         tokyonight-night
   "tokyonight:dark:storm:nvim"         tokyonight-storm
   "tokyonight:dark:storm:bg"           dark
   "tokyonight:dark:storm:ghostty"      "TokyoNight Storm"
-  "tokyonight:dark:storm:tmux"         tokyonight_storm
+  "tokyonight:dark:storm:tmux"         tokyonight-storm
   "tokyonight:dark:moon:nvim"          tokyonight-moon
   "tokyonight:dark:moon:bg"            dark
   "tokyonight:dark:moon:ghostty"       "TokyoNight Moon"
-  "tokyonight:dark:moon:tmux"          tokyonight_moon
+  "tokyonight:dark:moon:tmux"          tokyonight-moon
 
   # gruvbox (single colorscheme; contrast via variant, mode via bg) -------
   "gruvbox:light:medium:nvim"          gruvbox
   "gruvbox:light:medium:bg"            light
   "gruvbox:light:medium:ghostty"       "Gruvbox Light"
-  "gruvbox:light:medium:tmux"          gruvbox_light_medium
+  "gruvbox:light:medium:tmux"          gruvbox-light
   "gruvbox:light:hard:nvim"            gruvbox
   "gruvbox:light:hard:bg"              light
   "gruvbox:light:hard:ghostty"         "Gruvbox Light Hard"
-  "gruvbox:light:hard:tmux"            gruvbox_light_hard
+  "gruvbox:light:hard:tmux"            gruvbox-light
   "gruvbox:light:soft:nvim"            gruvbox
   "gruvbox:light:soft:bg"              light
   "gruvbox:light:soft:ghostty"         "Gruvbox Light"
-  "gruvbox:light:soft:tmux"            gruvbox_light_soft
+  "gruvbox:light:soft:tmux"            gruvbox-light
   "gruvbox:dark:medium:nvim"           gruvbox
   "gruvbox:dark:medium:bg"             dark
   "gruvbox:dark:medium:ghostty"        "Gruvbox Dark"
-  "gruvbox:dark:medium:tmux"           gruvbox_dark_medium
+  "gruvbox:dark:medium:tmux"           gruvbox-dark
   "gruvbox:dark:hard:nvim"             gruvbox
   "gruvbox:dark:hard:bg"               dark
   "gruvbox:dark:hard:ghostty"          "Gruvbox Dark Hard"
-  "gruvbox:dark:hard:tmux"             gruvbox_dark_hard
+  "gruvbox:dark:hard:tmux"             gruvbox-dark
   "gruvbox:dark:soft:nvim"             gruvbox
   "gruvbox:dark:soft:bg"               dark
   "gruvbox:dark:soft:ghostty"          "Gruvbox Dark"
-  "gruvbox:dark:soft:tmux"             gruvbox_dark_soft
+  "gruvbox:dark:soft:tmux"             gruvbox-dark
 
   # rose-pine ------------------------------------------------------------
   "rose-pine:light:dawn:nvim"          rose-pine-dawn
   "rose-pine:light:dawn:bg"            light
   "rose-pine:light:dawn:ghostty"       "Rose Pine Dawn"
-  "rose-pine:light:dawn:tmux"          dawn
+  "rose-pine:light:dawn:tmux"          rose-pine-dawn
   "rose-pine:dark:main:nvim"           rose-pine-main
   "rose-pine:dark:main:bg"             dark
   "rose-pine:dark:main:ghostty"        "Rose Pine"
-  "rose-pine:dark:main:tmux"           main
+  "rose-pine:dark:main:tmux"           rose-pine-main
   "rose-pine:dark:moon:nvim"           rose-pine-moon
   "rose-pine:dark:moon:bg"             dark
   "rose-pine:dark:moon:ghostty"        "Rose Pine Moon"
-  "rose-pine:dark:moon:tmux"           moon
+  "rose-pine:dark:moon:tmux"           rose-pine-moon
 
   # everforest (single colorscheme; contrast via variant) ----------------
   "everforest:light:medium:nvim"       everforest
   "everforest:light:medium:bg"         light
   "everforest:light:medium:ghostty"    "Everforest Light Med"
-  "everforest:light:medium:tmux"       everforest_light_medium
+  "everforest:light:medium:tmux"       everforest-light
   "everforest:light:hard:nvim"         everforest
   "everforest:light:hard:bg"           light
   "everforest:light:hard:ghostty"      "Everforest Light Med"
-  "everforest:light:hard:tmux"         everforest_light_hard
+  "everforest:light:hard:tmux"         everforest-light
   "everforest:light:soft:nvim"         everforest
   "everforest:light:soft:bg"           light
   "everforest:light:soft:ghostty"      "Everforest Light Med"
-  "everforest:light:soft:tmux"         everforest_light_soft
+  "everforest:light:soft:tmux"         everforest-light
   "everforest:dark:medium:nvim"        everforest
   "everforest:dark:medium:bg"          dark
   "everforest:dark:medium:ghostty"     "Everforest Dark Hard"
-  "everforest:dark:medium:tmux"        everforest_dark_medium
+  "everforest:dark:medium:tmux"        everforest-dark
   "everforest:dark:hard:nvim"          everforest
   "everforest:dark:hard:bg"            dark
   "everforest:dark:hard:ghostty"       "Everforest Dark Hard"
-  "everforest:dark:hard:tmux"          everforest_dark_hard
+  "everforest:dark:hard:tmux"          everforest-dark
   "everforest:dark:soft:nvim"          everforest
   "everforest:dark:soft:bg"            dark
   "everforest:dark:soft:ghostty"       "Everforest Dark Hard"
-  "everforest:dark:soft:tmux"          everforest_dark_soft
+  "everforest:dark:soft:tmux"          everforest-dark
 
   # kanagawa -------------------------------------------------------------
   "kanagawa:light:lotus:nvim"          kanagawa-lotus
   "kanagawa:light:lotus:bg"            light
   "kanagawa:light:lotus:ghostty"       "Kanagawa Lotus"
-  "kanagawa:light:lotus:tmux"          lotus
+  "kanagawa:light:lotus:tmux"          kanagawa-lotus
   "kanagawa:dark:wave:nvim"            kanagawa-wave
   "kanagawa:dark:wave:bg"              dark
   "kanagawa:dark:wave:ghostty"         "Kanagawa Wave"
-  "kanagawa:dark:wave:tmux"            wave
+  "kanagawa:dark:wave:tmux"            kanagawa-wave
   "kanagawa:dark:dragon:nvim"          kanagawa-dragon
   "kanagawa:dark:dragon:bg"            dark
   "kanagawa:dark:dragon:ghostty"       "Kanagawa Dragon"
-  "kanagawa:dark:dragon:tmux"          dragon
+  "kanagawa:dark:dragon:tmux"          kanagawa-dragon
 
   # solarized (single colorscheme, background toggles mode) --------------
   "solarized:light:solarized:nvim"     solarized
   "solarized:light:solarized:bg"       light
   "solarized:light:solarized:ghostty"  "iTerm2 Solarized Light"
-  "solarized:light:solarized:tmux"     solarized_light
+  "solarized:light:solarized:tmux"     solarized-light
   "solarized:dark:solarized:nvim"      solarized
   "solarized:dark:solarized:bg"        dark
   "solarized:dark:solarized:ghostty"   "iTerm2 Solarized Dark"
-  "solarized:dark:solarized:tmux"      solarized_dark
+  "solarized:dark:solarized:tmux"      solarized-dark
 
   # nord (dark only) -----------------------------------------------------
   "nord:dark:nord:nvim"                nord
   "nord:dark:nord:bg"                  dark
   "nord:dark:nord:ghostty"             "Nord"
-  "nord:dark:nord:tmux"                nord
+  "nord:dark:nord:tmux"                nord-dark
 )
 
 _theme_is_scheme() { (( ${_THEME_SCHEMES[(Ie)$1]} )) }
@@ -223,6 +224,7 @@ _theme_write() {
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
   _theme_apply_nvim
+  _theme_apply_tmux ${_THEME[${k}:tmux]}
 }
 
 # Rewrite the `theme = ...` line in ghostty's config, preserving everything
@@ -251,6 +253,27 @@ _theme_apply_nvim() {
   for sock in ${TMPDIR:-/tmp}/nvim.$USER/*/nvim.*.0(N); do
     nvim --server $sock --remote-expr \
       'luaeval("(function() require(\"util.theme\").apply() end)()")' &>/dev/null &!
+  done
+}
+
+# Copy the selected palette over the tmux theme file, then live-reload every
+# running tmux server. The palette basename comes from the registry; a missing
+# palette file or a blank value is skipped so tmux keeps its current colours.
+# tmux resolves #{@theme_*} at draw time, so source-file + refresh recolours
+# the status line live without restarting the server.
+_theme_apply_tmux() {
+  local name=$1
+  local src=$THEME_TMUX_DIR/palettes/$name.conf
+  local dst=$THEME_TMUX_DIR/theme.conf
+  [[ -z $name ]] && return 0
+  [[ -f $src ]] || return 0
+  command cp $src $dst
+  command -v tmux >/dev/null || return 0
+  local sock
+  # tmux keeps sockets under $TMUX_TMPDIR (default /tmp), NOT $TMPDIR — on macOS
+  # $TMPDIR points at a per-user /var/folders dir where tmux never writes.
+  for sock in ${TMUX_TMPDIR:-/tmp}/tmux-$(id -u)/*(N=); do
+    tmux -S $sock source-file $dst 2>/dev/null && tmux -S $sock refresh-client -S 2>/dev/null
   done
 }
 
