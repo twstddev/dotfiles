@@ -272,8 +272,12 @@ _theme_apply_tmux() {
   local sock
   # tmux keeps sockets under $TMUX_TMPDIR (default /tmp), NOT $TMPDIR — on macOS
   # $TMPDIR points at a per-user /var/folders dir where tmux never writes.
+  # Re-source styling.conf after the palette so the selected @tmux_accent
+  # re-resolves its @theme_ac_* display vars against the new palette's hues.
   for sock in ${TMUX_TMPDIR:-/tmp}/tmux-$(id -u)/*(N=); do
-    tmux -S $sock source-file $dst 2>/dev/null && tmux -S $sock refresh-client -S 2>/dev/null
+    tmux -S $sock source-file $dst 2>/dev/null \
+      && tmux -S $sock source-file $THEME_TMUX_DIR/styling.conf 2>/dev/null \
+      && tmux -S $sock refresh-client -S 2>/dev/null
   done
 }
 
