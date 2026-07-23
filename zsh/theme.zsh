@@ -243,16 +243,18 @@ _theme_apply_ghostty() {
 }
 
 # Live-reload every running nvim by asking it to re-read the state file.
-# nvim exposes a control socket per instance at $TMPDIR/nvim.$USER/*/nvim.*.0.
-# The null-glob (N) makes this a no-op when no nvim is running, and errors are
-# swallowed so a stale socket (or an instance too old to have util.theme) can't
-# break the command — those instances just pick up the theme on next start.
+# Linux puts sockets directly in $XDG_RUNTIME_DIR; macOS uses a nested
+# $TMPDIR/nvim.$USER directory. The null-globs make missing paths no-ops.
 _theme_apply_nvim() {
   command -v nvim >/dev/null || return 0
-  local sock
-  for sock in ${TMPDIR:-/tmp}/nvim.$USER/*/nvim.*.0(N); do
+  local sock runtime_dir=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}
+  local -a sockets=(
+    $runtime_dir/nvim.*(N)
+    ${TMPDIR:-/tmp}/nvim.$USER/*/nvim.*.0(N)
+  )
+  for sock in $sockets; do
     nvim --server $sock --remote-expr \
-      'luaeval("(function() require(\"util.theme\").apply() end)()")' &>/dev/null &!
+      'luaeval("(function() require(\"util.theme\").apply() end)()")' &>/dev/null
   done
 }
 
@@ -277,6 +279,7 @@ _theme_apply_tmux() {
   for sock in ${TMUX_TMPDIR:-/tmp}/tmux-$(id -u)/*(N=); do
     tmux -S $sock source-file $dst 2>/dev/null \
       && tmux -S $sock source-file $THEME_TMUX_DIR/styling.conf 2>/dev/null \
+      && tmux -S $sock run-shell '#{@fingers-cli} load-config' 2>/dev/null \
       && tmux -S $sock refresh-client -S 2>/dev/null
   done
 }

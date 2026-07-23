@@ -31,7 +31,7 @@ return {
 
   {
     "christoomey/vim-tmux-navigator",
-    init = function()
+    config = function()
       vim.g.tmux_navigator_disable_when_zoomed = 1
     end,
     cmd = {
