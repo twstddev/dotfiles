@@ -31,7 +31,7 @@ source ${ZSH_CONFIG_DIR}/scripts/theme.zsh
 # LOCAL
 ####################
 if [[ -a ~/.zshrc.local ]]; then
-  source ~/.zshrc.local
+  # source ~/.zshrc.local
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

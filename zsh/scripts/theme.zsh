@@ -219,7 +219,10 @@ _theme_write() {
     print "THEME_NVIM=${_THEME[${k}:nvim]}"
     print "THEME_NVIM_BG=${_THEME[${k}:bg]}"
     print "THEME_GHOSTTY=\"${_THEME[${k}:ghostty]}\""
-    print "THEME_TMUX=${_THEME[${k}:tmux]}"
+    # Canonical palette identity, shared by any app that consumes the semantic
+    # colour palette (p10k, tmux). The value is the palette basename
+    # (tmux/palettes/<name>.conf).
+    print "THEME_PALETTE=${_THEME[${k}:tmux]}"
   } > $THEME_STATE_DIR/current
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
