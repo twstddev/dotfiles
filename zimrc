@@ -1,9 +1,11 @@
-zmodule romkatv/powerlevel10k
+zmodule romkatv/powerlevel10k -d
+zmodule romkatv/zsh-defer -d
+zmodule zsh-users/zsh-completions -f src
+zmodule completion
+zmodule Aloxaf/fzf-tab
+zmodule zdharma-continuum/fast-syntax-highlighting
+
 # zmodule jeffreytse/zsh-vi-mode
-# zmodule zsh-users/zsh-completions -f src
-# zmodule completion
-# zmodule Aloxaf/fzf-tab
-# zmodule zdharma-continuum/fast-syntax-highlighting
 # zmodule zsh-users/zsh-autosuggestions
 # zmodule ohmyzsh/ohmyzsh -f 'lib' -s 'lib/theme-and-appearance.zsh'
 # zmodule ohmyzsh/ohmyzsh -f 'lib' -s 'lib/directories.zsh'

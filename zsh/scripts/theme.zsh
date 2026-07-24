@@ -223,11 +223,13 @@ _theme_write() {
     # colour palette (p10k, tmux). The value is the palette basename
     # (tmux/palettes/<name>.conf).
     print "THEME_PALETTE=${_THEME[${k}:tmux]}"
+    print "THEME_FSH=${_THEME[${k}:tmux]}"
   } > $THEME_STATE_DIR/current
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
   _theme_apply_nvim
   _theme_apply_tmux ${_THEME[${k}:tmux]}
+  _theme_apply_fsh ${_THEME[${k}:tmux]}
 }
 
 # Rewrite the `theme = ...` line in ghostty's config, preserving everything
@@ -285,6 +287,15 @@ _theme_apply_tmux() {
       && tmux -S $sock run-shell '#{@fingers-cli} load-config' 2>/dev/null \
       && tmux -S $sock refresh-client -S 2>/dev/null
   done
+}
+
+# Apply and persist the matching fast-syntax-highlighting theme. Theme files
+# live in ~/.config/fsh and share the canonical palette basename.
+_theme_apply_fsh() {
+  local name=$1
+  [[ -z $name ]] && return 0
+  (( $+functions[fast-theme] )) || return 0
+  fast-theme -q XDG:$name
 }
 
 _theme_status() {

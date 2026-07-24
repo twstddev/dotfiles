@@ -18,7 +18,10 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 
-source ${ZIM_HOME}/init.zsh
+source ${ZIM_HOME}/modules/powerlevel10k/powerlevel10k.zsh-theme
+source ${ZIM_HOME}/modules/zsh-defer/zsh-defer.plugin.zsh
+
+zsh-defer source ${ZIM_HOME}/init.zsh
 
 ZSH_CONFIG_DIR=${ZSH_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
 
@@ -31,7 +34,7 @@ source ${ZSH_CONFIG_DIR}/scripts/theme.zsh
 # LOCAL
 ####################
 if [[ -a ~/.zshrc.local ]]; then
-  # source ~/.zshrc.local
+  zsh-defer source ~/.zshrc.local
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
