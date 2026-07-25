@@ -10,8 +10,7 @@
 #
 # This is the PLUMBING layer only. It resolves the selection against the
 # registry below and writes it to $THEME_STATE_DIR/current (a sourceable file).
-# Each app (nvim, tmux, ghostty, eza) reads that file separately — wiring the apps
-# up is done later, once each theme is installed in that app.
+# Each app reads that file separately and is updated by the apply functions below.
 #
 # NOTE: nvim colorscheme names + backgrounds are known-good. ghostty and tmux
 # values are best-guess placeholders and MUST be verified against each app's
@@ -21,6 +20,23 @@ typeset -g THEME_STATE_DIR="${THEME_STATE_DIR:-$HOME/.config/theme}"
 typeset -g THEME_GHOSTTY_CONFIG="${THEME_GHOSTTY_CONFIG:-$HOME/.config/ghostty/config}"
 typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
 typeset -g THEME_EZA_DIR="${THEME_EZA_DIR:-$HOME/.config/eza}"
+typeset -g THEME_BTOP_DIR="${THEME_BTOP_DIR:-$HOME/.config/btop}"
+
+# Built-in btop theme names for palettes it already ships. Anything absent
+# here resolves to a generated theme in ~/.config/btop/themes instead.
+typeset -gA _THEME_BTOP_BUILTIN=(
+  everforest-dark  everforest-dark-hard
+  everforest-light everforest-light-medium
+  gruvbox-dark     gruvbox_dark
+  gruvbox-light    gruvbox_light
+  kanagawa-lotus   kanagawa-lotus
+  kanagawa-wave    kanagawa-wave
+  nord-dark        nord
+  solarized-dark   solarized_dark
+  solarized-light  solarized_light
+  tokyonight-night tokyo-night
+  tokyonight-storm tokyo-storm
+)
 
 # Ordered list of selectable schemes.
 typeset -ga _THEME_SCHEMES=(
@@ -226,10 +242,12 @@ _theme_write() {
     print "THEME_PALETTE=${_THEME[${k}:tmux]}"
     print "THEME_FSH=${_THEME[${k}:tmux]}"
     print "THEME_EZA=${_THEME[${k}:tmux]}"
+    print "THEME_BTOP=${_THEME[${k}:tmux]}"
   } > $THEME_STATE_DIR/current
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
   _theme_apply_eza ${_THEME[${k}:tmux]}
+  _theme_apply_btop ${_THEME[${k}:tmux]}
   _theme_apply_nvim
   _theme_apply_tmux ${_THEME[${k}:tmux]}
   _theme_apply_fsh ${_THEME[${k}:tmux]}
@@ -259,6 +277,25 @@ _theme_apply_eza() {
   [[ -z $name || ! -f $src ]] && return 0
   command mkdir -p $THEME_EZA_DIR
   command ln -sfn themes/$name.yml $dst
+}
+
+# Select the matching local btop theme. btop persists options by rewriting this
+# same config, so update it atomically and leave every unrelated option intact.
+_theme_apply_btop() {
+  local name=$1 cfg=$THEME_BTOP_DIR/btop.conf
+  [[ -z $name || ! -f $cfg ]] && return 0
+  local theme=${_THEME_BTOP_BUILTIN[$name]}
+  if [[ -z $theme ]]; then
+    [[ -f $THEME_BTOP_DIR/themes/$name.theme ]] || return 0
+    theme=$name
+  fi
+  local tmp=$cfg.theme-tmp
+  if grep -qE '^[[:space:]]*color_theme[[:space:]]*=' $cfg; then
+    sed -E "s|^[[:space:]]*color_theme[[:space:]]*=.*|color_theme = \"$theme\"|" $cfg > $tmp \
+      && command mv $tmp $cfg
+  else
+    { print "color_theme = \"$theme\""; cat $cfg } > $tmp && command mv $tmp $cfg
+  fi
 }
 
 # Live-reload every running nvim by asking it to re-read the state file.

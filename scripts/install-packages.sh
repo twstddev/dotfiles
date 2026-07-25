@@ -30,9 +30,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     print_installation_message "Install fzf"
     install_ubuntu_package fzf
 
-    print_installation_message "Install htop"
-    install_ubuntu_package htop
-
     print_installation_message "Install btop"
     install_ubuntu_package btop
 
@@ -62,9 +59,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     print_installation_message "Install fzf"
     install_brew_package fzf
-
-    print_installation_message "Install htop"
-    install_brew_package htop
 
     print_installation_message "Install btop"
     install_brew_package btop

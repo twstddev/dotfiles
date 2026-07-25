@@ -21,7 +21,14 @@
     ~/.tmux.conf: tmux.conf
     ~/.config/tmux: tmux
     ~/.config/zsh: zsh
-    ~/.config/ghostty/config: ghostty/config
+    ~/.config/fsh: fsh
+    ~/.config/eza/themes: eza/themes
+    ~/.config/btop:
+      force: true
+      path: btop
+    ~/.config/ghostty/config:
+      force: true
+      path: ghostty/config
     ~/.claude/skills: claude/skills
 
 - create:
