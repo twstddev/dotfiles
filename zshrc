@@ -20,8 +20,9 @@ fi
 
 source ${ZIM_HOME}/modules/powerlevel10k/powerlevel10k.zsh-theme
 source ${ZIM_HOME}/modules/zsh-defer/zsh-defer.plugin.zsh
+source ${ZIM_HOME}/modules/zsh-vi-mode/zsh-vi-mode.zsh
 
-zsh-defer source ${ZIM_HOME}/init.zsh
+source ${ZIM_HOME}/init.zsh
 
 ZSH_CONFIG_DIR=${ZSH_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
 
@@ -29,8 +30,8 @@ ZSH_CONFIG_DIR=${ZSH_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
   && source ${THEME_STATE_DIR:-$HOME/.config/theme}/current
 
 source ${ZSH_CONFIG_DIR}/theme.zsh
-source ${ZSH_CONFIG_DIR}/options.zsh
 source ${ZSH_CONFIG_DIR}/aliases.zsh
+source ${ZSH_CONFIG_DIR}/options.zsh
 source ${ZSH_CONFIG_DIR}/keybindings.zsh
 source ${ZSH_CONFIG_DIR}/scripts/theme.zsh
 
