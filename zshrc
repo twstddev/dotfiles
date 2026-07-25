@@ -22,7 +22,7 @@ source ${ZIM_HOME}/modules/powerlevel10k/powerlevel10k.zsh-theme
 source ${ZIM_HOME}/modules/zsh-defer/zsh-defer.plugin.zsh
 source ${ZIM_HOME}/modules/zsh-vi-mode/zsh-vi-mode.zsh
 
-source ${ZIM_HOME}/init.zsh
+zsh-defer source ${ZIM_HOME}/init.zsh
 
 ZSH_CONFIG_DIR=${ZSH_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
 

@@ -10,7 +10,7 @@
 #
 # This is the PLUMBING layer only. It resolves the selection against the
 # registry below and writes it to $THEME_STATE_DIR/current (a sourceable file).
-# Each app (nvim, tmux, ghostty) reads that file separately — wiring the apps
+# Each app (nvim, tmux, ghostty, eza) reads that file separately — wiring the apps
 # up is done later, once each theme is installed in that app.
 #
 # NOTE: nvim colorscheme names + backgrounds are known-good. ghostty and tmux
@@ -20,6 +20,7 @@
 typeset -g THEME_STATE_DIR="${THEME_STATE_DIR:-$HOME/.config/theme}"
 typeset -g THEME_GHOSTTY_CONFIG="${THEME_GHOSTTY_CONFIG:-$HOME/.config/ghostty/config}"
 typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
+typeset -g THEME_EZA_DIR="${THEME_EZA_DIR:-$HOME/.config/eza}"
 
 # Ordered list of selectable schemes.
 typeset -ga _THEME_SCHEMES=(
@@ -224,9 +225,11 @@ _theme_write() {
     # (tmux/palettes/<name>.conf).
     print "THEME_PALETTE=${_THEME[${k}:tmux]}"
     print "THEME_FSH=${_THEME[${k}:tmux]}"
+    print "THEME_EZA=${_THEME[${k}:tmux]}"
   } > $THEME_STATE_DIR/current
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
+  _theme_apply_eza ${_THEME[${k}:tmux]}
   _theme_apply_nvim
   _theme_apply_tmux ${_THEME[${k}:tmux]}
   _theme_apply_fsh ${_THEME[${k}:tmux]}
@@ -245,6 +248,17 @@ _theme_apply_ghostty() {
   else
     { cat $cfg; print "theme = $name" } > $tmp && command mv $tmp $cfg
   fi
+}
+
+# Point eza at the selected palette. Eza reads theme.yml on every invocation,
+# so changing the symlink applies immediately without a live-reload step.
+_theme_apply_eza() {
+  local name=$1
+  local src=$THEME_EZA_DIR/themes/$name.yml
+  local dst=$THEME_EZA_DIR/theme.yml
+  [[ -z $name || ! -f $src ]] && return 0
+  command mkdir -p $THEME_EZA_DIR
+  command ln -sfn themes/$name.yml $dst
 }
 
 # Live-reload every running nvim by asking it to re-read the state file.
