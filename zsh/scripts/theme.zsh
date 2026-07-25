@@ -226,10 +226,18 @@ _theme_write() {
     print "THEME_FSH=${_THEME[${k}:tmux]}"
   } > $THEME_STATE_DIR/current
 
+  _theme_apply_zsh ${_THEME[${k}:tmux]}
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
   _theme_apply_nvim
   _theme_apply_tmux ${_THEME[${k}:tmux]}
   _theme_apply_fsh ${_THEME[${k}:tmux]}
+}
+
+# Apply the selected semantic Zsh palette to the current shell.
+_theme_apply_zsh() {
+  (( $+functions[zsh_theme_apply] )) || return 0
+  zsh_theme_apply $1
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$ZSH_THEME_MUTED"
 }
 
 # Rewrite the `theme = ...` line in ghostty's config, preserving everything

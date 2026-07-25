@@ -4,6 +4,7 @@ export EDITOR=nvim
 # Use vim mode in ZLE.
 bindkey -v
 
+
 # History
 HISTSIZE=10000
 SAVEHIST=10000
@@ -48,6 +49,9 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-pad 3
 
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${ZSH_THEME_MUTED}"
 
 # zsh-vi-mode
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLOCK

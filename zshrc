@@ -25,6 +25,10 @@ zsh-defer source ${ZIM_HOME}/init.zsh
 
 ZSH_CONFIG_DIR=${ZSH_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
 
+[[ -r ${THEME_STATE_DIR:-$HOME/.config/theme}/current ]] \
+  && source ${THEME_STATE_DIR:-$HOME/.config/theme}/current
+
+source ${ZSH_CONFIG_DIR}/theme.zsh
 source ${ZSH_CONFIG_DIR}/options.zsh
 source ${ZSH_CONFIG_DIR}/aliases.zsh
 source ${ZSH_CONFIG_DIR}/keybindings.zsh

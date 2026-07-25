@@ -7,7 +7,7 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 
-bindkey '^e' autosuggest-accept
+bindkey '^[;' autosuggest-accept
 
 bindkey -M vicmd 's' zce
 bindkey -M vicmd 'S' zce
