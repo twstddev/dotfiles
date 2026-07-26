@@ -14,6 +14,24 @@ function install_brew_package() {
   brew install $1
 }
 
+function create_local_symlink() {
+  local source_path
+  local target_path="$HOME/.local/bin/$2"
+
+  if ! source_path=$(command -v "$1"); then
+    print_message "⚠️  ${YELLOW}Could not find $1; no symlink was created${NOCOLOR}"
+    return
+  fi
+  mkdir -p "$HOME/.local/bin"
+
+  if [[ -e "$target_path" && ! -L "$target_path" ]]; then
+    print_message "⚠️  ${YELLOW}$target_path already exists and was not replaced${NOCOLOR}"
+    return
+  fi
+
+  ln -sfn "$source_path" "$target_path"
+}
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   if [[ $(lsb_release -si) == "Ubuntu" ]]; then
@@ -36,8 +54,13 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     print_installation_message "Install ripgrep"
     install_ubuntu_package ripgrep
 
+    print_installation_message "Install fd"
+    install_ubuntu_package fd-find
+    create_local_symlink fdfind fd
+
     print_installation_message "Install bat"
     install_ubuntu_package bat
+    create_local_symlink batcat bat
 
     print_installation_message "Install ruby"
     install_ubuntu_package ruby
@@ -65,6 +88,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     print_installation_message "Install ripgrep"
     install_brew_package ripgrep
+
+    print_installation_message "Install fd"
+    install_brew_package fd
 
     print_installation_message "Install bat"
     install_brew_package bat

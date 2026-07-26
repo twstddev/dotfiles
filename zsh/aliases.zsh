@@ -6,7 +6,5 @@ alias -g ......='../../../../..'
 alias md='mkdir -p'
 
 alias l='eza --group-directories-first'
-alias ls='l -l --git --icons' 
+alias ls='l -l --git --icons=always --header'
 alias la='ls -a'
-
-(( $+commands[batcat] )) && alias bat="batcat"

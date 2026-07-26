@@ -27,26 +27,34 @@ setopt correct
 setopt globdots
 
 # FZF
-# export FZF_DEFAULT_OPTS="
-#   --height 50% --layout=reverse --border --info inline --cycle --bind='ctrl-s:jump,alt-j:preview-down,alt-k:preview-up,ctrl-/:toggle-preview'
-#   --preview-window=hidden
-#   --color=fg:#cbccc6,hl:#707a8c
-#   --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66
-#   --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6
-#   --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff
-# "
-# export FZF_CTRL_T_OPTS="--preview='batcat --color=always --style=numbers {}'"
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS="
+  --height=50% --layout=reverse --border --inline-info --style=minimal
+  --wrap --cycle
+  --bind 'alt-j:preview-half-page-down,alt-k:preview-half-page-up'
+  --bind 'ctrl-/:change-preview-window(up|down|hidden|)'
+"
+export FZF_BASE_OPTS=$FZF_DEFAULT_OPTS
+[[ -r $ZSH_CONFIG_DIR/fzf/themes/${THEME_PALETTE:-catppuccin-mocha}.zsh ]] \
+  && source $ZSH_CONFIG_DIR/fzf/themes/${THEME_PALETTE:-catppuccin-mocha}.zsh
+
+export FZF_CTRL_T_COMMAND=""
+export FZF_ALT_C_COMMAND=''
+
+export FZF_COMPLETION_OPTS="
+  --preview 'if [ -d {} ]; then eza --tree --level=2 --color=always -- {}; else bat -n --color=always -- {}; fi'
+"
 
 # fzf-tab
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+zstyle ':fzf-tab:*' fzf-flags --bind=tab:accept
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
-zstyle ':fzf-tab:*' fzf-pad 3
+zstyle ':fzf-tab:*' fzf-pad 4
 
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -76,14 +84,8 @@ function zvm_gs_replace_surround() {
   zvm_change_surround r "${surround//$ZVM_ESCAPE_SPACE/ }"
 }
 
-if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
-
 function vi_mode_init() {
-  if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-    source /usr/share/doc/fzf/examples/key-bindings.zsh
-  fi
+  source <(fzf --zsh)
 }
 
 zvm_after_init_commands+=(vi_mode_init)

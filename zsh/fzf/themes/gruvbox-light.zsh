@@ -1,0 +1,1 @@
+export FZF_DEFAULT_OPTS="$FZF_BASE_OPTS --color=bg+:#ebdbb2,bg:#fbf1c7,spinner:#9d0006,hl:#928374,fg:#3c3836,header:#928374,info:#427b58,pointer:#9d0006,marker:#9d0006,fg+:#3c3836,prompt:#9d0006,hl+:#9d0006,border:#bdae93,label:#3c3836"

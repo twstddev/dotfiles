@@ -21,6 +21,7 @@ typeset -g THEME_GHOSTTY_CONFIG="${THEME_GHOSTTY_CONFIG:-$HOME/.config/ghostty/c
 typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
 typeset -g THEME_EZA_DIR="${THEME_EZA_DIR:-$HOME/.config/eza}"
 typeset -g THEME_BTOP_DIR="${THEME_BTOP_DIR:-$HOME/.config/btop}"
+typeset -g THEME_FZF_DIR="${THEME_FZF_DIR:-$ZSH_CONFIG_DIR/fzf}"
 
 # Built-in btop theme names for palettes it already ships. Anything absent
 # here resolves to a generated theme in ~/.config/btop/themes instead.
@@ -65,7 +66,8 @@ _THEME_VARIANTS=(
 )
 
 # Per-variant app values. Keys: "<scheme>:<mode>:<variant>:<field>".
-# Fields: nvim (colorscheme), bg (background), ghostty, tmux.
+# Fields: nvim (colorscheme), bg (background), ghostty, tmux. The canonical
+# tmux palette name is also shared by fzf and the other palette consumers.
 typeset -gA _THEME
 _THEME=(
   # catppuccin -----------------------------------------------------------
@@ -243,6 +245,7 @@ _theme_write() {
     print "THEME_FSH=${_THEME[${k}:tmux]}"
     print "THEME_EZA=${_THEME[${k}:tmux]}"
     print "THEME_BTOP=${_THEME[${k}:tmux]}"
+    print "THEME_FZF=${_THEME[${k}:tmux]}"
   } > $THEME_STATE_DIR/current
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
@@ -251,6 +254,7 @@ _theme_write() {
   _theme_apply_nvim
   _theme_apply_tmux ${_THEME[${k}:tmux]}
   _theme_apply_fsh ${_THEME[${k}:tmux]}
+  _theme_apply_fzf ${_THEME[${k}:tmux]}
 }
 
 # Rewrite the `theme = ...` line in ghostty's config, preserving everything
@@ -347,6 +351,15 @@ _theme_apply_fsh() {
   [[ -z $name ]] && return 0
   (( $+functions[fast-theme] )) || return 0
   fast-theme -q XDG:$name
+}
+
+# Load the selected fzf colours into the current shell. New shells source the
+# same file from options.zsh using THEME_PALETTE in the persisted state file.
+_theme_apply_fzf() {
+  local name=$1
+  local file=$THEME_FZF_DIR/themes/$name.zsh
+  [[ -z $name || ! -r $file ]] && return 0
+  source $file
 }
 
 _theme_status() {
