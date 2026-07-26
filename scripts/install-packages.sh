@@ -54,6 +54,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     print_installation_message "Install ripgrep"
     install_ubuntu_package ripgrep
 
+    print_installation_message "Install jq"
+    install_ubuntu_package jq
+
     print_installation_message "Install fd"
     install_ubuntu_package fd-find
     create_local_symlink fdfind fd
@@ -88,6 +91,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     print_installation_message "Install ripgrep"
     install_brew_package ripgrep
+
+    print_installation_message "Install jq"
+    install_brew_package jq
 
     print_installation_message "Install fd"
     install_brew_package fd
