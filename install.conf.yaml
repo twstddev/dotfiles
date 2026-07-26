@@ -26,6 +26,9 @@
     ~/.config/btop:
       force: true
       path: btop
+    ~/.config/bat:
+      force: true
+      path: bat
     ~/.config/ghostty/config:
       force: true
       path: ghostty/config

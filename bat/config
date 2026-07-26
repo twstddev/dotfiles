@@ -1,0 +1,3 @@
+# Updated by the `theme` command. Bat reads this file on every invocation.
+--theme="Catppuccin Mocha"
+--style=plain

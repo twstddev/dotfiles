@@ -26,6 +26,9 @@ setopt autocd
 setopt correct
 setopt globdots
 
+# Pagers
+export MANPAGER="bat -plman --strip-ansi=auto"
+
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS="

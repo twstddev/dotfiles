@@ -22,6 +22,33 @@ typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
 typeset -g THEME_EZA_DIR="${THEME_EZA_DIR:-$HOME/.config/eza}"
 typeset -g THEME_BTOP_DIR="${THEME_BTOP_DIR:-$HOME/.config/btop}"
 typeset -g THEME_FZF_DIR="${THEME_FZF_DIR:-$ZSH_CONFIG_DIR/fzf}"
+typeset -g THEME_BAT_DIR="${THEME_BAT_DIR:-$HOME/.config/bat}"
+
+# Bat ships several of our palettes; the rest live in bat/themes. Values must
+# match `bat --list-themes` after the custom-theme cache has been built.
+typeset -gA _THEME_BAT=(
+  catppuccin-latte     "Catppuccin Latte"
+  catppuccin-frappe    "Catppuccin Frappe"
+  catppuccin-macchiato "Catppuccin Macchiato"
+  catppuccin-mocha     "Catppuccin Mocha"
+  tokyonight-day       tokyonight_day
+  tokyonight-night     tokyonight_night
+  tokyonight-storm     tokyonight_storm
+  tokyonight-moon      tokyonight_moon
+  gruvbox-light        gruvbox-light
+  gruvbox-dark         gruvbox-dark
+  rose-pine-dawn       rose-pine-dawn
+  rose-pine-main       rose-pine
+  rose-pine-moon       rose-pine-moon
+  everforest-light     everforest-light
+  everforest-dark      everforest-dark
+  kanagawa-lotus       kanagawa-lotus
+  kanagawa-wave        kanagawa
+  kanagawa-dragon      kanagawa-dragon
+  solarized-light      "Solarized (light)"
+  solarized-dark       "Solarized (dark)"
+  nord-dark            Nord
+)
 
 # Built-in btop theme names for palettes it already ships. Anything absent
 # here resolves to a generated theme in ~/.config/btop/themes instead.
@@ -246,6 +273,7 @@ _theme_write() {
     print "THEME_EZA=${_THEME[${k}:tmux]}"
     print "THEME_BTOP=${_THEME[${k}:tmux]}"
     print "THEME_FZF=${_THEME[${k}:tmux]}"
+    print "THEME_BAT=\"${_THEME_BAT[${_THEME[${k}:tmux]}]}\""
   } > $THEME_STATE_DIR/current
 
   _theme_apply_ghostty ${_THEME[${k}:ghostty]}
@@ -255,6 +283,7 @@ _theme_write() {
   _theme_apply_tmux ${_THEME[${k}:tmux]}
   _theme_apply_fsh ${_THEME[${k}:tmux]}
   _theme_apply_fzf ${_THEME[${k}:tmux]}
+  _theme_apply_bat ${_THEME[${k}:tmux]}
 }
 
 # Rewrite the `theme = ...` line in ghostty's config, preserving everything
@@ -360,6 +389,20 @@ _theme_apply_fzf() {
   local file=$THEME_FZF_DIR/themes/$name.zsh
   [[ -z $name || ! -r $file ]] && return 0
   source $file
+}
+
+# Bat reads its config on every invocation, so update only its theme option and
+# preserve every unrelated setting.
+_theme_apply_bat() {
+  local name=${_THEME_BAT[$1]}
+  local cfg=$THEME_BAT_DIR/config tmp=$THEME_BAT_DIR/config.theme-tmp
+  [[ -z $name || ! -f $cfg ]] && return 0
+  if grep -qE '^[[:space:]]*--theme=' $cfg; then
+    sed -E "s|^[[:space:]]*--theme=.*|--theme=\"${name}\"|" $cfg > $tmp \
+      && command mv $tmp $cfg
+  else
+    { print "--theme=\"$name\""; cat $cfg } > $tmp && command mv $tmp $cfg
+  fi
 }
 
 _theme_status() {
