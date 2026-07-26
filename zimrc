@@ -8,3 +8,4 @@ zmodule zsh-users/zsh-autosuggestions
 zmodule jeffreytse/zsh-vi-mode -d
 zmodule paulirish/git-open
 zmodule twstddev/zce.zsh -s zce.zsh
+zmodule lukechilds/zsh-nvm
