@@ -36,6 +36,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   if [[ $(lsb_release -si) == "Ubuntu" ]]; then
 
+    print_installation_message "Install curl"
+    install_ubuntu_package curl
+
     print_installation_message "Install neovim"
     install_ubuntu_package neovim
 
@@ -117,3 +120,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     install_brew_package zoxide
 
 fi
+
+print_installation_message "Install mise"
+curl -fsSL https://mise.run | sh

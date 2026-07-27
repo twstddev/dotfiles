@@ -36,6 +36,7 @@ source ${ZSH_CONFIG_DIR}/keybindings.zsh
 source ${ZSH_CONFIG_DIR}/scripts/theme.zsh
 
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh --cmd j)"
+[[ -x ${HOME}/.local/bin/mise ]] && eval "$("${HOME}/.local/bin/mise" activate zsh)"
 
 ####################
 # LOCAL
