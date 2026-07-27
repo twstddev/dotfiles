@@ -28,11 +28,28 @@ return {
 
   {
     "folke/sidekick.nvim",
-    -- commit = "c2bdf8cfcd87a6be5f8b84322c1b5052e78e302e",
     opts = {
       nes = {
         debounce = 0,
         enabled = true,
+      },
+      cli = {
+        win = {
+          layout = "float",
+          keys = {
+            ctrl_c_normal = {
+              "<C-c>",
+              "stopinsert",
+              mode = "t",
+              desc = "Enter terminal normal mode",
+            },
+          },
+          float = {
+            border = "rounded",
+            width = 0.8,
+            height = 0.8,
+          },
+        },
       },
       copilot = {
         status = {
@@ -43,6 +60,14 @@ return {
 
     keys = {
       { "<tab>", mode = { "n" }, false },
+      {
+        "<M-i>",
+        function()
+          require("sidekick.cli").toggle()
+        end,
+        mode = { "n", "t", "i", "x" },
+        desc = "Toggle Sidekick CLI",
+      },
     },
   },
 }
