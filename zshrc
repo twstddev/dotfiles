@@ -35,6 +35,8 @@ source ${ZSH_CONFIG_DIR}/options.zsh
 source ${ZSH_CONFIG_DIR}/keybindings.zsh
 source ${ZSH_CONFIG_DIR}/scripts/theme.zsh
 
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh --cmd j)"
+
 ####################
 # LOCAL
 ####################

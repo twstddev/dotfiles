@@ -40,6 +40,7 @@ export FZF_DEFAULT_OPTS="
 export FZF_BASE_OPTS=$FZF_DEFAULT_OPTS
 [[ -r $ZSH_CONFIG_DIR/fzf/themes/${THEME_PALETTE:-catppuccin-mocha}.zsh ]] \
   && source $ZSH_CONFIG_DIR/fzf/themes/${THEME_PALETTE:-catppuccin-mocha}.zsh
+export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS
 
 export FZF_CTRL_T_COMMAND=""
 export FZF_ALT_C_COMMAND=''

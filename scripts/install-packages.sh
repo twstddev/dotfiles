@@ -73,6 +73,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     print_installation_message "Install eza"
     install_ubuntu_package eza
+
+    print_installation_message "Install zoxide"
+    install_ubuntu_package zoxide
   fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -109,5 +112,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     print_installation_message "Install eza"
     install_brew_package eza
+
+    print_installation_message "Install zoxide"
+    install_brew_package zoxide
 
 fi
