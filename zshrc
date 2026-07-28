@@ -26,14 +26,16 @@ zsh-defer source ${ZIM_HOME}/init.zsh
 
 ZSH_CONFIG_DIR=${ZSH_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
 
-[[ -r ${THEME_STATE_DIR:-$HOME/.config/theme}/current ]] \
-  && source ${THEME_STATE_DIR:-$HOME/.config/theme}/current
+typeset -g THEME_STATE_FILE=${THEME_STATE_FILE:-${${(%):-%x}:A:h}/theme/current.zsh}
+[[ -r $THEME_STATE_FILE ]] && source $THEME_STATE_FILE
 
 source ${ZSH_CONFIG_DIR}/theme.zsh
 source ${ZSH_CONFIG_DIR}/aliases.zsh
 source ${ZSH_CONFIG_DIR}/options.zsh
 source ${ZSH_CONFIG_DIR}/keybindings.zsh
 source ${ZSH_CONFIG_DIR}/scripts/theme.zsh
+
+zsh-defer _theme_reconcile_fsh
 
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh --cmd j)"
 [[ -x ${HOME}/.local/bin/mise ]] && eval "$("${HOME}/.local/bin/mise" activate zsh)"

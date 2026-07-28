@@ -29,10 +29,10 @@
   [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
   # Theme colours. Read the palette selected by the `theme` command from the
-  # shared state file and load its 6 role hex values into P10K_* vars, which the
-  # segment colours below reference. Falls back to catppuccin-mocha if unset.
+  # repository state file and load its 6 role hex values into P10K_* vars, which
+  # the segment colours below reference. Falls back to catppuccin-mocha if unset.
   # Palette hex derives from tmux/palettes/*.conf.
-  local _theme_state=${THEME_STATE_DIR:-$HOME/.config/theme}/current
+  local _theme_state=${THEME_STATE_FILE:-${${(%):-%x}:A:h}/theme/current.zsh}
   local THEME_PALETTE
   [[ -r $_theme_state ]] && source $_theme_state
   source ${ZSH_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}/scripts/p10k-palettes.zsh

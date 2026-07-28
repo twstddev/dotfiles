@@ -1,0 +1,12 @@
+THEME_SCHEME=catppuccin
+THEME_MODE=dark
+THEME_VARIANT=mocha
+THEME_NVIM=catppuccin-mocha
+THEME_NVIM_BG=dark
+THEME_GHOSTTY="Catppuccin Mocha"
+THEME_PALETTE=catppuccin-mocha
+THEME_FSH=catppuccin-mocha
+THEME_EZA=catppuccin-mocha
+THEME_BTOP=catppuccin-mocha
+THEME_FZF=catppuccin-mocha
+THEME_BAT="Catppuccin Mocha"

@@ -22,7 +22,9 @@
     ~/.config/tmux: tmux
     ~/.config/zsh: zsh
     ~/.config/fsh: fsh
-    ~/.config/eza/themes: eza/themes
+    ~/.config/eza:
+      force: true
+      path: eza
     ~/.config/btop:
       force: true
       path: btop

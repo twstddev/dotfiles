@@ -1,5 +1,5 @@
--- Reads the shared theme selection written by the `theme` shell command
--- (see zsh/theme.zsh) from ~/.config/theme/current and applies it.
+-- Reads the repository theme selection written by the `theme` shell command
+-- (see zsh/scripts/theme.zsh) and applies it.
 --
 -- The state file is a set of KEY=value lines; we only care about:
 --   THEME_NVIM      the colorscheme name to load
@@ -15,9 +15,15 @@ local M = {}
 M.fallback = { colorscheme = "catppuccin-mocha", background = "dark" }
 
 local function state_file()
-  return vim.env.THEME_STATE_DIR
-    and (vim.env.THEME_STATE_DIR .. "/current")
-    or (vim.fn.expand("~/.config/theme/current"))
+  if vim.env.THEME_STATE_FILE and vim.env.THEME_STATE_FILE ~= "" then
+    return vim.env.THEME_STATE_FILE
+  end
+
+  local uv = vim.uv or vim.loop
+  local config_dir = vim.fn.stdpath("config")
+  local real_config_dir = uv.fs_realpath(config_dir) or config_dir
+  local repo_dir = vim.fs.dirname(real_config_dir)
+  return vim.fs.joinpath(repo_dir, "theme", "current.zsh")
 end
 
 -- Parse THEME_NVIM / THEME_NVIM_BG out of the state file.

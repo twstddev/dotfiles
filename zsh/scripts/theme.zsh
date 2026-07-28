@@ -3,20 +3,22 @@
 # Usage:
 #   theme                          show current selection
 #   theme list                     list schemes, modes and variants
+#   theme apply                    apply the committed selection to every app
 #   theme <scheme>                 switch scheme, keep mode, use mode default variant
 #   theme <scheme> <mode>          switch scheme + mode, use mode default variant
 #   theme <scheme> <mode> <variant>  switch scheme + mode + explicit variant
 #   theme <mode>                   flip mode only (keeps scheme, uses default variant)
 #
 # This is the PLUMBING layer only. It resolves the selection against the
-# registry below and writes it to $THEME_STATE_DIR/current (a sourceable file).
-# Each app reads that file separately and is updated by the apply functions below.
+# registry below and writes it to theme/current.zsh in this repository (a
+# sourceable file). Each app reads that file separately and is updated by the
+# apply functions below. THEME_STATE_FILE can override the path for testing.
 #
 # NOTE: nvim colorscheme names + backgrounds are known-good. ghostty and tmux
 # values are best-guess placeholders and MUST be verified against each app's
 # actual theme names when that app is wired up.
 
-typeset -g THEME_STATE_DIR="${THEME_STATE_DIR:-$HOME/.config/theme}"
+typeset -g THEME_STATE_FILE="${THEME_STATE_FILE:-${${(%):-%x}:A:h:h:h}/theme/current.zsh}"
 typeset -g THEME_GHOSTTY_CONFIG="${THEME_GHOSTTY_CONFIG:-$HOME/.config/ghostty/config}"
 typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
 typeset -g THEME_EZA_DIR="${THEME_EZA_DIR:-$HOME/.config/eza}"
@@ -246,8 +248,8 @@ _theme_load() {
   _cur_scheme=catppuccin
   _cur_mode=dark
   _cur_variant=mocha
-  if [[ -r $THEME_STATE_DIR/current ]]; then
-    source $THEME_STATE_DIR/current
+  if [[ -r $THEME_STATE_FILE ]]; then
+    source $THEME_STATE_FILE
     _cur_scheme=${THEME_SCHEME:-$_cur_scheme}
     _cur_mode=${THEME_MODE:-$_cur_mode}
     _cur_variant=${THEME_VARIANT:-$_cur_variant}
@@ -257,7 +259,7 @@ _theme_load() {
 # Write the resolved selection to the state file.
 _theme_write() {
   local s=$1 m=$2 v=$3 k="$1:$2:$3"
-  command mkdir -p $THEME_STATE_DIR
+  command mkdir -p ${THEME_STATE_FILE:h}
   {
     print "THEME_SCHEME=$s"
     print "THEME_MODE=$m"
@@ -274,16 +276,23 @@ _theme_write() {
     print "THEME_BTOP=${_THEME[${k}:tmux]}"
     print "THEME_FZF=${_THEME[${k}:tmux]}"
     print "THEME_BAT=\"${_THEME_BAT[${_THEME[${k}:tmux]}]}\""
-  } > $THEME_STATE_DIR/current
+  } > $THEME_STATE_FILE
 
-  _theme_apply_ghostty ${_THEME[${k}:ghostty]}
-  _theme_apply_eza ${_THEME[${k}:tmux]}
-  _theme_apply_btop ${_THEME[${k}:tmux]}
+  _theme_apply_resolved $s $m $v
+}
+
+# Apply a resolved registry selection to every destination without rewriting
+# the repository manifest. Shared by theme switching and `theme apply`.
+_theme_apply_resolved() {
+  local k="$1:$2:$3"
+  _theme_apply_ghostty "${_THEME[${k}:ghostty]}"
+  _theme_apply_eza "${_THEME[${k}:tmux]}"
+  _theme_apply_btop "${_THEME[${k}:tmux]}"
   _theme_apply_nvim
-  _theme_apply_tmux ${_THEME[${k}:tmux]}
-  _theme_apply_fsh ${_THEME[${k}:tmux]}
-  _theme_apply_fzf ${_THEME[${k}:tmux]}
-  _theme_apply_bat ${_THEME[${k}:tmux]}
+  _theme_apply_tmux "${_THEME[${k}:tmux]}"
+  _theme_apply_fsh "${_THEME[${k}:tmux]}"
+  _theme_apply_fzf "${_THEME[${k}:tmux]}"
+  _theme_apply_bat "${_THEME[${k}:tmux]}"
 }
 
 # Rewrite the `theme = ...` line in ghostty's config, preserving everything
@@ -293,12 +302,13 @@ _theme_apply_ghostty() {
   local name=$1 cfg=$THEME_GHOSTTY_CONFIG
   [[ -z $name ]] && return 0
   [[ -f $cfg ]] || return 0
-  local tmp=$cfg.theme-tmp
+  local content
   if grep -qE '^[[:space:]]*theme[[:space:]]*=' $cfg; then
-    sed -E "s|^[[:space:]]*theme[[:space:]]*=.*|theme = ${name}|" $cfg > $tmp && command mv $tmp $cfg
+    content=$(sed -E "s|^[[:space:]]*theme[[:space:]]*=.*|theme = ${name}|" $cfg) || return
   else
-    { cat $cfg; print "theme = $name" } > $tmp && command mv $tmp $cfg
+    content=$({ cat $cfg; print "theme = $name" }) || return
   fi
+  print -r -- "$content" > $cfg
 }
 
 # Point eza at the selected palette. Eza reads theme.yml on every invocation,
@@ -313,7 +323,7 @@ _theme_apply_eza() {
 }
 
 # Select the matching local btop theme. btop persists options by rewriting this
-# same config, so update it atomically and leave every unrelated option intact.
+# same config, so leave every unrelated option intact.
 _theme_apply_btop() {
   local name=$1 cfg=$THEME_BTOP_DIR/btop.conf
   [[ -z $name || ! -f $cfg ]] && return 0
@@ -322,13 +332,13 @@ _theme_apply_btop() {
     [[ -f $THEME_BTOP_DIR/themes/$name.theme ]] || return 0
     theme=$name
   fi
-  local tmp=$cfg.theme-tmp
+  local content
   if grep -qE '^[[:space:]]*color_theme[[:space:]]*=' $cfg; then
-    sed -E "s|^[[:space:]]*color_theme[[:space:]]*=.*|color_theme = \"$theme\"|" $cfg > $tmp \
-      && command mv $tmp $cfg
+    content=$(sed -E "s|^[[:space:]]*color_theme[[:space:]]*=.*|color_theme = \"$theme\"|" $cfg) || return
   else
-    { print "color_theme = \"$theme\""; cat $cfg } > $tmp && command mv $tmp $cfg
+    content=$({ print "color_theme = \"$theme\""; cat $cfg }) || return
   fi
+  print -r -- "$content" > $cfg
 }
 
 # Live-reload every running nvim by asking it to re-read the state file.
@@ -382,6 +392,16 @@ _theme_apply_fsh() {
   fast-theme -q XDG:$name
 }
 
+# FSH loads after this file through zsh-defer. Once it is available, generate
+# its machine-local cache only when no cache was loaded or its palette differs
+# from the selection committed in theme/current.zsh.
+_theme_reconcile_fsh() {
+  [[ -z $THEME_FSH ]] && return 0
+  (( $+functions[fast-theme] )) || return 0
+  [[ -r $FAST_WORK_DIR/current_theme.zsh && $FAST_THEME_NAME == $THEME_FSH ]] && return 0
+  _theme_apply_fsh $THEME_FSH
+}
+
 # Load the selected fzf colours into the current shell. New shells source the
 # same file from options.zsh using THEME_PALETTE in the persisted state file.
 _theme_apply_fzf() {
@@ -395,19 +415,30 @@ _theme_apply_fzf() {
 # preserve every unrelated setting.
 _theme_apply_bat() {
   local name=${_THEME_BAT[$1]}
-  local cfg=$THEME_BAT_DIR/config tmp=$THEME_BAT_DIR/config.theme-tmp
+  local cfg=$THEME_BAT_DIR/config content
   [[ -z $name || ! -f $cfg ]] && return 0
   if grep -qE '^[[:space:]]*--theme=' $cfg; then
-    sed -E "s|^[[:space:]]*--theme=.*|--theme=\"${name}\"|" $cfg > $tmp \
-      && command mv $tmp $cfg
+    content=$(sed -E "s|^[[:space:]]*--theme=.*|--theme=\"${name}\"|" $cfg) || return
   else
-    { print "--theme=\"$name\""; cat $cfg } > $tmp && command mv $tmp $cfg
+    content=$({ print -r -- "--theme=\"$name\""; cat $cfg }) || return
   fi
+  print -r -- "$content" > $cfg
 }
 
 _theme_status() {
   _theme_load
   print "theme: $_cur_scheme $_cur_mode $_cur_variant"
+}
+
+_theme_apply_current() {
+  _theme_load
+  local k="$_cur_scheme:$_cur_mode:$_cur_variant"
+  if [[ -z ${_THEME[${k}:nvim]} ]]; then
+    print -u2 "theme: committed selection is not in the theme registry"
+    return 1
+  fi
+  _theme_apply_resolved $_cur_scheme $_cur_mode $_cur_variant
+  print "theme: applied $_cur_scheme $_cur_mode $_cur_variant"
 }
 
 _theme_list() {
@@ -462,6 +493,7 @@ theme() {
   case $a in
     ""|status)   _theme_status ;;
     list|ls)     _theme_list ;;
+    apply)       _theme_apply_current ;;
     light|dark)  _theme_set "" $a ;;
     *)           _theme_set $a $2 $3 ;;
   esac
@@ -472,7 +504,7 @@ if (( $+functions[compdef] )); then
   _theme_complete() {
     _theme_load
     case $CURRENT in
-      2) compadd $_THEME_SCHEMES list status light dark ;;
+      2) compadd $_THEME_SCHEMES apply list status light dark ;;
       3) compadd light dark ;;
       4) compadd $(_theme_variants_of $words[2] $words[3]) ;;
     esac
