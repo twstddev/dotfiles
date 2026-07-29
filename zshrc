@@ -37,6 +37,7 @@ source ${ZSH_CONFIG_DIR}/scripts/theme.zsh
 
 zsh-defer _theme_reconcile_fsh
 
+export _ZO_EXCLUDE_DIRS="${_ZO_EXCLUDE_DIRS:+${_ZO_EXCLUDE_DIRS}:}*/worktree/*:*/worktrees/*"
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh --cmd j)"
 [[ -x ${HOME}/.local/bin/mise ]] && eval "$("${HOME}/.local/bin/mise" activate zsh)"
 
