@@ -48,6 +48,7 @@ export FZF_ALT_C_COMMAND=''
 export FZF_COMPLETION_OPTS="
   --preview 'if [ -d {} ]; then eza --tree --level=2 --color=always -- {}; else bat -n --color=always -- {}; fi'
 "
+export FZF_COMPLETION_DIR_COMMANDS='cd pushd rmdir j z'
 
 # fzf-tab
 zstyle ':completion:*:git-checkout:*' sort false
