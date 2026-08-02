@@ -21,6 +21,7 @@
 typeset -g THEME_STATE_FILE="${THEME_STATE_FILE:-${${(%):-%x}:A:h:h:h}/theme/current.zsh}"
 typeset -g THEME_GHOSTTY_CONFIG="${THEME_GHOSTTY_CONFIG:-$HOME/.config/ghostty/config}"
 typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
+typeset -g THEME_TMUX_CONFIG="${THEME_TMUX_CONFIG:-$HOME/.tmux.conf}"
 typeset -g THEME_EZA_DIR="${THEME_EZA_DIR:-$HOME/.config/eza}"
 typeset -g THEME_BTOP_DIR="${THEME_BTOP_DIR:-$HOME/.config/btop}"
 typeset -g THEME_FZF_DIR="${THEME_FZF_DIR:-$ZSH_CONFIG_DIR/fzf}"
@@ -357,11 +358,9 @@ _theme_apply_nvim() {
   done
 }
 
-# Copy the selected palette over the tmux theme file, then live-reload every
-# running tmux server. The palette basename comes from the registry; a missing
-# palette file or a blank value is skipped so tmux keeps its current colours.
-# tmux resolves #{@theme_*} at draw time, so source-file + refresh recolours
-# the status line live without restarting the server.
+# Copy the selected palette over the tmux theme file, then reload the normal
+# tmux configuration in every running server. Reloading through the public
+# config entrypoint lets each plugin apply changed options in its supported way.
 _theme_apply_tmux() {
   local name=$1
   local src=$THEME_TMUX_DIR/palettes/$name.conf
@@ -370,15 +369,12 @@ _theme_apply_tmux() {
   [[ -f $src ]] || return 0
   command cp $src $dst
   command -v tmux >/dev/null || return 0
+  [[ -f $THEME_TMUX_CONFIG ]] || return 0
   local sock
   # tmux keeps sockets under $TMUX_TMPDIR (default /tmp), NOT $TMPDIR — on macOS
   # $TMPDIR points at a per-user /var/folders dir where tmux never writes.
-  # Re-source styling.conf after the palette so the selected @tmux_accent
-  # re-resolves its @theme_ac_* display vars against the new palette's hues.
   for sock in ${TMUX_TMPDIR:-/tmp}/tmux-$(id -u)/*(N=); do
-    tmux -S $sock source-file $dst 2>/dev/null \
-      && tmux -S $sock source-file $THEME_TMUX_DIR/styling.conf 2>/dev/null \
-      && tmux -S $sock run-shell '#{@fingers-cli} load-config' 2>/dev/null \
+    tmux -S $sock source-file $THEME_TMUX_CONFIG 2>/dev/null \
       && tmux -S $sock refresh-client -S 2>/dev/null
   done
 }
