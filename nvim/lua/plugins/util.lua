@@ -9,7 +9,11 @@ return {
       { "<leader>gcl", "<cmd>'<,'>CodeDiff history<cr>", desc = "Show git line history", mode = { "n", "x" } },
     },
     opts = {
-      keys = {
+      explorer = {
+        view_mode = "tree", -- Open explorer in directory tree view by default
+        focus_on_select = true, -- Move focus to the diff view when selecting a file
+      },
+      keymaps = {
         view = {
           next_hunk = "]h",
           prev_hunk = "[h",
