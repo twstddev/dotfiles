@@ -13,6 +13,14 @@ return {
   { "maxmx03/solarized.nvim" },
   { "gbprod/nord.nvim" },
   {
+    "folke/tokyonight.nvim",
+    opts = {
+      on_highlights = function(hl, colors)
+        hl.ComplHint = { fg = colors.comment }
+      end,
+    },
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = function()
