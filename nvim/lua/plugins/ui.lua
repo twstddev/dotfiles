@@ -1,3 +1,5 @@
+local codediff = require("util.codediff")
+
 return {
   { "folke/noice.nvim", enabled = false },
 
@@ -36,6 +38,16 @@ return {
         trash = false,
       },
       picker = {
+        actions = {
+          codediff = {
+            desc = "Open CodeDiff",
+            action = codediff.open_commit,
+          },
+          browse_commit = {
+            desc = "Open Commit in Browser",
+            action = codediff.open_commit_browser,
+          },
+        },
         win = {
           input = {
             keys = {
@@ -66,6 +78,15 @@ return {
           explorer = {
             ignored = true,
             hidden = true,
+          },
+          git_log = {
+            win = codediff.picker_keys(),
+          },
+          git_log_file = {
+            win = codediff.picker_keys(),
+          },
+          git_log_line = {
+            win = codediff.picker_keys(),
           },
         },
       },

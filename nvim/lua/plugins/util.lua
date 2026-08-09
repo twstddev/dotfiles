@@ -126,6 +126,8 @@ return {
           reference_in_new_issue = { lhs = "<leader>gori" },
           next_comment = { lhs = "<leader>goc]" },
           prev_comment = { lhs = "<leader>goc[" },
+          select_next_entry = { lhs = "]f" },
+          select_prev_entry = { lhs = "[f" },
           react_hooray = { lhs = "<leader>gorp" },
           react_heart = { lhs = "<leader>gorh" },
           react_eyes = { lhs = "<leader>gore" },
@@ -145,6 +147,8 @@ return {
           focus_files = { lhs = "<leader>goe" },
           toggle_files = { lhs = "<leader>gob" },
           toggle_viewed = { lhs = "<leader>go<space>" },
+          select_next_entry = { lhs = "]f" },
+          select_prev_entry = { lhs = "[f" },
           review_commits = { lhs = "<leader>goC" },
         },
         file_panel = {
@@ -153,6 +157,8 @@ return {
           focus_files = { lhs = "<leader>goe" },
           toggle_files = { lhs = "<leader>gob" },
           toggle_viewed = { lhs = "<leader>go<space>" },
+          select_next_entry = { lhs = "]f" },
+          select_prev_entry = { lhs = "[f" },
           review_commits = { lhs = "<leader>goC" },
         },
         notification = {
