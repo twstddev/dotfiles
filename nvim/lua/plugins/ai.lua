@@ -58,6 +58,10 @@ return {
       },
     },
 
+    config = function(_, opts)
+      require("util.sidekick").setup(opts)
+    end,
+
     keys = {
       { "<tab>", mode = { "n" }, false },
       {
@@ -67,6 +71,22 @@ return {
         end,
         mode = { "n", "t", "i", "x" },
         desc = "Toggle Sidekick CLI",
+      },
+      {
+        "<leader>ac",
+        function()
+          require("util.sidekick").ask_agent("{this}", "Ask about this: ")
+        end,
+        mode = { "n", "x" },
+        desc = "Ask Agent About This",
+      },
+      {
+        "<leader>aC",
+        function()
+          require("util.sidekick").ask_agent("{file}", "Ask about this file: ")
+        end,
+        mode = { "n", "x" },
+        desc = "Ask Agent About Current File",
       },
     },
   },
