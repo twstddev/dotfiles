@@ -12,7 +12,22 @@ function M.ask_agent(context_template, input_prompt)
     return
   end
 
-  vim.ui.input({ prompt = input_prompt }, function(input)
+  local submit = true
+
+  vim.ui.input({
+    prompt = input_prompt,
+    win = {
+      keys = {
+        ["<M-CR>"] = {
+          function(win)
+            submit = false
+            win:execute("confirm")
+          end,
+          mode = "i",
+        },
+      },
+    },
+  }, function(input)
     input = input and vim.trim(input) or ""
     if input == "" then
       return
@@ -22,7 +37,7 @@ function M.ask_agent(context_template, input_prompt)
     vim.list_extend(text, context)
     table.insert(text, {})
     table.insert(text, { { input } })
-    cli.send({ text = text, submit = false })
+    cli.send({ text = text, submit = submit })
   end)
 end
 
