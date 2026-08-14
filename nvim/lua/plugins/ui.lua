@@ -56,6 +56,7 @@ return {
           },
           list = {
             keys = {
+              ["/"] = false,
               ["<a-w>"] = "focus_preview",
             },
           },
