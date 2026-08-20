@@ -47,6 +47,10 @@ return {
             desc = "Open Commit in Browser",
             action = codediff.open_commit_browser,
           },
+          open_commit_pr = {
+            desc = "Open Pull Request in Browser",
+            action = codediff.open_commit_pr,
+          },
         },
         win = {
           input = {
