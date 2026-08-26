@@ -24,6 +24,7 @@ return {
   {
     "pwntester/octo.nvim",
     opts = {
+      use_local_fs = true,
       -- Rebind every default <localleader> in-buffer mapping to <leader>go.
       -- Only lhs is overridden; octo deep-merges these over its defaults, so
       -- descriptions and modes come from the plugin.
