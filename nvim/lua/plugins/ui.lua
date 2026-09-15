@@ -24,6 +24,24 @@ return {
 
   {
     "snacks.nvim",
+    keys = {
+      {
+        "<leader>usf",
+        function()
+          local explorer = Snacks.picker.get({ source = "explorer" })[1]
+
+          if not explorer then
+            Snacks.picker.explorer()
+            return
+          end
+
+          if explorer and not explorer:is_focused() then
+            explorer:focus()
+          end
+        end,
+        desc = "Focus Explorer",
+      },
+    },
     opts = {
       indent = {
         animate = {
