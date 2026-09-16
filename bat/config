@@ -1,3 +1,3 @@
 # Updated by the `theme` command. Bat reads this file on every invocation.
---theme="tokyonight_moon"
+--theme="gruvbox-dark"
 --style=plain
