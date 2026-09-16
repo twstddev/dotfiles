@@ -37,6 +37,12 @@ return {
         win = {
           layout = "float",
           keys = {
+            stopinsert = {
+              "<M-[>",
+              "stopinsert",
+              mode = "t",
+              desc = "Enter terminal normal mode",
+            },
             ctrl_c_normal = {
               "<C-c>",
               "stopinsert",
