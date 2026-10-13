@@ -79,6 +79,7 @@ return {
           merge_pr = { lhs = "<leader>gopm" },
           squash_and_merge_pr = { lhs = "<leader>gopsm" },
           rebase_and_merge_pr = { lhs = "<leader>goprm" },
+          merge_pr_stack = { lhs = "<leader>gopk" },
           merge_pr_queue = { lhs = "<leader>gopq" },
           squash_and_merge_queue = { lhs = "<leader>gopsq" },
           rebase_and_merge_queue = { lhs = "<leader>goprq" },
@@ -116,6 +117,9 @@ return {
           resolve_thread = { lhs = "<leader>gort" },
           unresolve_thread = { lhs = "<leader>gorT" },
           approve_pr = { lhs = "<leader>goqa" },
+          goto_check = { lhs = "<leader>gogc" },
+          toggle_checks = { lhs = "<leader>gotc" },
+          review = { lhs = "<leader>gove" },
         },
         review_thread = {
           goto_issue = { lhs = "<leader>gogi" },
