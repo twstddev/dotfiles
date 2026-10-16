@@ -64,7 +64,54 @@ return {
   },
   { "rebelot/kanagawa.nvim" },
   { "maxmx03/solarized.nvim" },
-  { "gbprod/nord.nvim" },
+  {
+    "gbprod/nord.nvim",
+    opts = {
+      on_highlights = function(hl, c)
+        -- Nord builds every diff group as `fg = <aurora color>, reverse = true`.
+        -- The reverse sticks to each syntax token drawn on top, so tokens show
+        -- up as boxes in their own fg color, on a bright slab with dark text.
+        --
+        -- These are bg-only tints in nord's own hues, set slightly *darker*
+        -- than the background. Nord's syntax colors are already low-contrast
+        -- (keywords ~4.6:1, numbers ~4.4:1 on nord0), so any tint lighter than
+        -- the background pushes them toward unreadable; sunken tints keep
+        -- every syntax color at or above its normal-buffer contrast, and the
+        -- hue still marks add vs delete. Change uses frost rather than nord's
+        -- yellow, which turns olive this dark and blurs into add. DiffText
+        -- (also sidekick's NES insertion color) sits a step lighter so changed
+        -- words stand out from a changed line without dropping much contrast.
+        hl.DiffAdd = { bg = "#233018" }
+        hl.DiffChange = { bg = "#1f3238" }
+        hl.DiffDelete = { bg = "#3f2224" }
+        hl.DiffText = { bg = "#144451", bold = true }
+
+        -- snacks draws diff context lines with DiffChange, tinting all the
+        -- unchanged code; put them on the plain background so only real
+        -- changes are colored. Must be a real color: snacks links this group
+        -- with `default = true`, and a freshly created `bg = NONE` group counts
+        -- as undefined, so the link would still win on startup.
+        hl.SnacksDiffContext = { bg = c.polar_night.origin }
+
+        -- Nord links these to the Diff* groups, but they're foreground roles
+        -- (snacks git status, gitsigns, diff filetype), so with bg-only Diff*
+        -- groups they'd lose their color.
+        hl.Added = { fg = c.aurora.green }
+        hl.Changed = { fg = c.aurora.yellow }
+        hl.Removed = { fg = c.aurora.red }
+        hl.diffAdded = { link = "Added" }
+        hl.diffChanged = { link = "Changed" }
+        hl.diffRemoved = { link = "Removed" }
+        hl["@diff.plus"] = { link = "Added" }
+        hl["@diff.delta"] = { link = "Changed" }
+        hl["@diff.minus"] = { link = "Removed" }
+
+        -- Unset ComplHint falls back to NonText (polar_night.brighter), which
+        -- nearly vanishes on the nord background; use the Comment color.
+        hl.ComplHint = { fg = c.polar_night.light }
+      end,
+    },
+  },
   {
     "folke/tokyonight.nvim",
     opts = {
