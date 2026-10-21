@@ -62,7 +62,17 @@ return {
       })
     end,
   },
-  { "rebelot/kanagawa.nvim" },
+  {
+    "rebelot/kanagawa.nvim",
+    opts = {
+      overrides = function(colors)
+        return {
+          -- Keep explorer guides from inheriting LineNr's gutter background.
+          SnacksPickerTree = { fg = colors.theme.ui.nontext },
+        }
+      end,
+    },
+  },
   { "maxmx03/solarized.nvim" },
   {
     "gbprod/nord.nvim",
@@ -120,6 +130,35 @@ return {
       end,
     },
   },
+  {
+    "EdenEast/nightfox.nvim",
+    opts = {
+      groups = {
+        all = {
+          -- Native inline completion falls back to the low-contrast NonText color.
+          -- fg2 stays readable across dark and light variants; italics mark suggestions.
+          ComplHint = { fg = "fg2", style = "italic" },
+        },
+      },
+    },
+  },
+  {
+    "loctvl842/monokai-pro.nvim",
+    opts = {
+      override = function(c)
+        -- Backport Snacks picker highlights from monokai-pro.nvim PR #176.
+        return {
+          SnacksPicker = { bg = c.sideBar.background, fg = c.sideBar.foreground },
+          SnacksPickerList = { bg = c.sideBar.background, fg = c.sideBar.foreground },
+          SnacksPickerMatch = { fg = c.base.yellow, bold = true },
+          -- Native inline completion otherwise inherits the invisible NonText color.
+          ComplHint = { fg = c.base.dimmed2 },
+        }
+      end,
+    },
+  },
+  { "marko-cerovac/material.nvim" },
+  { "navarasu/onedark.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
