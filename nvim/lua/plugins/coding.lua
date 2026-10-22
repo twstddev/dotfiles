@@ -6,10 +6,12 @@ return {
         max_typos = 0,
         sorts = {
           function(a, b)
-            if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
+            local a_is_emmet = a.client_name == "emmet_language_server"
+            local b_is_emmet = b.client_name == "emmet_language_server"
+            if a_is_emmet == b_is_emmet then
               return
             end
-            return a.client_name ~= "emmet_language_server"
+            return not a_is_emmet
           end,
           "exact",
           "score",
