@@ -9,6 +9,9 @@ return {
       { "<leader>gcl", "<cmd>'<,'>CodeDiff history<cr>", desc = "Show git line history", mode = { "n", "x" } },
     },
     opts = {
+      diff = {
+        conflict_result_height = 40, -- Merge result pane height in conflict view, % of total (default 30)
+      },
       explorer = {
         view_mode = "tree", -- Open explorer in directory tree view by default
         focus_on_select = true, -- Move focus to the diff view when selecting a file
@@ -24,7 +27,9 @@ return {
   {
     "pwntester/octo.nvim",
     opts = {
-      use_local_fs = true,
+      file_panel = {
+        size = 20, -- changed files panel rows in review view (default 10)
+      },
       -- Rebind every default <localleader> in-buffer mapping to <leader>go.
       -- Only lhs is overridden; octo deep-merges these over its defaults, so
       -- descriptions and modes come from the plugin.
