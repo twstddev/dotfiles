@@ -147,4 +147,28 @@ else
       nes.apply()
     end
   end)
+
+  Snacks.toggle
+    .new({
+      id = "diff_windows",
+      name = "Diff Windows",
+      get = function()
+        return vim.wo.diff
+      end,
+      set = function(state)
+        if not state then
+          return vim.cmd("diffoff!")
+        end
+        -- Only listed buffers in normal windows, so explorers and floats stay out of the diff
+        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+          local buf = vim.api.nvim_win_get_buf(win)
+          if vim.bo[buf].buflisted and vim.api.nvim_win_get_config(win).relative == "" then
+            vim.api.nvim_win_call(win, function()
+              vim.cmd("diffthis")
+            end)
+          end
+        end
+      end,
+    })
+    :map("<leader>fd")
 end
