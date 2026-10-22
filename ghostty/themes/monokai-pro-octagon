@@ -1,0 +1,50 @@
+# Monokai Pro Octagon
+# Source: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/ghostty/Monokai%20Pro%20Octagon
+# MIT License
+#
+# Copyright (c) 2011 to Present Mark Badolato
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+# This license covers the iTerm-Color-Schemes repository collection of themes.
+#
+# The copyright/license for each individual theme belongs to the author of that theme.
+
+palette = 0=#282a3a
+palette = 1=#ff657a
+palette = 2=#bad761
+palette = 3=#ffd76d
+palette = 4=#ff9b5e
+palette = 5=#c39ac9
+palette = 6=#9cd1bb
+palette = 7=#eaf2f1
+palette = 8=#696d77
+palette = 9=#ff657a
+palette = 10=#bad761
+palette = 11=#ffd76d
+palette = 12=#ff9b5e
+palette = 13=#c39ac9
+palette = 14=#9cd1bb
+palette = 15=#eaf2f1
+background = #282a3a
+foreground = #eaf2f1
+cursor-color = #b2b9bd
+cursor-text = #f2f9fd
+selection-background = #535763
+selection-foreground = #eaf2f1

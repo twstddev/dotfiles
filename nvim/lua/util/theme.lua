@@ -6,8 +6,9 @@
 --   THEME_NVIM_BG   "light" | "dark" (matters for single-scheme themes
 --                   like gruvbox/everforest/solarized where background
 --                   selects the mode)
+--   THEME_VARIANT   the style to select for OneDark's single colorscheme
 --
--- Applied at startup only (config-only switching): reload = restart nvim.
+-- Applied at startup and by the shell switcher's live reload.
 
 local M = {}
 
@@ -33,13 +34,15 @@ function M.read()
   if not fd then
     return M.fallback
   end
-  local colorscheme, background
+  local colorscheme, background, variant
   for line in fd:lines() do
     local key, val = line:match("^([%w_]+)=(.*)$")
     if key == "THEME_NVIM" then
       colorscheme = val
     elseif key == "THEME_NVIM_BG" then
       background = val
+    elseif key == "THEME_VARIANT" then
+      variant = val
     end
   end
   fd:close()
@@ -47,6 +50,7 @@ function M.read()
     colorscheme = colorscheme or M.fallback.colorscheme,
     background = (background == "light" or background == "dark") and background
       or M.fallback.background,
+    variant = variant,
   }
 end
 
@@ -54,7 +58,14 @@ end
 function M.apply()
   local sel = M.read()
   vim.o.background = sel.background
-  local ok = pcall(vim.cmd.colorscheme, sel.colorscheme)
+  local ok = pcall(function()
+    -- OneDark exposes its variants through setup rather than colorscheme files.
+    -- Lazy loads the plugin (and its opts) on require before we set the style.
+    if sel.colorscheme == "onedark" then
+      require("onedark").setup({ style = sel.variant or "dark" })
+    end
+    vim.cmd.colorscheme(sel.colorscheme)
+  end)
   if not ok and sel.colorscheme ~= M.fallback.colorscheme then
     vim.o.background = M.fallback.background
     pcall(vim.cmd.colorscheme, M.fallback.colorscheme)

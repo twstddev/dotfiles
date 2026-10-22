@@ -14,12 +14,11 @@
 # sourceable file). Each app reads that file separately and is updated by the
 # apply functions below. THEME_STATE_FILE can override the path for testing.
 #
-# NOTE: nvim colorscheme names + backgrounds are known-good. ghostty and tmux
-# values are best-guess placeholders and MUST be verified against each app's
-# actual theme names when that app is wired up.
+# App palettes share the canonical names registered below.
 
 typeset -g THEME_STATE_FILE="${THEME_STATE_FILE:-${${(%):-%x}:A:h:h:h}/theme/current.zsh}"
 typeset -g THEME_GHOSTTY_CONFIG="${THEME_GHOSTTY_CONFIG:-$HOME/.config/ghostty/config}"
+typeset -g THEME_GHOSTTY_THEMES_DIR="${THEME_GHOSTTY_THEMES_DIR:-${${(%):-%x}:A:h:h:h}/ghostty/themes}"
 typeset -g THEME_TMUX_DIR="${THEME_TMUX_DIR:-$HOME/.config/tmux}"
 typeset -g THEME_TMUX_CONFIG="${THEME_TMUX_CONFIG:-$HOME/.tmux.conf}"
 typeset -g THEME_EZA_DIR="${THEME_EZA_DIR:-$HOME/.config/eza}"
@@ -51,6 +50,32 @@ typeset -gA _THEME_BAT=(
   solarized-light      "Solarized (light)"
   solarized-dark       "Solarized (dark)"
   nord-dark            Nord
+  dayfox                 dayfox
+  dawnfox                dawnfox
+  nightfox               nightfox
+  duskfox                duskfox
+  nordfox                nordfox
+  terafox                terafox
+  carbonfox              carbonfox
+  monokai-pro-light      monokai-pro-light
+  monokai-pro-pro        monokai-pro-pro
+  monokai-pro-classic    monokai-pro-classic
+  monokai-pro-octagon    monokai-pro-octagon
+  monokai-pro-machine    monokai-pro-machine
+  monokai-pro-ristretto  monokai-pro-ristretto
+  monokai-pro-spectrum   monokai-pro-spectrum
+  material-lighter       material-lighter
+  material-oceanic       material-oceanic
+  material-darker        material-darker
+  material-palenight     material-palenight
+  material-deep-ocean    material-deep-ocean
+  onedark-light          onedark-light
+  onedark-dark           onedark-dark
+  onedark-darker         onedark-darker
+  onedark-cool           onedark-cool
+  onedark-deep           onedark-deep
+  onedark-warm           onedark-warm
+  onedark-warmer         onedark-warmer
 )
 
 # Built-in btop theme names for palettes it already ships. Anything absent
@@ -72,6 +97,7 @@ typeset -gA _THEME_BTOP_BUILTIN=(
 # Ordered list of selectable schemes.
 typeset -ga _THEME_SCHEMES=(
   catppuccin tokyonight gruvbox rose-pine everforest kanagawa solarized nord
+  nightfox monokai-pro material onedark
 )
 
 # Variants per scheme+mode. First entry in each list is that mode's default.
@@ -93,6 +119,14 @@ _THEME_VARIANTS=(
   "solarized:light"   "solarized"
   "solarized:dark"    "solarized"
   "nord:dark"         "nord"
+  "nightfox:light"    "dayfox dawnfox"
+  "nightfox:dark"     "nightfox duskfox nordfox terafox carbonfox"
+  "monokai-pro:light" "light"
+  "monokai-pro:dark"  "pro classic octagon machine ristretto spectrum"
+  "material:light"    "lighter"
+  "material:dark"     "oceanic darker palenight deep-ocean"
+  "onedark:light"     "light"
+  "onedark:dark"      "dark darker cool deep warm warmer"
 )
 
 # Per-variant app values. Keys: "<scheme>:<mode>:<variant>:<field>".
@@ -231,6 +265,118 @@ _THEME=(
   "nord:dark:nord:bg"                  dark
   "nord:dark:nord:ghostty"             "Nord"
   "nord:dark:nord:tmux"                nord-dark
+
+  # nightfox -------------------------------------------------------------
+  "nightfox:light:dayfox:nvim"         dayfox
+  "nightfox:light:dayfox:bg"           light
+  "nightfox:light:dayfox:ghostty"      dayfox
+  "nightfox:light:dayfox:tmux"         dayfox
+  "nightfox:light:dawnfox:nvim"        dawnfox
+  "nightfox:light:dawnfox:bg"          light
+  "nightfox:light:dawnfox:ghostty"     dawnfox
+  "nightfox:light:dawnfox:tmux"        dawnfox
+  "nightfox:dark:nightfox:nvim"        nightfox
+  "nightfox:dark:nightfox:bg"          dark
+  "nightfox:dark:nightfox:ghostty"     nightfox
+  "nightfox:dark:nightfox:tmux"        nightfox
+  "nightfox:dark:duskfox:nvim"         duskfox
+  "nightfox:dark:duskfox:bg"           dark
+  "nightfox:dark:duskfox:ghostty"      duskfox
+  "nightfox:dark:duskfox:tmux"         duskfox
+  "nightfox:dark:nordfox:nvim"         nordfox
+  "nightfox:dark:nordfox:bg"           dark
+  "nightfox:dark:nordfox:ghostty"      nordfox
+  "nightfox:dark:nordfox:tmux"         nordfox
+  "nightfox:dark:terafox:nvim"         terafox
+  "nightfox:dark:terafox:bg"           dark
+  "nightfox:dark:terafox:ghostty"      terafox
+  "nightfox:dark:terafox:tmux"         terafox
+  "nightfox:dark:carbonfox:nvim"       carbonfox
+  "nightfox:dark:carbonfox:bg"         dark
+  "nightfox:dark:carbonfox:ghostty"    carbonfox
+  "nightfox:dark:carbonfox:tmux"       carbonfox
+
+  # monokai-pro ----------------------------------------------------------
+  "monokai-pro:light:light:nvim"       monokai-pro-light
+  "monokai-pro:light:light:bg"         light
+  "monokai-pro:light:light:ghostty"    monokai-pro-light
+  "monokai-pro:light:light:tmux"       monokai-pro-light
+  "monokai-pro:dark:pro:nvim"          monokai-pro
+  "monokai-pro:dark:pro:bg"            dark
+  "monokai-pro:dark:pro:ghostty"       monokai-pro-pro
+  "monokai-pro:dark:pro:tmux"          monokai-pro-pro
+  "monokai-pro:dark:classic:nvim"      monokai-pro-classic
+  "monokai-pro:dark:classic:bg"        dark
+  "monokai-pro:dark:classic:ghostty"   monokai-pro-classic
+  "monokai-pro:dark:classic:tmux"      monokai-pro-classic
+  "monokai-pro:dark:octagon:nvim"      monokai-pro-octagon
+  "monokai-pro:dark:octagon:bg"        dark
+  "monokai-pro:dark:octagon:ghostty"   monokai-pro-octagon
+  "monokai-pro:dark:octagon:tmux"      monokai-pro-octagon
+  "monokai-pro:dark:machine:nvim"      monokai-pro-machine
+  "monokai-pro:dark:machine:bg"        dark
+  "monokai-pro:dark:machine:ghostty"   monokai-pro-machine
+  "monokai-pro:dark:machine:tmux"      monokai-pro-machine
+  "monokai-pro:dark:ristretto:nvim"    monokai-pro-ristretto
+  "monokai-pro:dark:ristretto:bg"      dark
+  "monokai-pro:dark:ristretto:ghostty" monokai-pro-ristretto
+  "monokai-pro:dark:ristretto:tmux"    monokai-pro-ristretto
+  "monokai-pro:dark:spectrum:nvim"     monokai-pro-spectrum
+  "monokai-pro:dark:spectrum:bg"       dark
+  "monokai-pro:dark:spectrum:ghostty"  monokai-pro-spectrum
+  "monokai-pro:dark:spectrum:tmux"     monokai-pro-spectrum
+
+  # material -------------------------------------------------------------
+  "material:light:lighter:nvim"        material-lighter
+  "material:light:lighter:bg"          light
+  "material:light:lighter:ghostty"     material-lighter
+  "material:light:lighter:tmux"        material-lighter
+  "material:dark:oceanic:nvim"         material-oceanic
+  "material:dark:oceanic:bg"           dark
+  "material:dark:oceanic:ghostty"      material-oceanic
+  "material:dark:oceanic:tmux"         material-oceanic
+  "material:dark:darker:nvim"          material-darker
+  "material:dark:darker:bg"            dark
+  "material:dark:darker:ghostty"       material-darker
+  "material:dark:darker:tmux"          material-darker
+  "material:dark:palenight:nvim"       material-palenight
+  "material:dark:palenight:bg"         dark
+  "material:dark:palenight:ghostty"    material-palenight
+  "material:dark:palenight:tmux"       material-palenight
+  "material:dark:deep-ocean:nvim"      material-deep-ocean
+  "material:dark:deep-ocean:bg"        dark
+  "material:dark:deep-ocean:ghostty"   material-deep-ocean
+  "material:dark:deep-ocean:tmux"      material-deep-ocean
+
+  # onedark (single colorscheme; style via variant) ----------------------
+  "onedark:light:light:nvim"           onedark
+  "onedark:light:light:bg"             light
+  "onedark:light:light:ghostty"        onedark-light
+  "onedark:light:light:tmux"           onedark-light
+  "onedark:dark:dark:nvim"             onedark
+  "onedark:dark:dark:bg"               dark
+  "onedark:dark:dark:ghostty"          onedark-dark
+  "onedark:dark:dark:tmux"             onedark-dark
+  "onedark:dark:darker:nvim"           onedark
+  "onedark:dark:darker:bg"             dark
+  "onedark:dark:darker:ghostty"        onedark-darker
+  "onedark:dark:darker:tmux"           onedark-darker
+  "onedark:dark:cool:nvim"             onedark
+  "onedark:dark:cool:bg"               dark
+  "onedark:dark:cool:ghostty"          onedark-cool
+  "onedark:dark:cool:tmux"             onedark-cool
+  "onedark:dark:deep:nvim"             onedark
+  "onedark:dark:deep:bg"               dark
+  "onedark:dark:deep:ghostty"          onedark-deep
+  "onedark:dark:deep:tmux"             onedark-deep
+  "onedark:dark:warm:nvim"             onedark
+  "onedark:dark:warm:bg"               dark
+  "onedark:dark:warm:ghostty"          onedark-warm
+  "onedark:dark:warm:tmux"             onedark-warm
+  "onedark:dark:warmer:nvim"           onedark
+  "onedark:dark:warmer:bg"             dark
+  "onedark:dark:warmer:ghostty"        onedark-warmer
+  "onedark:dark:warmer:tmux"           onedark-warmer
 )
 
 _theme_is_scheme() { (( ${_THEME_SCHEMES[(Ie)$1]} )) }
@@ -303,6 +449,9 @@ _theme_apply_ghostty() {
   local name=$1 cfg=$THEME_GHOSTTY_CONFIG
   [[ -z $name ]] && return 0
   [[ -f $cfg ]] || return 0
+  # Absolute paths load vendored/generated ports even before dotbot is rerun.
+  # Built-in names used by existing families continue to resolve normally.
+  [[ -f $THEME_GHOSTTY_THEMES_DIR/$name ]] && name=$THEME_GHOSTTY_THEMES_DIR/$name
   local content
   if grep -qE '^[[:space:]]*theme[[:space:]]*=' $cfg; then
     content=$(sed -E "s|^[[:space:]]*theme[[:space:]]*=.*|theme = ${name}|" $cfg) || return

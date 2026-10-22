@@ -1,0 +1,23 @@
+# onedark-warm — Neovim palette.
+background = #2c2d30
+foreground = #b1b4b9
+cursor-color = #b1b4b9
+cursor-text = #2c2d30
+selection-background = #404247
+selection-foreground = #b1b4b9
+palette = 0=#191a1c
+palette = 1=#e16d77
+palette = 2=#99bc80
+palette = 3=#dfbe81
+palette = 4=#68aee8
+palette = 5=#c27fd7
+palette = 6=#5fafb9
+palette = 7=#b1b4b9
+palette = 8=#646568
+palette = 9=#e16d77
+palette = 10=#99bc80
+palette = 11=#dfbe81
+palette = 12=#68aee8
+palette = 13=#c27fd7
+palette = 14=#5fafb9
+palette = 15=#b1b4b9

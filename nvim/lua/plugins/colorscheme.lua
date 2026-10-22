@@ -157,7 +157,19 @@ return {
       end,
     },
   },
-  { "marko-cerovac/material.nvim" },
+  {
+    "marko-cerovac/material.nvim",
+    opts = {
+      custom_highlights = function(colors)
+        -- Keep inline suggestions readable and distinct from accepted code.
+        local opacity = vim.o.background == "light" and 0.95 or 0.85
+        local hint = require("material.functions").blend(colors.editor.fg, colors.editor.bg, opacity)
+        return {
+          ComplHint = { fg = hint, italic = true },
+        }
+      end,
+    },
+  },
   { "navarasu/onedark.nvim" },
   {
     "LazyVim/LazyVim",

@@ -1,0 +1,23 @@
+# material-lighter — Neovim palette.
+background = #fafafa
+foreground = #546e7a
+cursor-color = #272727
+cursor-text = #ffffff
+selection-background = #80cbc4
+selection-foreground = #546e7a
+palette = 0=#000000
+palette = 1=#dc6068
+palette = 2=#abcf76
+palette = 3=#e6b455
+palette = 4=#6e98eb
+palette = 5=#b480d6
+palette = 6=#71c6e7
+palette = 7=#eeffff
+palette = 8=#d2d4d5
+palette = 9=#e53935
+palette = 10=#91b859
+palette = 11=#f6a434
+palette = 12=#6182b8
+palette = 13=#7c4dff
+palette = 14=#39adb5
+palette = 15=#eeffff

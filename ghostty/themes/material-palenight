@@ -1,0 +1,23 @@
+# material-palenight — Neovim palette.
+background = #292d3e
+foreground = #a6accd
+cursor-color = #ffcc00
+cursor-text = #1b1e2b
+selection-background = #444267
+selection-foreground = #a6accd
+palette = 0=#000000
+palette = 1=#dc6068
+palette = 2=#abcf76
+palette = 3=#e6b455
+palette = 4=#6e98eb
+palette = 5=#b480d6
+palette = 6=#71c6e7
+palette = 7=#eeffff
+palette = 8=#515772
+palette = 9=#f07178
+palette = 10=#c3e88d
+palette = 11=#ffcb6b
+palette = 12=#82aaff
+palette = 13=#c792ea
+palette = 14=#89ddff
+palette = 15=#eeffff

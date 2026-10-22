@@ -168,6 +168,216 @@ typeset -gA _ZSH_THEME_TOKYONIGHT_STORM=(
   motion_label_style 'fg=#c0caf5,bg=#ff007c,bold'
 )
 
+# Additional theme palettes.
+typeset -gA _ZSH_THEME_DAYFOX=(
+  muted '#837a72'
+  visual_background '#e7d2be'
+  visual_foreground '#3d2b5a'
+  motion_dim_style 'fg=#837a72'
+  motion_label_style 'fg=#f6f2ee,bg=#a5222f'
+)
+
+typeset -gA _ZSH_THEME_DAWNFOX=(
+  muted '#9893a5'
+  visual_background '#d0d8d8'
+  visual_foreground '#575279'
+  motion_dim_style 'fg=#9893a5'
+  motion_label_style 'fg=#faf4ed,bg=#b4637a'
+)
+
+typeset -gA _ZSH_THEME_NIGHTFOX=(
+  muted '#738091'
+  visual_background '#2b3b51'
+  visual_foreground '#cdcecf'
+  motion_dim_style 'fg=#738091'
+  motion_label_style 'fg=#192330,bg=#c94f6d'
+)
+
+typeset -gA _ZSH_THEME_DUSKFOX=(
+  muted '#817c9c'
+  visual_background '#433c59'
+  visual_foreground '#e0def4'
+  motion_dim_style 'fg=#817c9c'
+  motion_label_style 'fg=#232136,bg=#eb6f92'
+)
+
+typeset -gA _ZSH_THEME_NORDFOX=(
+  muted '#60728a'
+  visual_background '#3e4a5b'
+  visual_foreground '#cdcecf'
+  motion_dim_style 'fg=#60728a'
+  motion_label_style 'fg=#2e3440,bg=#bf616a'
+)
+
+typeset -gA _ZSH_THEME_TERAFOX=(
+  muted '#6d7f8b'
+  visual_background '#293e40'
+  visual_foreground '#e6eaea'
+  motion_dim_style 'fg=#6d7f8b'
+  motion_label_style 'fg=#152528,bg=#e85c51'
+)
+
+typeset -gA _ZSH_THEME_CARBONFOX=(
+  muted '#6e6f70'
+  visual_background '#2a2a2a'
+  visual_foreground '#f2f4f8'
+  motion_dim_style 'fg=#6e6f70'
+  motion_label_style 'fg=#161616,bg=#ee5396'
+)
+
+typeset -gA _ZSH_THEME_MONOKAI_PRO_LIGHT=(
+  muted '#a59fa0'
+  visual_background '#e5dfde'
+  visual_foreground '#29242a'
+  motion_dim_style 'fg=#a59fa0'
+  motion_label_style 'fg=#29242a,bg=#dbd5d4'
+)
+
+typeset -gA _ZSH_THEME_MONOKAI_PRO_PRO=(
+  muted '#727072'
+  visual_background '#434144'
+  visual_foreground '#fcfcfa'
+  motion_dim_style 'fg=#727072'
+  motion_label_style 'fg=#fcfcfa,bg=#4c4a4d'
+)
+
+typeset -gA _ZSH_THEME_MONOKAI_PRO_CLASSIC=(
+  muted '#6e7066'
+  visual_background '#3e3f38'
+  visual_foreground '#fdfff1'
+  motion_dim_style 'fg=#6e7066'
+  motion_label_style 'fg=#fdfff1,bg=#474841'
+)
+
+typeset -gA _ZSH_THEME_MONOKAI_PRO_OCTAGON=(
+  muted '#696d77'
+  visual_background '#3d3f4e'
+  visual_foreground '#eaf2f1'
+  motion_dim_style 'fg=#696d77'
+  motion_label_style 'fg=#eaf2f1,bg=#454855'
+)
+
+typeset -gA _ZSH_THEME_MONOKAI_PRO_MACHINE=(
+  muted '#6b7678'
+  visual_background '#3d474b'
+  visual_foreground '#f2fffc'
+  motion_dim_style 'fg=#6b7678'
+  motion_label_style 'fg=#f2fffc,bg=#455054'
+)
+
+typeset -gA _ZSH_THEME_MONOKAI_PRO_RISTRETTO=(
+  muted '#72696a'
+  visual_background '#433b3b'
+  visual_foreground '#fff1f3'
+  motion_dim_style 'fg=#72696a'
+  motion_label_style 'fg=#fff1f3,bg=#4c4444'
+)
+
+typeset -gA _ZSH_THEME_MONOKAI_PRO_SPECTRUM=(
+  muted '#69676c'
+  visual_background '#39383a'
+  visual_foreground '#f7f1ff'
+  motion_dim_style 'fg=#69676c'
+  motion_label_style 'fg=#f7f1ff,bg=#424143'
+)
+
+typeset -gA _ZSH_THEME_MATERIAL_LIGHTER=(
+  muted '#aabfc9'
+  visual_background '#80cbc4'
+  visual_foreground '#546e7a'
+  motion_dim_style 'fg=#aabfc9'
+  motion_label_style 'fg=#fafafa,bg=#000000'
+)
+
+typeset -gA _ZSH_THEME_MATERIAL_OCEANIC=(
+  muted '#546e7a'
+  visual_background '#395b65'
+  visual_foreground '#b0bec5'
+  motion_dim_style 'fg=#546e7a'
+  motion_label_style 'fg=#25363b,bg=#eeffff'
+)
+
+typeset -gA _ZSH_THEME_MATERIAL_DARKER=(
+  muted '#515151'
+  visual_background '#404040'
+  visual_foreground '#b0bec5'
+  motion_dim_style 'fg=#515151'
+  motion_label_style 'fg=#212121,bg=#eeffff'
+)
+
+typeset -gA _ZSH_THEME_MATERIAL_PALENIGHT=(
+  muted '#676e95'
+  visual_background '#444267'
+  visual_foreground '#a6accd'
+  motion_dim_style 'fg=#676e95'
+  motion_label_style 'fg=#292d3e,bg=#eeffff'
+)
+
+typeset -gA _ZSH_THEME_MATERIAL_DEEP_OCEAN=(
+  muted '#464b5d'
+  visual_background '#1f2233'
+  visual_foreground '#a6accd'
+  motion_dim_style 'fg=#464b5d'
+  motion_label_style 'fg=#0f111a,bg=#eeffff'
+)
+
+typeset -gA _ZSH_THEME_ONEDARK_LIGHT=(
+  muted '#a0a1a7'
+  visual_background '#dcdcdc'
+  visual_foreground '#383a42'
+  motion_dim_style 'fg=#a0a1a7'
+  motion_label_style 'fg=#fafafa,bg=#50a14f'
+)
+
+typeset -gA _ZSH_THEME_ONEDARK_DARK=(
+  muted '#5c6370'
+  visual_background '#3b3f4c'
+  visual_foreground '#abb2bf'
+  motion_dim_style 'fg=#5c6370'
+  motion_label_style 'fg=#282c34,bg=#98c379'
+)
+
+typeset -gA _ZSH_THEME_ONEDARK_DARKER=(
+  muted '#535965'
+  visual_background '#323641'
+  visual_foreground '#a0a8b7'
+  motion_dim_style 'fg=#535965'
+  motion_label_style 'fg=#1f2329,bg=#8ebd6b'
+)
+
+typeset -gA _ZSH_THEME_ONEDARK_COOL=(
+  muted '#546178'
+  visual_background '#363c51'
+  visual_foreground '#a5b0c5'
+  motion_dim_style 'fg=#546178'
+  motion_label_style 'fg=#242b38,bg=#97ca72'
+)
+
+typeset -gA _ZSH_THEME_ONEDARK_DEEP=(
+  muted '#455574'
+  visual_background '#2a324a'
+  visual_foreground '#93a4c3'
+  motion_dim_style 'fg=#455574'
+  motion_label_style 'fg=#1a212e,bg=#8bcd5b'
+)
+
+typeset -gA _ZSH_THEME_ONEDARK_WARM=(
+  muted '#646568'
+  visual_background '#404247'
+  visual_foreground '#b1b4b9'
+  motion_dim_style 'fg=#646568'
+  motion_label_style 'fg=#2c2d30,bg=#99bc80'
+)
+
+typeset -gA _ZSH_THEME_ONEDARK_WARMER=(
+  muted '#5a5b5e'
+  visual_background '#37383d'
+  visual_foreground '#a7aab0'
+  motion_dim_style 'fg=#5a5b5e'
+  motion_label_style 'fg=#232326,bg=#8fb573'
+)
+
+
 typeset -g _zsh_theme_name=${(U)${THEME_PALETTE:-catppuccin-mocha}//-/_}
 typeset -g _zsh_theme_variable="_ZSH_THEME_${_zsh_theme_name}"
 typeset -g _zsh_theme_key="${_zsh_theme_variable}[muted]"

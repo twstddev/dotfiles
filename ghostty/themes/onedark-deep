@@ -1,0 +1,23 @@
+# onedark-deep — Neovim palette.
+background = #1a212e
+foreground = #93a4c3
+cursor-color = #93a4c3
+cursor-text = #1a212e
+selection-background = #2a324a
+selection-foreground = #93a4c3
+palette = 0=#0c0e15
+palette = 1=#f65866
+palette = 2=#8bcd5b
+palette = 3=#efbd5d
+palette = 4=#41a7fc
+palette = 5=#c75ae8
+palette = 6=#34bfd0
+palette = 7=#93a4c3
+palette = 8=#455574
+palette = 9=#f65866
+palette = 10=#8bcd5b
+palette = 11=#efbd5d
+palette = 12=#41a7fc
+palette = 13=#c75ae8
+palette = 14=#34bfd0
+palette = 15=#93a4c3

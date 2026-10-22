@@ -49,5 +49,59 @@ _p10k_palette() {
       P10K_BLUE=#7aa2f7 P10K_RED=#bb9af7 P10K_GREEN=#9ece6a P10K_YELLOW=#e0af68 P10K_CYAN=#83add4 P10K_PINK=#f7768e ;;
     tokyonight-storm)
       P10K_BLUE=#7aa2f7 P10K_RED=#bb9af7 P10K_GREEN=#9ece6a P10K_YELLOW=#e0af68 P10K_CYAN=#83add4 P10K_PINK=#f7768e ;;
+# Additional theme palettes.
+    dayfox)
+      P10K_BLUE=#2848a9 P10K_RED=#6e33ce P10K_GREEN=#396847 P10K_YELLOW=#ac5402 P10K_CYAN=#287980 P10K_PINK=#a5222f ;;
+    dawnfox)
+      P10K_BLUE=#286983 P10K_RED=#907aa9 P10K_GREEN=#618774 P10K_YELLOW=#ea9d34 P10K_CYAN=#56949f P10K_PINK=#b4637a ;;
+    nightfox)
+      P10K_BLUE=#719cd6 P10K_RED=#9d79d6 P10K_GREEN=#81b29a P10K_YELLOW=#dbc074 P10K_CYAN=#63cdcf P10K_PINK=#c94f6d ;;
+    duskfox)
+      P10K_BLUE=#569fba P10K_RED=#c4a7e7 P10K_GREEN=#a3be8c P10K_YELLOW=#f6c177 P10K_CYAN=#9ccfd8 P10K_PINK=#eb6f92 ;;
+    nordfox)
+      P10K_BLUE=#81a1c1 P10K_RED=#b48ead P10K_GREEN=#a3be8c P10K_YELLOW=#ebcb8b P10K_CYAN=#88c0d0 P10K_PINK=#bf616a ;;
+    terafox)
+      P10K_BLUE=#5a93aa P10K_RED=#ad5c7c P10K_GREEN=#7aa4a1 P10K_YELLOW=#fda47f P10K_CYAN=#a1cdd8 P10K_PINK=#e85c51 ;;
+    carbonfox)
+      P10K_BLUE=#78a9ff P10K_RED=#be95ff P10K_GREEN=#25be6a P10K_YELLOW=#08bdba P10K_CYAN=#33b1ff P10K_PINK=#ee5396 ;;
+    monokai-pro-light)
+      P10K_BLUE=#e16032 P10K_RED=#7058be P10K_GREEN=#269d69 P10K_YELLOW=#cc7a0a P10K_CYAN=#1c8ca8 P10K_PINK=#e14775 ;;
+    monokai-pro-pro)
+      P10K_BLUE=#fc9867 P10K_RED=#ab9df2 P10K_GREEN=#a9dc76 P10K_YELLOW=#ffd866 P10K_CYAN=#78dce8 P10K_PINK=#ff6188 ;;
+    monokai-pro-classic)
+      P10K_BLUE=#fd971f P10K_RED=#ae81ff P10K_GREEN=#a6e22e P10K_YELLOW=#e6db74 P10K_CYAN=#66d9ef P10K_PINK=#f92672 ;;
+    monokai-pro-octagon)
+      P10K_BLUE=#ff9b5e P10K_RED=#c39ac9 P10K_GREEN=#bad761 P10K_YELLOW=#ffd76d P10K_CYAN=#9cd1bb P10K_PINK=#ff657a ;;
+    monokai-pro-machine)
+      P10K_BLUE=#ffb270 P10K_RED=#baa0f8 P10K_GREEN=#a2e57b P10K_YELLOW=#ffed72 P10K_CYAN=#7cd5f1 P10K_PINK=#ff6d7e ;;
+    monokai-pro-ristretto)
+      P10K_BLUE=#f38d70 P10K_RED=#a8a9eb P10K_GREEN=#adda78 P10K_YELLOW=#f9cc6c P10K_CYAN=#85dacc P10K_PINK=#fd6883 ;;
+    monokai-pro-spectrum)
+      P10K_BLUE=#fd9353 P10K_RED=#948ae3 P10K_GREEN=#7bd88f P10K_YELLOW=#fce566 P10K_CYAN=#5ad4e6 P10K_PINK=#fc618d ;;
+    material-lighter)
+      P10K_BLUE=#6e98eb P10K_RED=#b480d6 P10K_GREEN=#abcf76 P10K_YELLOW=#e6b455 P10K_CYAN=#71c6e7 P10K_PINK=#dc6068 ;;
+    material-oceanic)
+      P10K_BLUE=#6e98eb P10K_RED=#b480d6 P10K_GREEN=#abcf76 P10K_YELLOW=#e6b455 P10K_CYAN=#71c6e7 P10K_PINK=#dc6068 ;;
+    material-darker)
+      P10K_BLUE=#6e98eb P10K_RED=#b480d6 P10K_GREEN=#abcf76 P10K_YELLOW=#e6b455 P10K_CYAN=#71c6e7 P10K_PINK=#dc6068 ;;
+    material-palenight)
+      P10K_BLUE=#6e98eb P10K_RED=#b480d6 P10K_GREEN=#abcf76 P10K_YELLOW=#e6b455 P10K_CYAN=#71c6e7 P10K_PINK=#dc6068 ;;
+    material-deep-ocean)
+      P10K_BLUE=#6e98eb P10K_RED=#b480d6 P10K_GREEN=#abcf76 P10K_YELLOW=#e6b455 P10K_CYAN=#71c6e7 P10K_PINK=#dc6068 ;;
+    onedark-light)
+      P10K_BLUE=#4078f2 P10K_RED=#a626a4 P10K_GREEN=#50a14f P10K_YELLOW=#986801 P10K_CYAN=#0184bc P10K_PINK=#e45649 ;;
+    onedark-dark)
+      P10K_BLUE=#61afef P10K_RED=#c678dd P10K_GREEN=#98c379 P10K_YELLOW=#e5c07b P10K_CYAN=#56b6c2 P10K_PINK=#e86671 ;;
+    onedark-darker)
+      P10K_BLUE=#4fa6ed P10K_RED=#bf68d9 P10K_GREEN=#8ebd6b P10K_YELLOW=#e2b86b P10K_CYAN=#48b0bd P10K_PINK=#e55561 ;;
+    onedark-cool)
+      P10K_BLUE=#5ab0f6 P10K_RED=#ca72e4 P10K_GREEN=#97ca72 P10K_YELLOW=#ebc275 P10K_CYAN=#4dbdcb P10K_PINK=#ef5f6b ;;
+    onedark-deep)
+      P10K_BLUE=#41a7fc P10K_RED=#c75ae8 P10K_GREEN=#8bcd5b P10K_YELLOW=#efbd5d P10K_CYAN=#34bfd0 P10K_PINK=#f65866 ;;
+    onedark-warm)
+      P10K_BLUE=#68aee8 P10K_RED=#c27fd7 P10K_GREEN=#99bc80 P10K_YELLOW=#dfbe81 P10K_CYAN=#5fafb9 P10K_PINK=#e16d77 ;;
+    onedark-warmer)
+      P10K_BLUE=#57a5e5 P10K_RED=#bb70d2 P10K_GREEN=#8fb573 P10K_YELLOW=#dbb671 P10K_CYAN=#51a8b3 P10K_PINK=#de5d68 ;;
+
   esac
 }

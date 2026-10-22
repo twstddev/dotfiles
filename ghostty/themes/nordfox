@@ -1,0 +1,54 @@
+# MIT License
+#
+# Copyright (c) 2021 James Simpson
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# Nightfox colors for Ghostty
+## name: nordfox
+## upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nordfox/nordfox.ghostty
+
+background = #2e3440
+foreground = #cdcecf
+selection-background = #3e4a5b
+selection-foreground = #cdcecf
+cursor-color = #cdcecf
+
+# normal
+palette = 0=#3b4252
+palette = 1=#bf616a
+palette = 2=#a3be8c
+palette = 3=#ebcb8b
+palette = 4=#81a1c1
+palette = 5=#b48ead
+palette = 6=#88c0d0
+palette = 7=#e5e9f0
+
+# bright
+palette = 8=#465780
+palette = 9=#d06f79
+palette = 10=#b1d196
+palette = 11=#f0d399
+palette = 12=#8cafd2
+palette = 13=#c895bf
+palette = 14=#93ccdc
+palette = 15=#e7ecf4
+
+# extended colors
+palette = 16=#c9826b
