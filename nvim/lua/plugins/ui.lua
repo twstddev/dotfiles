@@ -1,4 +1,36 @@
 local codediff = require("util.codediff")
+local tests = require("util.tests")
+
+-- Picker source config that hides test files by default. <a-x> toggles it, and the
+-- title shows the badge while tests are hidden.
+local function hide_tests()
+  return {
+    exclude_tests = true,
+    toggles = {
+      exclude_tests = "󰙨",
+    },
+    transform = function(item, ctx)
+      if ctx.picker.opts.exclude_tests and tests.is_test_file(item.file) then
+        -- if every result is a test, open the picker empty instead of closing it
+        -- with "No results", so <a-x> can bring them back
+        ctx.picker.opts.show_empty = true
+        return false
+      end
+    end,
+    win = {
+      input = {
+        keys = {
+          ["<a-x>"] = { "toggle_exclude_tests", mode = { "n", "i" } },
+        },
+      },
+      list = {
+        keys = {
+          ["<a-x>"] = "toggle_exclude_tests",
+        },
+      },
+    },
+  }
+end
 
 return {
   { "folke/noice.nvim", enabled = false },
@@ -111,6 +143,12 @@ return {
           git_log_line = {
             win = codediff.picker_keys(),
           },
+          lsp_references = hide_tests(),
+          lsp_implementations = hide_tests(),
+          lsp_workspace_symbols = hide_tests(),
+          grep = hide_tests(),
+          grep_word = hide_tests(),
+          git_grep = hide_tests(),
         },
       },
     },
