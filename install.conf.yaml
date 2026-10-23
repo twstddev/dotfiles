@@ -20,6 +20,7 @@
       path: tpm
     ~/.tmux.conf: tmux.conf
     ~/.config/tmux: tmux
+    ~/.config/sesh: sesh
     ~/.config/zsh: zsh
     ~/.config/fsh: fsh
     ~/.config/eza:

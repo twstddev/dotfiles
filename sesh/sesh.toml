@@ -1,0 +1,4 @@
+# Match folder previews in the Alt+c fzf completion picker.
+[default_session]
+preview_command = "eza --tree --level=2 --color=always -- {}"
+
