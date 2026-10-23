@@ -10,6 +10,7 @@
 - clean: ['~']
 
 - link:
+    ~/.aerospace.toml: aerospace/aerospace.toml
     ~/.config/nvim: nvim
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
