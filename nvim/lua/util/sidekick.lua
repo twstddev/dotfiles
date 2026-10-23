@@ -5,6 +5,69 @@ local WINDOW_COLUMN_WIDTH = 20
 
 local patched = false
 
+local function show_popup(session)
+  if not vim.env.TMUX_PANE or not session or session.backend ~= "tmux" or not session.mux_session then
+    return false
+  end
+  local popup_id = session.mux_session:match("^__agent_popup_(%d+)$")
+  if not popup_id then
+    return false
+  end
+
+  local util = require("sidekick.util")
+  local owner = util.exec({
+    "tmux",
+    "show-options",
+    "-qv",
+    "-t",
+    "=" .. session.mux_session .. ":",
+    "@agent_popup_owner",
+  }, { notify = false })
+
+  if not owner or owner[1] ~= "@" .. popup_id then
+    return false
+  end
+
+  local client = util.exec({ "tmux", "display-message", "-p", "-t", vim.env.TMUX_PANE, "#{client_name}" })
+
+  if not client or not client[1] then
+    util.error("Could not find the tmux client for the agent popup")
+    return true
+  end
+
+  vim.system({
+    "/bin/sh",
+    vim.fn.expand("~/.config/tmux/agent-popup.sh"),
+    owner[1],
+    session.cwd,
+    client[1],
+  }, { text = true }, function(result)
+    if result.code ~= 0 then
+      vim.schedule(function()
+        util.error("Could not open the agent popup: " .. vim.trim(result.stderr or ""))
+      end)
+    end
+  end)
+  return true
+end
+
+function M.toggle()
+  require("sidekick.cli.state").with(function(state, attached)
+    if show_popup(state.session) then
+      return
+    end
+
+    local cli = require("sidekick.cli")
+    local opts = { filter = { session = state.session.id } }
+
+    if attached then
+      cli.show(opts)
+    else
+      cli.toggle(opts)
+    end
+  end, { attach = true })
+end
+
 function M.ask_agent(context_template, input_prompt)
   local cli = require("sidekick.cli")
   local _, context = cli.render(context_template)

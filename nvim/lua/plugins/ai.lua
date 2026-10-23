@@ -73,7 +73,7 @@ return {
       {
         "<M-i>",
         function()
-          require("sidekick.cli").toggle()
+          require("util.sidekick").toggle()
         end,
         mode = { "n", "t", "i", "x" },
         desc = "Toggle Sidekick CLI",
