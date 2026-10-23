@@ -10,8 +10,15 @@ export SESH_ICON_FILTER SESH_SEPARATOR SESH_PICKER_SCRIPT
 if [ "${1:-}" = --list ]; then
     shift
     sesh list --icons "$@" | sed "$SESH_ICON_FILTER" | awk -v separator="$SESH_SEPARATOR" '
+        # Keep popup backing sessions out of the workspace picker.
         {
-            if (NR > 1 && $1 != previous_icon)
+            entry = $0
+            gsub(/\033\[[0-9;]*m/, "", entry)
+            if (entry ~ /^ __agent_popup_[0-9]+$/)
+                next
+        }
+        {
+            if (previous_icon != "" && $1 != previous_icon)
                 printf "\033[90m%s\033[0m\n", separator
             previous_icon = $1
             print
