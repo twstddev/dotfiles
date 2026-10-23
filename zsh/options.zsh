@@ -34,7 +34,8 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --e
 export FZF_DEFAULT_OPTS="
   --height=50% --layout=reverse --border --inline-info --style=minimal
   --wrap --cycle
-  --bind 'alt-j:preview-half-page-down,alt-k:preview-half-page-up'
+  --bind 'ctrl-alt-j:preview-half-page-down,ctrl-alt-k:preview-half-page-up'
+  --bind 'alt-p:toggle-preview'
   --bind 'ctrl-/:change-preview-window(up|down|hidden|)'
 "
 export FZF_BASE_OPTS=$FZF_DEFAULT_OPTS
@@ -44,6 +45,7 @@ export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS
 
 export FZF_CTRL_T_COMMAND=""
 export FZF_ALT_C_COMMAND=''
+export FZF_CTRL_R_OPTS="--bind 'alt-r:ignore,alt-R:toggle-raw'"
 
 export FZF_COMPLETION_OPTS="
   --preview 'if [ -d {} ]; then eza --tree --level=2 --color=always -- {}; else bat -n --color=always -- {}; fi'
