@@ -1,6 +1,23 @@
 return {
   {
     "folke/flash.nvim",
+    keys = {
+      {
+        "<M-s>",
+        function()
+          require("flash").jump({ search = { multi_window = vim.bo.buftype ~= "terminal" } })
+        end,
+        mode = { "n", "x", "o" },
+        desc = "Flash",
+      },
+      {
+        "<M-s>",
+        -- Sidekick opens its scrollback on TermLeave before this scheduled jump.
+        "<C-\\><C-n><Cmd>lua vim.schedule(function() require('flash').jump({ search = { multi_window = false } }) end)<CR>",
+        mode = "t",
+        desc = "Flash Terminal",
+      },
+    },
     opts = {
       jump = {
         autojump = true,

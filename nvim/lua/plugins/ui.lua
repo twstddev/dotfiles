@@ -106,17 +106,32 @@ return {
           input = {
             keys = {
               ["<Esc>"] = { "close", mode = { "n", "i" } },
+              ["<a-h>"] = false,
+              ["<a-.>"] = { "toggle_hidden", mode = { "n", "i" } },
+              ["<a-f>"] = false,
+              ["<a-F>"] = { "toggle_follow", mode = { "n", "i" } },
+              ["<a-r>"] = false,
+              ["<a-R>"] = { "toggle_regex", mode = { "n", "i" } },
+              ["<a-t>"] = false,
+              ["<a-X>"] = { "trouble_open", mode = { "n", "i" } },
             },
           },
           list = {
             keys = {
               ["/"] = false,
               ["<a-w>"] = "focus_preview",
+              ["<a-s>"] = "flash",
+              ["<a-h>"] = false,
+              ["<a-.>"] = "toggle_hidden",
+              ["<a-f>"] = false,
+              ["<a-F>"] = "toggle_follow",
             },
           },
           preview = {
             keys = {
               ["<a-w>"] = "focus_list",
+              ["<a-s>"] = "flash",
+              ["<a-m>"] = "toggle_maximize",
             },
           },
         },
@@ -142,6 +157,36 @@ return {
           },
           git_log_line = {
             win = codediff.picker_keys(),
+          },
+          gh_issue = {
+            win = {
+              input = {
+                keys = {
+                  ["<a-b>"] = false,
+                  ["<a-B>"] = { "gh_browse", mode = { "n", "i" } },
+                },
+              },
+            },
+          },
+          gh_pr = {
+            win = {
+              input = {
+                keys = {
+                  ["<a-b>"] = false,
+                  ["<a-B>"] = { "gh_browse", mode = { "n", "i" } },
+                },
+              },
+            },
+          },
+          keymaps = {
+            win = {
+              input = {
+                keys = {
+                  ["<a-b>"] = false,
+                  ["<a-B>"] = { "toggle_buffer", mode = { "n", "i" }, desc = "Toggle Buffer Keymaps" },
+                },
+              },
+            },
           },
           lsp_references = hide_tests(),
           lsp_implementations = hide_tests(),

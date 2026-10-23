@@ -10,6 +10,16 @@ del("n", "<S-h>")
 del("n", "<S-l>")
 del({ "i", "x", "n", "s" }, "<C-s>")
 
+-- AeroSpace uses Alt+J/K for window focus.
+del({ "n", "i", "v" }, "<A-j>")
+del({ "n", "i", "v" }, "<A-k>")
+map("n", "<C-A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("n", "<C-A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<C-A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "<C-A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<C-A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("v", "<C-A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+
 if vim.g.vscode then
   local vscode = require("vscode")
 
@@ -127,25 +137,10 @@ if vim.g.vscode then
     vscode.call("whichkey.show")
   end, { noremap = true, silent = true })
 else
+  Snacks.toggle.zoom():map("<A-m>")
+
   map({ "n", "i", "x" }, "<A-;>", function()
-    local nes = require("sidekick.nes")
-    -- local suggestion = require("copilot.suggestion")
-
-    -- if suggestion.is_visible() then
-    --   LazyVim.create_undo()
-    --   suggestion.accept()
-    --   -- This is a temporary hack to make sure that in typescript files copilot suggestions appear more than one line at a time.
-    --   suggestion.accept()
-    -- end
-
-    if vim.lsp.inline_completion.get() then
-      return
-    end
-
-    if nes.have() then
-      nes.jump()
-      nes.apply()
-    end
+    require("util.nes").accept()
   end)
 
   Snacks.toggle

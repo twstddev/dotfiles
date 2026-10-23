@@ -5,19 +5,22 @@ function M.picker_keys()
     input = {
       keys = {
         ["<a-c>"] = { "codediff", mode = { "n", "i" } },
-        ["<a-b>"] = { "open_commit_pr", mode = { "n", "i" } },
+        ["<a-b>"] = false,
+        ["<a-B>"] = { "open_commit_pr", mode = { "n", "i" } },
       },
     },
     list = {
       keys = {
         ["<a-c>"] = { "codediff", mode = { "n", "x" } },
-        ["<a-b>"] = { "open_commit_pr", mode = { "n", "x" } },
+        ["<a-b>"] = false,
+        ["<a-B>"] = { "open_commit_pr", mode = { "n", "x" } },
       },
     },
     preview = {
       keys = {
         ["<a-c>"] = "codediff",
-        ["<a-b>"] = "open_commit_pr",
+        ["<a-b>"] = false,
+        ["<a-B>"] = "open_commit_pr",
       },
     },
   }
