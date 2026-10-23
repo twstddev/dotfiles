@@ -37,7 +37,7 @@ selection=$(
         --sync --no-height --no-border --padding=1,2 --no-sort --ansi --prompt '  ' \
         --header '  0–9 jump (empty query) · ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
         --bind 'tab:down,btab:up' \
-        --bind 'alt-o:abort' \
+        --bind 'alt-t:abort' \
         --bind 'focus:transform:if [ -z "$FZF_QUERY" ] && [ {} = "$SESH_SEPARATOR" ]; then case "$FZF_ACTION" in *up*|last) echo up ;; *) echo down ;; esac; fi' \
         --bind 'enter:transform:if [ {} != "$SESH_SEPARATOR" ]; then echo accept; fi' \
         --bind 'double-click:transform:if [ {} != "$SESH_SEPARATOR" ]; then echo accept; fi' \
