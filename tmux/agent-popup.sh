@@ -45,9 +45,15 @@ if [ "${1:-}" = --cleanup ]; then
 fi
 
 [ "$#" -eq 3 ] || exit 2
-owner=$1
-directory=$2
-client=$3
+if [ "$1" = --ensure ]; then
+    owner=$2
+    directory=$3
+    client=
+else
+    owner=$1
+    directory=$2
+    client=$3
+fi
 session="__agent_popup_${owner#@}"
 is_popup_session "$session" && [ "$owner" = "@${session#__agent_popup_}" ] || exit 2
 
@@ -67,6 +73,7 @@ if ! tmux list-windows -a -F '#{window_id}' | grep -Fxq -- "$owner"; then
     exit 0
 fi
 
+[ -n "$client" ] || exit 0
 socket=$(tmux display-message -p '#{socket_path}') || exit 1
 exec tmux display-popup -c "$client" -E -w 80% -h 80% \
     /bin/sh "$HOME/.config/tmux/agent-popup.sh" --attach "$session" "$socket"
