@@ -41,6 +41,9 @@ export _ZO_EXCLUDE_DIRS="${_ZO_EXCLUDE_DIRS:+${_ZO_EXCLUDE_DIRS}:}*/worktree/*:*
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh --cmd j)"
 [[ -x ${HOME}/.local/bin/mise ]] && eval "$("${HOME}/.local/bin/mise" activate zsh)"
 
+# Register workmux completions after Zim initializes the completion system.
+zsh-defer -c '(( $+commands[workmux] )) && eval "$(workmux completions zsh)"'
+
 ####################
 # LOCAL
 ####################
