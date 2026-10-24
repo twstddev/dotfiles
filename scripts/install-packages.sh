@@ -123,3 +123,6 @@ fi
 
 print_installation_message "Install mise"
 curl -fsSL https://mise.run | sh
+
+print_installation_message "Install sesh and workmux"
+"$HOME/.local/bin/mise" use --global aqua:joshmedeski/sesh@latest workmux@latest
