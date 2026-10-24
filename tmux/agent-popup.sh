@@ -27,7 +27,9 @@ if [ "${1:-}" = --attach ]; then
     # client visiting the backing session must keep detach-on-destroy off.
     tmux -S "$socket" set-hook -g "$hook" \
         "if -F '#{==:#{hook_session_name},$session}' 'detach-client -t $popup_client'"
-    env -u TMUX tmux -S "$socket" attach-session -t "=$session"
+    # Size the popup on attachment before ignoring this client's dimensions.
+    env -u TMUX tmux -S "$socket" attach-session -t "=$session" \; \
+        refresh-client -f ignore-size
     exit
 fi
 
