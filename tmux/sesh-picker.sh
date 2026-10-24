@@ -32,6 +32,18 @@ if [ "${1:-}" = --delete ]; then
     exec tmux kill-session -t "=${2#* }"
 fi
 
+if [ "${1:-}" = --create ]; then
+    session=$(printf '%s' "${2:-}" | tr ':.' '__')
+    [ -n "$session" ] || exit 0
+    if ! tmux has-session -t "=$session:" 2>/dev/null; then
+        directory=$(tmux display-message -p -t "$TMUX_PANE" '#{pane_current_path}') || exit 1
+        # tmux expands formats in names and parses trailing semicolons in argv.
+        literal_session=$(printf '%s' "$session" | sed 's/#/##/g; s/;$/\\;/')
+        (cd -- "$directory" && tmux new-session -d -s "$literal_session") || exit 1
+    fi
+    exec tmux switch-client -t "=$session:"
+fi
+
 # Keep the digit bindings together; fzf supplies the current key and query to
 # the helper, along with the full list so divider rows retain their positions.
 set --
@@ -42,9 +54,10 @@ done
 selection=$(
     sh "$SESH_PICKER_SCRIPT" --list | fzf \
         --sync --no-height --no-border --padding=1,2 --no-sort --ansi --prompt '  ' \
-        --header '  0–9 jump (empty query) · ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
+        --header '  0–9 jump (empty query) · ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill alt+enter new ^f find' \
         --bind 'tab:down,btab:up' \
         --bind 'alt-t:abort' \
+        --bind "alt-enter:transform:if [ -n \"\$FZF_QUERY\" ]; then echo 'become(sh \"\$SESH_PICKER_SCRIPT\" --create \"\$FZF_QUERY\")'; fi" \
         --bind 'focus:transform:if [ -z "$FZF_QUERY" ] && [ {} = "$SESH_SEPARATOR" ]; then case "$FZF_ACTION" in *up*|last) echo up ;; *) echo down ;; esac; fi' \
         --bind 'enter:transform:if [ {} != "$SESH_SEPARATOR" ]; then echo accept; fi' \
         --bind 'double-click:transform:if [ {} != "$SESH_SEPARATOR" ]; then echo accept; fi' \
@@ -54,7 +67,7 @@ selection=$(
         --bind 'ctrl-g:change-prompt(  )+reload(sh "$SESH_PICKER_SCRIPT" --list -c)' \
         --bind 'ctrl-x:change-prompt(  )+reload(sh "$SESH_PICKER_SCRIPT" --list -z)' \
         --bind 'ctrl-f:change-prompt(  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
-        --bind 'ctrl-d:execute(sh "$SESH_PICKER_SCRIPT" --delete {})+change-prompt(  )+reload(sh "$SESH_PICKER_SCRIPT" --list)' \
+        --bind 'ctrl-d:become(sh "$SESH_PICKER_SCRIPT" --delete {})' \
         --preview-window 'right:55%' \
         --preview 'entry={}; [ "$entry" = "$SESH_SEPARATOR" ] && exit 0; case "$entry" in " "*) entry=${entry#* };; esac; sesh preview "$entry"'
 ) || exit 0
