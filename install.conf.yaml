@@ -22,6 +22,9 @@
     ~/.tmux.conf: tmux.conf
     ~/.config/tmux: tmux
     ~/.config/sesh: sesh
+    ~/.config/workmux/config.yaml:
+      force: true
+      path: workmux/config.yaml
     ~/.config/zsh: zsh
     ~/.config/fsh: fsh
     ~/.config/eza:

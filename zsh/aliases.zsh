@@ -4,6 +4,7 @@ alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
 alias md='mkdir -p'
+alias wm='workmux'
 
 alias l='eza --group-directories-first'
 alias ls='l -l --icons=always --header'

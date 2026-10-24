@@ -1,0 +1,8 @@
+nerdfont: true
+
+# Keep agent icons out of window tabs; activity is shown beside the clock.
+status_format: false
+status_icons:
+  working: "󱙺"
+  waiting: "󱙺"
+  done: "󱜚"
