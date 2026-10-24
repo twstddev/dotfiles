@@ -77,5 +77,7 @@ fi
 
 [ -n "$client" ] || exit 0
 socket=$(tmux display-message -p '#{socket_path}') || exit 1
-exec tmux display-popup -c "$client" -E -w 80% -h 80% \
+width=$(tmux show-options -gqv @popup_width)
+height=$(tmux show-options -gqv @popup_height)
+exec tmux display-popup -c "$client" -E -w "${width:-80%}" -h "${height:-80%}" \
     /bin/sh "$HOME/.config/tmux/agent-popup.sh" --attach "$session" "$socket"
