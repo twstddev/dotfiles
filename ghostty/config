@@ -1,4 +1,23 @@
 # Ghostty config, linked to ~/.config/ghostty/config.
-# The `theme` line is managed by the `theme` command (zsh/theme.zsh) and is
-# rewritten on every switch. Reload ghostty to apply: Cmd+Shift+, (macOS).
+# The `theme` line is managed by the `theme` command (zsh/scripts/theme.zsh)
+# and is rewritten on every switch. Reload with Ctrl+Shift+, on Linux
+# or Cmd+Shift+, on macOS. Open a new terminal for padding changes.
 theme = Kanagawa Wave
+
+font-family = JetBrains Mono
+font-style = Regular
+adjust-cell-height = 10%
+
+window-theme = ghostty
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = false
+window-padding-color = extend
+window-theme = ghostty
+
+mouse-hide-while-typing = true
+
+gtk-toolbar-style = flat
+gtk-titlebar-hide-when-maximized = true
+
+
