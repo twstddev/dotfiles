@@ -140,7 +140,24 @@ else
   Snacks.toggle.zoom():map("<A-m>")
 
   map({ "n", "i", "x" }, "<A-;>", function()
-    require("util.nes").accept()
+    local nes = require("sidekick.nes")
+    -- local suggestion = require("copilot.suggestion")
+
+    -- if suggestion.is_visible() then
+    --   LazyVim.create_undo()
+    --   suggestion.accept()
+    --   -- This is a temporary hack to make sure that in typescript files copilot suggestions appear more than one line at a time.
+    --   suggestion.accept()
+    -- end
+
+    if vim.lsp.inline_completion.get() then
+      return
+    end
+
+    if nes.have() then
+      nes.jump()
+      nes.apply()
+    end
   end)
 
   Snacks.toggle
