@@ -34,11 +34,6 @@ return {
         enabled = true,
       },
       cli = {
-        mux = {
-          enabled = vim.env.TMUX ~= nil,
-          backend = "tmux",
-          create = "window",
-        },
         win = {
           layout = "float",
           keys = {
@@ -78,7 +73,7 @@ return {
       {
         "<M-i>",
         function()
-          require("util.sidekick").toggle()
+          require("sidekick.cli").toggle()
         end,
         mode = { "n", "t", "i", "x" },
         desc = "Toggle Sidekick CLI",
