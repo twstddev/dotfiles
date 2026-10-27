@@ -37,24 +37,16 @@ if [ "${1:-}" = --create ]; then
     exec tmux switch-client -t "=$session:"
 fi
 
-# Keep the digit bindings together; fzf supplies the current key and query to
-# the helper, along with the full list so divider rows retain their positions.
-set --
-for digit in 0 1 2 3 4 5 6 7 8 9; do
-    set -- "$@" --bind "$digit:transform:sh ~/.config/tmux/sesh-digit.sh {*f}"
-done
-
 selection=$(
     sh "$SESH_PICKER_SCRIPT" --list | fzf \
         --sync --no-height --no-border --padding=1,2 --no-sort --ansi --prompt '  ' \
-        --header '  0–9 jump (empty query) · ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill alt+enter new ^f find' \
+        --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill alt+enter new ^f find' \
         --bind 'tab:down,btab:up' \
         --bind 'alt-t:abort' \
         --bind "alt-enter:transform:if [ -n \"\$FZF_QUERY\" ]; then echo 'become(sh \"\$SESH_PICKER_SCRIPT\" --create \"\$FZF_QUERY\")'; fi" \
         --bind 'focus:transform:if [ -z "$FZF_QUERY" ] && [ {} = "$SESH_SEPARATOR" ]; then case "$FZF_ACTION" in *up*|last) echo up ;; *) echo down ;; esac; fi' \
         --bind 'enter:transform:if [ {} != "$SESH_SEPARATOR" ]; then echo accept; fi' \
         --bind 'double-click:transform:if [ {} != "$SESH_SEPARATOR" ]; then echo accept; fi' \
-        "$@" \
         --bind 'ctrl-a:change-prompt(  )+reload(sh "$SESH_PICKER_SCRIPT" --list)' \
         --bind 'ctrl-t:change-prompt(  )+reload(sh "$SESH_PICKER_SCRIPT" --list -t)' \
         --bind 'ctrl-g:change-prompt(  )+reload(sh "$SESH_PICKER_SCRIPT" --list -c)' \
@@ -67,16 +59,6 @@ selection=$(
 
 [ -n "$selection" ] || exit 0
 [ "$selection" != "$SESH_SEPARATOR" ] || exit 0
-
-# Digit shortcuts emit a marker line before the selected icon-prefixed row.
-digit_prefix='__sesh_digit__
-'
-case "$selection" in
-    "$digit_prefix"*)
-        selection=${selection#"$digit_prefix"}
-        session=${selection#* }
-        exec tmux switch-client -t "=$session"
-esac
 
 # Sesh does not recognise the replacement glyph, so pass its raw session name.
 case "$selection" in
