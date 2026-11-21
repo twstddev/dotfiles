@@ -4,17 +4,37 @@
 SESH_ICON_FILTER='s/^\([^ ]*\)/\1/'
 SESH_SEPARATOR='────────────────────────'
 SESH_PICKER_SCRIPT="$HOME/.config/tmux/sesh-picker.sh"
+SESH_TMUX_GLYPH=$(printf '\357\213\220')
 export SESH_ICON_FILTER SESH_SEPARATOR SESH_PICKER_SCRIPT
 
-# Reuse the same list formatting for the initial list and source reloads.
+# Render a #rrggbb tmux theme colour as a bold truecolour ANSI escape.
+ansi_colour() {
+    hex=${1#\#}
+    if [ ${#hex} -ne 6 ]; then
+        printf '\033[1;36m'
+        return
+    fi
+    middle=${hex#??}
+    printf '\033[1;38;2;%d;%d;%dm' "0x${hex%????}" "0x${middle%??}" "0x${hex#????}"
+}
+
+# Reuse the same list formatting for the initial list and source reloads. The
+# current tmux session is highlighted in place within its group.
 if [ "${1:-}" = --list ]; then
     shift
-    sesh list --icons "$@" | sed "$SESH_ICON_FILTER" | awk -v separator="$SESH_SEPARATOR" '
+    sesh list --icons "$@" | sed "$SESH_ICON_FILTER" | awk \
+        -v separator="$SESH_SEPARATOR" -v current="${SESH_CURRENT_SESSION:-}" \
+        -v glyph="$SESH_TMUX_GLYPH" -v hl="${SESH_HIGHLIGHT:-}" '
         {
             if (NR > 1 && $1 != previous_icon)
                 printf "\033[90m%s\033[0m\n", separator
             previous_icon = $1
-            print
+            plain = $0
+            gsub(/\033\[[0-9;]*m/, "", plain)
+            if (current != "" && plain == glyph " " current)
+                printf "%s %s%s\033[0m\n", $1, hl, current
+            else
+                print
         }
     '
     exit
@@ -37,10 +57,21 @@ if [ "${1:-}" = --create ]; then
     exec tmux switch-client -t "=$session:"
 fi
 
+SESH_CURRENT_SESSION=$(tmux display-message -p '#{session_name}')
+SESH_HIGHLIGHT=$(ansi_colour "$(tmux show -gv @theme_session 2>/dev/null)")
+export SESH_CURRENT_SESSION SESH_HIGHLIGHT
+
+list=$(sh "$SESH_PICKER_SCRIPT" --list)
+row=$(
+    printf '%s\n' "$list" | sed 's/\x1b\[[0-9;]*m//g' \
+        | grep -nxF "$SESH_TMUX_GLYPH $SESH_CURRENT_SESSION" | cut -d: -f1 | head -n 1
+)
+
 selection=$(
-    sh "$SESH_PICKER_SCRIPT" --list | fzf \
+    printf '%s\n' "$list" | fzf \
         --sync --no-height --no-border --padding=1,2 --no-sort --ansi --prompt '  ' \
         --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill alt+enter new ^f find' \
+        --bind "start:pos(${row:-1})" \
         --bind 'tab:down,btab:up' \
         --bind 'alt-t:abort' \
         --bind "alt-enter:transform:if [ -n \"\$FZF_QUERY\" ]; then echo 'become(sh \"\$SESH_PICKER_SCRIPT\" --create \"\$FZF_QUERY\")'; fi" \
